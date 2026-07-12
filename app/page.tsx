@@ -77,7 +77,7 @@ export default function Home() {
           </div>
 
           <h1 className="font-bold text-[38px] leading-[1.25] tracking-[-0.01em] mt-4">
-            Content creator, blogger, and entrepreneur with an occasional{" "}
+            Content creator, blogger, and entrepreneur with the occasional{" "}
             <span className="text-ink/45">experiment.</span>
           </h1>
 
