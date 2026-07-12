@@ -5,7 +5,7 @@ export default function PhotoStrip() {
   const preview = photos.slice(0, 3);
 
   return (
-    <section className="mt-10">
+    <section className="mt-16">
       <div className="mb-4">
         <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink/40">
           the roll &middot; unedited
