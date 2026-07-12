@@ -80,17 +80,25 @@ export default function Home() {
             <em className="italic text-ink/55">experiment.</em>
           </h1>
 
-          <p className="leading-[1.75] text-ink/70 max-w-[440px] mt-5">
-           I write, build, and share things that interest me. Mostly entrepreneurship, independent business-building, and the unfiltered reality of creating things online. This is my journal.
+          <p className="leading-[1.75] text-ink/70 mt-5">
+            I write, build, and share things that interest me — mostly entrepreneurship,
+            independent business-building, and the unfiltered reality of creating things
+            online. This is my journal.
           </p>
 
-          <div className="h-px bg-white/10 my-8" />
-
-          <div className="flex items-center gap-6 text-xs font-medium tracking-[0.06em] uppercase text-ink/40 mb-6 flex-wrap">
-            <span>Building</span>
-            <span>Writing</span>
-            <span>Shipping</span>
-            <span>Ryoka Group</span>
+          <div className="flex items-center justify-center gap-8 text-xs font-medium tracking-[0.06em] uppercase text-ink/40 mt-8 mb-6 flex-wrap">
+            <span className="flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+              Writing
+            </span>
+            <span className="flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+              Recording
+            </span>
+            <span className="flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+              Building
+            </span>
           </div>
 
           {/* Terminal card */}
@@ -135,8 +143,6 @@ export default function Home() {
           </div>
         </section>
       </div>
-
-      <div className="border-t border-white/10" />
 
       {/* Latest posts */}
       <section className="max-w-[720px] mx-auto px-7 py-10">
