@@ -76,7 +76,7 @@ export default function Home() {
             Field notes on building
           </div>
 
-          <h1 className="font-bold text-[38px] leading-[1.25] tracking-[-0.01em] mt-4">
+          <h1 className="font-bold text-[46px] leading-[1.25] tracking-[-0.01em] mt-4">
             Founder. Blogger. <span className="text-ink/45">Occasional chaos.</span>
           </h1>
 
