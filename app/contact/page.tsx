@@ -28,8 +28,10 @@ export default function Contact() {
           </div>
           <nav className="hidden md:flex items-center gap-6 text-xs font-medium tracking-[0.08em] uppercase text-ink/45">
             <a href="/blog" className="hover:text-ink/80 transition-colors">Blog</a>
-            <a href="/about" className="hover:text-ink/80 transition-colors">About</a>
+            <a href="/podcast" className="hover:text-ink/80 transition-colors">Podcast</a>
             <a href="/projects" className="hover:text-ink/80 transition-colors">Projects</a>
+            <a href="/gallery" className="hover:text-ink/80 transition-colors">Gallery</a>
+            <a href="/about" className="hover:text-ink/80 transition-colors">About</a>
             <a href="/contact" className="text-ink">Contact</a>
           </nav>
         </header>

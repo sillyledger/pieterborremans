@@ -30,8 +30,9 @@ export default function Podcast() {
           <nav className="hidden md:flex items-center gap-6 text-xs font-medium tracking-[0.08em] uppercase text-ink/45">
             <a href="/blog" className="hover:text-ink/80 transition-colors">Blog</a>
             <a href="/podcast" className="text-ink">Podcast</a>
-            <a href="/about" className="hover:text-ink/80 transition-colors">About</a>
             <a href="/projects" className="hover:text-ink/80 transition-colors">Projects</a>
+            <a href="/gallery" className="hover:text-ink/80 transition-colors">Gallery</a>
+            <a href="/about" className="hover:text-ink/80 transition-colors">About</a>
             <a href="/contact" className="hover:text-ink/80 transition-colors">Contact</a>
           </nav>
         </header>
