@@ -1,9 +1,15 @@
-import { Reddit_Sans, Reddit_Mono } from "next/font/google";
+import { Google_Sans, Reddit_Mono } from "next/font/google";
 
 // NOTE: fonts are loaded locally in this file only, as a preview.
 // Nothing here touches the global font setup in app/layout.tsx.
+//
+// Google Sans was only open-sourced by Google on Dec 10, 2025 (SIL Open Font
+// License) — if this import throws an "unknown font" error, it means
+// Next.js's bundled font metadata hasn't caught up yet, and we'll need to
+// self-host the variable file directly instead. Flagging that risk now
+// rather than pretending it's guaranteed to work.
 
-const redditSans = Reddit_Sans({
+const googleSans = Google_Sans({
   subsets: ["latin"],
 });
 
@@ -14,7 +20,7 @@ const redditMono = Reddit_Mono({
 
 export default function Post() {
   return (
-    <main className={`${redditSans.className} min-h-screen bg-[#161618] text-[#F5F3EE]`}>
+    <main className={`${googleSans.className} min-h-screen bg-[#161618] text-[#F5F3EE]`}>
       <article className="max-w-[680px] mx-auto px-7 pt-16 pb-24">
         <div
           className={`${redditMono.className} text-[11px] font-medium tracking-[0.15em] uppercase text-white/40 mb-4`}
@@ -26,7 +32,7 @@ export default function Post() {
           Building in public is the ultimate leverage
         </h1>
 
-        <div className="space-y-6 text-[19px] font-normal leading-[1.75] text-white/85">
+        <div className="space-y-6 text-[20px] font-normal leading-[1.75] text-white/85">
           <p>
             For the first few years of building Ryoka, I kept almost everything to myself.
             The products, the failed experiments, the slow months where nothing seemed to
