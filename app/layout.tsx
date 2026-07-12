@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Lora, Plus_Jakarta_Sans } from "next/font/google";
+import { Instrument_Serif, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const lora = Lora({
+const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
-  weight: ["500", "600"],
+  weight: ["400"],
   style: ["normal", "italic"],
-  variable: "--font-lora",
+  variable: "--font-serif",
 });
 
 const jakarta = Plus_Jakarta_Sans({
@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lora.variable} ${jakarta.variable} font-sans bg-bg text-ink antialiased`}>
+      <body className={`${instrumentSerif.variable} ${jakarta.variable} font-sans bg-bg text-ink antialiased`}>
         {children}
       </body>
     </html>
