@@ -80,7 +80,7 @@ export default function Home() {
             <em className="italic text-ink/55">experiment.</em>
           </h1>
 
-          <p className="text-[17px] font-medium leading-[1.72] text-ink/70 max-w-[440px] mt-5">
+          <p className="leading-[1.75] text-ink/70 max-w-[440px] mt-5">
             I write, build, and share things that interest me. This is my journal.
           </p>
 
