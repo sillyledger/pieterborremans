@@ -1,15 +1,14 @@
-import { Google_Sans, Reddit_Mono } from "next/font/google";
+import { Open_Sans, Reddit_Mono } from "next/font/google";
 
 // NOTE: fonts are loaded locally in this file only, as a preview.
 // Nothing here touches the global font setup in app/layout.tsx.
 //
-// Google Sans was only open-sourced by Google on Dec 10, 2025 (SIL Open Font
-// License) — if this import throws an "unknown font" error, it means
-// Next.js's bundled font metadata hasn't caught up yet, and we'll need to
-// self-host the variable file directly instead. Flagging that risk now
-// rather than pretending it's guaranteed to work.
+// Tried Google Sans (open-sourced Dec 10, 2025) but Next.js 15.1.11's
+// bundled font metadata doesn't include it yet — build fails with
+// "Unknown font `Google Sans`". Open Sans is a long-established Google Font
+// with no such risk, trying that next.
 
-const googleSans = Google_Sans({
+const openSans = Open_Sans({
   subsets: ["latin"],
 });
 
@@ -20,7 +19,7 @@ const redditMono = Reddit_Mono({
 
 export default function Post() {
   return (
-    <main className={`${googleSans.className} min-h-screen bg-[#161618] text-[#F5F3EE]`}>
+    <main className={`${openSans.className} min-h-screen bg-[#161618] text-[#F5F3EE]`}>
       <article className="max-w-[680px] mx-auto px-7 pt-16 pb-24">
         <div
           className={`${redditMono.className} text-[11px] font-medium tracking-[0.15em] uppercase text-white/40 mb-4`}
