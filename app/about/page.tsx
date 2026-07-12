@@ -104,8 +104,8 @@ export default function About() {
 
             <div><span className="text-ink/40">pieter@ryoka ~ %</span> say_hello</div>
             <div className="mb-3">
-              <a href="mailto:hi@pieterborremans.com" className="text-gold underline hover:text-gold/80 transition-colors">
-                hi@pieterborremans.com
+              <a href="mailto:p@ryoka.xyz" className="text-gold underline hover:text-gold/80 transition-colors">
+                p@ryoka.xyz
               </a>
             </div>
 
