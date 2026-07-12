@@ -87,17 +87,17 @@ export default function Home() {
           </h1>
 
           {/* Primary CTA — centered under the statement, on its own */}
-          <div className="flex justify-center mt-11 mb-9">
+          <div className="flex justify-center mt-11 mb-16">
             <a
               href="/blog"
               className="inline-flex items-center gap-2.5 rounded-full bg-ink text-bg px-6 py-3.5 text-xs font-bold tracking-[0.07em] uppercase"
             >
-              Read the journal
+              Read my journal
               <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
 
-          <div className="flex items-center justify-center gap-8 text-xs font-medium tracking-[0.06em] uppercase text-ink/40 mb-6 flex-wrap">
+          <div className="flex items-center justify-center gap-8 text-xs font-medium tracking-[0.06em] uppercase text-ink/40 mb-10 flex-wrap">
             <span className="flex items-center gap-2">
               <svg className="text-ink/70" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
               Writing
