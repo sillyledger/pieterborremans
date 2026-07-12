@@ -80,7 +80,7 @@ export default function Home() {
             <em className="italic text-ink/55">experiment.</em>
           </h1>
 
-          <p className="text-base leading-[1.72] text-ink/70 max-w-[440px] mt-5">
+          <p className="text-[17px] font-medium leading-[1.72] text-ink/70 max-w-[440px] mt-5">
             I write, build, and share things that interest me. This is my journal.
           </p>
 
@@ -163,7 +163,7 @@ export default function Home() {
               <div className="max-w-[440px]">
                 <div className="text-[11px] text-ink/40 mb-1.5">{post.date}</div>
                 <h2 className="font-serif text-[19px]">{post.title}</h2>
-                <p className="text-[13px] text-ink/70 mt-1.5 leading-relaxed">{post.excerpt}</p>
+                <p className="text-[13px] font-medium text-ink/70 mt-1.5 leading-relaxed">{post.excerpt}</p>
               </div>
               <span className="text-[11px] text-ink/40 whitespace-nowrap mt-0.5">
                 {post.readTime}
