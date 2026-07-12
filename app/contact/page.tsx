@@ -39,7 +39,7 @@ export default function Contact() {
         <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink/35 mb-3">
           Get in touch
         </div>
-        <div className="text-[28px] font-normal leading-[1.35] max-w-[480px] mb-12">
+        <div className="text-[34px] font-normal leading-[1.4] tracking-[-0.005em] max-w-[480px] mb-12">
           Say hello, pitch something, or point out where I got it wrong.
         </div>
 
