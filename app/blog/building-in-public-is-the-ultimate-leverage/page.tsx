@@ -19,10 +19,10 @@ const redditMono = Reddit_Mono({
 
 export default function Post() {
   return (
-    <main className={`${openSans.className} min-h-screen bg-[#161618] text-[#F5F3EE]`}>
+    <main className={`${openSans.className} min-h-screen bg-[#F5F5F5] text-[#161618]`}>
       <article className="max-w-[680px] mx-auto px-7 pt-16 pb-24">
         <div
-          className={`${redditMono.className} text-[11px] font-medium tracking-[0.15em] uppercase text-white/40 mb-4`}
+          className={`${redditMono.className} text-[11px] font-medium tracking-[0.15em] uppercase text-black/40 mb-4`}
         >
           Jul 12, 2026 &middot; 5 min read
         </div>
@@ -31,7 +31,7 @@ export default function Post() {
           Building in public is the ultimate leverage
         </h1>
 
-        <div className="space-y-6 text-[20px] font-normal leading-[1.75] text-white/85">
+        <div className="space-y-6 text-[20px] font-normal leading-[1.75] text-black/80">
           <p>
             For the first few years of building Ryoka, I kept almost everything to myself.
             The products, the failed experiments, the slow months where nothing seemed to
