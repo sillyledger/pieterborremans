@@ -72,32 +72,43 @@ export default function Home() {
 
         {/* Hero */}
         <section>
-          <div className="text-[11px] font-medium tracking-[0.18em] uppercase text-ink/40">
+          <div className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-ink/40">
             Field notes on building
           </div>
 
-          <h1 className="font-serif font-normal text-[40px] md:text-[52px] leading-[1.1] tracking-[-0.02em] mt-4">
+          <h1 className="font-bold text-[38px] leading-[1.25] tracking-[-0.01em] mt-4">
             Content creator, blogger, and entrepreneur with an occasional{" "}
-            <em className="italic text-ink/55">experiment.</em>
+            <span className="text-ink/45">experiment.</span>
           </h1>
 
-          <p className="leading-[1.75] text-ink/70 mt-5">
+          <p className="text-[18px] leading-[1.75] text-ink/85 mt-5">
             I write, build, and share things that interest me — mostly entrepreneurship,
             independent business-building, and the unfiltered reality of creating things
             online. This is my journal.
           </p>
 
-          <div className="flex items-center justify-center gap-8 text-xs font-medium tracking-[0.06em] uppercase text-ink/40 mt-8 mb-6 flex-wrap">
+          {/* Primary CTA — centered under the subtext, on its own */}
+          <div className="flex justify-center mt-8 mb-10">
+            <a
+              href="/blog"
+              className="inline-flex items-center gap-2.5 rounded-full bg-ink text-bg px-6 py-3.5 text-xs font-bold tracking-[0.07em] uppercase"
+            >
+              Read the journal
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+
+          <div className="flex items-center justify-center gap-8 text-xs font-medium tracking-[0.06em] uppercase text-ink/40 mb-6 flex-wrap">
             <span className="flex items-center gap-2">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+              <svg className="text-ink/70" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
               Writing
             </span>
             <span className="flex items-center gap-2">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+              <svg className="text-red/70" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
               Recording
             </span>
             <span className="flex items-center gap-2">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+              <svg className="text-gold/70" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
               Building
             </span>
           </div>
@@ -133,16 +144,6 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3.5 mt-7">
-            <a
-              href="/blog"
-              className="inline-flex items-center gap-2.5 rounded-full bg-ink text-bg px-6 py-3.5 text-xs font-semibold tracking-[0.07em] uppercase"
-            >
-              Read the journal
-              <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
-
           <PhotoStrip />
         </section>
       </div>
@@ -150,12 +151,12 @@ export default function Home() {
       {/* Latest posts */}
       <section className="max-w-[720px] mx-auto px-7 py-10">
         <div className="flex items-center justify-between mb-6">
-          <span className="text-[11px] font-medium tracking-[0.18em] uppercase text-ink/40">
+          <span className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-ink/40">
             Latest posts
           </span>
           <a
             href="/blog"
-            className="flex items-center gap-1.5 text-[11px] font-medium tracking-[0.06em] uppercase text-ink/40 hover:text-ink/70 transition-colors"
+            className="font-mono flex items-center gap-1.5 text-[11px] font-medium tracking-[0.06em] uppercase text-ink/40 hover:text-ink/70 transition-colors"
           >
             View all posts <span aria-hidden="true">&rarr;</span>
           </a>
@@ -170,11 +171,11 @@ export default function Home() {
               }`}
             >
               <div className="max-w-[440px]">
-                <div className="text-[11px] text-ink/40 mb-1.5">{post.date}</div>
-                <h2 className="font-serif text-[19px]">{post.title}</h2>
+                <div className="font-mono text-[11px] text-ink/40 mb-1.5">{post.date}</div>
+                <h2 className="font-semibold text-[19px]">{post.title}</h2>
                 <p className="text-[13px] font-medium text-ink/70 mt-1.5 leading-relaxed">{post.excerpt}</p>
               </div>
-              <span className="text-[11px] text-ink/40 whitespace-nowrap mt-0.5">
+              <span className="font-mono text-[11px] text-ink/40 whitespace-nowrap mt-0.5">
                 {post.readTime}
               </span>
             </li>

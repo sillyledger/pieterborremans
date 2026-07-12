@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { photos } from "@/lib/photos";
 
 export default function PhotoStrip() {
@@ -7,16 +6,10 @@ export default function PhotoStrip() {
 
   return (
     <section className="mt-10">
-      <div className="flex items-center justify-between mb-4">
+      <div className="mb-4">
         <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink/40">
           the roll &middot; unedited
         </span>
-        <Link
-          href="/gallery"
-          className="font-mono text-[11px] text-ink/40 hover:text-ink/70 transition-colors"
-        >
-          See all &rarr;
-        </Link>
       </div>
       <div className="grid grid-cols-3 gap-4">
         {preview.map((photo, i) => (

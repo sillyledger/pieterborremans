@@ -1,23 +1,16 @@
 import type { Metadata } from "next";
-import { Lora, Plus_Jakarta_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Open_Sans, Reddit_Mono } from "next/font/google";
 import "./globals.css";
 
-const lora = Lora({
+const openSans = Open_Sans({
   subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-  variable: "--font-serif",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sans",
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const redditMono = Reddit_Mono({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-jakarta",
-});
-
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "700"],
   variable: "--font-mono",
 });
 
@@ -35,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lora.variable} ${jakarta.variable} ${plexMono.variable} font-sans bg-bg text-ink antialiased`}>
+      <body className={`${openSans.variable} ${redditMono.variable} font-sans bg-bg text-ink antialiased`}>
         {children}
       </body>
     </html>
