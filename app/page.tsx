@@ -44,9 +44,9 @@ const posts = [
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <div className="max-w-[720px] mx-auto px-7 pt-9 pb-14">
+      <div className="max-w-[750px] mx-auto px-7 pt-9 pb-14">
         {/* Nav */}
-        <header className="flex items-center justify-between mb-12">
+        <header className="flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="h-[30px] w-[30px] rounded-full overflow-hidden shrink-0 bg-white/10">
               <Image
@@ -70,24 +70,24 @@ export default function Home() {
           </nav>
         </header>
 
+        {/* Generous breathing room before the statement, ryoka.xyz-style */}
+        <div className="h-24" />
+
         {/* Hero */}
         <section>
-          <div className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-ink/40">
+          <div className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-ink/35 mb-5">
             Field notes on building
           </div>
 
-          <h1 className="font-bold text-[34px] leading-[1.25] tracking-[-0.01em] mt-4">
-            Founder. Blogger. <span className="text-ink/45">Occasional chaos.</span>
-          </h1>
-
-          <p className="text-[20px] leading-[1.75] text-ink/85 mt-5">
+          {/* No separate tagline headline — this statement IS the h1, just styled as body text */}
+          <h1 className="text-[34px] font-normal leading-[1.4] tracking-[-0.005em]">
             I write, build, and share things that interest me. Mostly entrepreneurship,
             independent business-building, and the unfiltered reality of creating things
-            online, documenting the journey publicly on this blog, where I hold nothing back.
-          </p>
+            online.
+          </h1>
 
-          {/* Primary CTA — centered under the subtext, on its own */}
-          <div className="flex justify-center mt-8 mb-10">
+          {/* Primary CTA — centered under the statement, on its own */}
+          <div className="flex justify-center mt-11 mb-9">
             <a
               href="/blog"
               className="inline-flex items-center gap-2.5 rounded-full bg-ink text-bg px-6 py-3.5 text-xs font-bold tracking-[0.07em] uppercase"
@@ -148,7 +148,7 @@ export default function Home() {
       </div>
 
       {/* Latest posts */}
-      <section className="max-w-[720px] mx-auto px-7 py-10">
+      <section className="max-w-[750px] mx-auto px-7 py-10">
         <div className="flex items-center justify-between mb-6">
           <span className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-ink/40">
             Latest posts
