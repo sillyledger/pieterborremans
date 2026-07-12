@@ -65,7 +65,7 @@ export default async function BlogIndex({
           {categories.map((cat, i) => (
             <Link
               key={cat.slug}
-              href={`/blog/category/${cat.slug}`}
+              href={`/${cat.slug}`}
               className="block bg-[#1D1E22] border border-white/10 rounded-xl p-[18px] hover:border-white/20 transition-colors"
               style={{ transform: `rotate(${i % 2 === 0 ? "-2deg" : "2deg"})` }}
             >
