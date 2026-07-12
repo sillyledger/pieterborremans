@@ -59,12 +59,12 @@ export default async function BlogIndex({
         <h1 className="text-[26px] font-normal mb-8">The journal.</h1>
 
         {/* Category cards */}
-        <div className="grid grid-cols-3 gap-3.5 mb-12">
+        <div className="grid grid-cols-3 gap-3.5 items-start mb-12">
           {categories.map((cat, i) => (
             <Link
               key={cat.slug}
               href={`/blog/category/${cat.slug}`}
-              className="bg-[#1D1E22] border border-white/10 rounded-xl p-4.5 hover:border-white/20 transition-colors"
+              className="block bg-[#1D1E22] border border-white/10 rounded-xl p-[18px] hover:border-white/20 transition-colors"
               style={{ transform: `rotate(${i % 2 === 0 ? "-2deg" : "2deg"})` }}
             >
               <div className="text-[15px] font-semibold mb-1">{cat.name}</div>
