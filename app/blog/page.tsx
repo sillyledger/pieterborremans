@@ -58,7 +58,7 @@ export default async function BlogIndex({
         <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink/35 mb-2">
           Browse by category
         </div>
-        <h1 className="text-[26px] font-normal mb-8">The journal.</h1>
+        <h1 className="text-[34px] font-normal leading-[1.4] tracking-[-0.005em] mb-8">The journal.</h1>
 
         {/* Category cards */}
         <div className="grid grid-cols-3 gap-3.5 items-start mb-12">
