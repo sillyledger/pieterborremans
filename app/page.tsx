@@ -76,11 +76,11 @@ export default function Home() {
             Field notes on building
           </div>
 
-          <h1 className="font-bold text-[46px] leading-[1.25] tracking-[-0.01em] mt-4">
+          <h1 className="font-bold text-[34px] leading-[1.25] tracking-[-0.01em] mt-4">
             Founder. Blogger. <span className="text-ink/45">Occasional chaos.</span>
           </h1>
 
-          <p className="text-[18px] leading-[1.75] text-ink/85 mt-5">
+          <p className="text-[20px] leading-[1.75] text-ink/85 mt-5">
             I write, build, and share things that interest me. Mostly entrepreneurship,
             independent business-building, and the unfiltered reality of creating things
             online, documenting the journey publicly on this blog, where I hold nothing back.
