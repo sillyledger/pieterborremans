@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 };
 
 const projects = [
-  { code: "RY-01", name: "Ryoka Group", domain: "ryoka.xyz", gate: "Holding · Investing", status: "On time", tier: "active", since: "2016" },
-  { code: "SO-02", name: "Sorano", domain: "sorano.space", gate: "SaaS · Indie", status: "Active", tier: "active", since: "2024" },
-  { code: "TD-03", name: "TWO Docs", domain: "two.so", gate: "SaaS · B2B & B2C", status: "Boarding", tier: "building", since: "2024" },
+  { code: "RY-01", name: "Ryoka Group", domain: "ryoka.xyz", gate: "Holding · Investing", status: "On time", tier: "active", since: "2025" },
+  { code: "SO-02", name: "Sorano", domain: "sorano.space", gate: "SaaS · Indie", status: "Active", tier: "active", since: "2026" },
+  { code: "TD-03", name: "TWO Docs", domain: "two.so", gate: "SaaS · B2B & B2C", status: "Boarding", tier: "building", since: "2026" },
   { code: "AI-04", name: "Aegos Intel", domain: "aegosintel.com", gate: "SaaS · B2B", status: "In progress", tier: "building", since: "2025" },
   { code: "KI-05", name: "Kiroka", domain: "subscription tracker", gate: "Free · Donation", status: "Active", tier: "active", since: "2025" },
   { code: "HA-06", name: "Harova", domain: "harova.xyz", gate: "Web Directory", status: "Boarding", tier: "building", since: "2026" },
@@ -57,7 +57,7 @@ export default function Projects() {
         <div className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-ink/40 mb-3">
           Projects
         </div>
-        <div className="text-[28px] font-normal leading-[1.3] max-w-[520px] mb-3">
+        <div className="text-[34px] font-normal leading-[1.4] tracking-[-0.005em] max-w-[520px] mb-3">
           Everything I&apos;ve built, launched, or crashed into along the way.
         </div>
         <div className="text-[15px] text-ink/60 leading-relaxed max-w-[480px] mb-10">
