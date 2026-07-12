@@ -45,9 +45,20 @@ export default function Home() {
     <main className="min-h-screen">
       {/* Nav */}
       <header className="flex items-center justify-between px-6 py-6 md:px-12 md:py-8">
-        <span className="text-xs md:text-[13px] font-bold tracking-[0.15em]">
-          PIETER BORREMANS
-        </span>
+        <div className="flex items-center gap-3">
+          <div className="h-9 w-9 rounded-full overflow-hidden shrink-0">
+            <Image
+              src="/images/pieter-borremans-founder-avatar.jpg"
+              alt="Pieter Borremans"
+              width={72}
+              height={72}
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <span className="text-xs md:text-[13px] font-bold tracking-[0.15em]">
+            PIETER BORREMANS
+          </span>
+        </div>
         <nav className="hidden md:flex items-center gap-8 text-[13px] tracking-wide text-muted">
           <a href="/blog" className="hover:text-ink transition-colors">BLOG</a>
           <a href="/about" className="hover:text-ink transition-colors">ABOUT</a>
@@ -61,43 +72,31 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className="text-center px-6 pb-16 pt-4 md:px-12">
-        <div className="mx-auto h-28 w-28 md:h-[118px] md:w-[118px] overflow-hidden rounded-full">
-          <Image
-            src="/images/pieter-borremans-founder-avatar.jpg"
-            alt="Pieter Borremans, founder and writer, in Taichung, Taiwan"
-            width={236}
-            height={236}
-            className="h-full w-full object-cover"
-            priority
-          />
-        </div>
+      <section className="px-6 pb-20 pt-8 md:px-12 md:pb-28 md:pt-16">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-10">
+          <div className="max-w-2xl">
+            <h1 className="font-serif font-normal text-4xl md:text-6xl leading-[1.15]">
+              Content creator, blogger, and entrepreneur with an occasional{" "}
+              <span className="italic">experiment.</span>
+            </h1>
+            <p className="text-muted text-base md:text-lg leading-relaxed mt-6 max-w-md">
+              I write, build, and share things that interest me. This is my journal.
+            </p>
+          </div>
 
-        <h1 className="font-serif font-medium text-3xl md:text-[39px] leading-tight max-w-[620px] mx-auto mt-8">
-          Content creator, blogger, and entrepreneur with an occasional{" "}
-          <span className="italic">experiment.</span>
-        </h1>
-
-        <p className="text-muted text-sm md:text-[14.5px] leading-relaxed mt-4">
-          I write, build, and share things that interest me.
-          <br />
-          This is my journal.
-        </p>
-
-        <div className="flex flex-wrap items-center justify-center gap-3 mt-7">
-          <a
-            href="/blog"
-            className="inline-flex items-center gap-2 rounded-full bg-ink text-bg px-6 py-3 text-[12.5px] font-bold tracking-wide"
-          >
-            READ THE JOURNAL
-            <span aria-hidden="true">&rarr;</span>
-          </a>
-          <a
-            href="/about"
-            className="inline-flex items-center rounded-full border border-white/20 px-5 py-3 text-[12.5px] font-semibold tracking-wide"
-          >
-            ABOUT ME
-          </a>
+          <div className="flex flex-col items-start md:items-end gap-3 shrink-0">
+            <a
+              href="/blog"
+              className="inline-flex items-center gap-2 rounded-full bg-ink text-bg px-7 py-4 text-[13px] font-bold tracking-wide whitespace-nowrap"
+            >
+              READ THE JOURNAL
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+            <span className="flex items-center gap-2 text-[11px] tracking-wide text-muted">
+              <span className="h-1.5 w-1.5 rounded-full bg-gold inline-block" />
+              WRITING SINCE 2018
+            </span>
+          </div>
         </div>
       </section>
 
