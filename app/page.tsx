@@ -81,7 +81,7 @@ export default function Home() {
           </h1>
 
           <p className="leading-[1.75] text-ink/70 max-w-[440px] mt-5">
-            "I write, build, and share things that interest me. Mostly entrepreneurship, independent business-building, and the unfiltered reality of creating things online. This is my journal."
+           I write, build, and share things that interest me. Mostly entrepreneurship, independent business-building, and the unfiltered reality of creating things online. This is my journal.
           </p>
 
           <div className="h-px bg-white/10 my-8" />
