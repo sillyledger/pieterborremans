@@ -77,14 +77,14 @@ export default function Home() {
           </div>
 
           <h1 className="font-bold text-[38px] leading-[1.25] tracking-[-0.01em] mt-4">
-            Content creator, blogger, and entrepreneur with the occasional{" "}
-            <span className="text-ink/45">experiment.</span>
+            Content creator, blogger, and entrepreneur with an occasional{" "}
+            <span className="text-ink/45">experiment.</span> left and right.
           </h1>
 
           <p className="text-[18px] leading-[1.75] text-ink/85 mt-5">
-            I write, build, and share things that interest me — mostly entrepreneurship,
-            independent business-building, and the unfiltered reality of creating things
-            online. This is my journal.
+            I write, build, and share things that interest me. Mostly entrepreneurship,
+            business-building, and the unfiltered reality of creating things
+            online.
           </p>
 
           {/* Primary CTA — centered under the subtext, on its own */}
