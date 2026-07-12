@@ -49,7 +49,7 @@ export default function Home() {
           <div className="flex items-center gap-2.5">
             <div className="h-[30px] w-[30px] rounded-full overflow-hidden shrink-0 bg-white/10">
               <Image
-                src="/images/pieter-borremans-founder-avatar.jpg"
+                src="/images/pieter-borremans-writer.png"
                 alt="Pieter Borremans"
                 width={60}
                 height={60}
