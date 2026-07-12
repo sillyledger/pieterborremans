@@ -86,61 +86,55 @@ export default function Home() {
             online.
           </h1>
 
-          {/* Primary CTA — centered under the statement, on its own */}
-          <div className="flex justify-center mt-11 mb-16">
-            <a
-              href="/blog"
-              className="inline-flex items-center gap-2.5 rounded-full bg-ink text-bg px-6 py-3.5 text-xs font-bold tracking-[0.07em] uppercase"
-            >
-              Read my journal
-              <span aria-hidden="true">&rarr;</span>
-            </a>
+          {/* Fact cards — replaced the terminal. Real, confirmed details, not placeholders. */}
+          <div className="flex items-center justify-center gap-3.5 flex-wrap mt-14 mb-16">
+
+            {/* Location */}
+            <div className="w-[110px] h-[150px] rounded-[10px] bg-[#1D1E22] border border-white/10 p-4 rotate-[-3deg] translate-y-2 relative flex flex-col justify-center">
+              <span className="absolute -top-2.5 -right-2 text-[22px] rotate-[3deg] drop-shadow-md" aria-hidden="true">🇹🇼</span>
+              <div className="font-mono text-[10px] tracking-[0.05em] uppercase text-ink/35 mb-2">Location</div>
+              <div className="text-sm text-ink">Taichung</div>
+            </div>
+
+            {/* Founder — featured card, badge anchored bottom on purpose */}
+            <div className="w-[126px] h-[180px] rounded-[10px] bg-gold/[0.07] border border-gold/40 p-[18px] flex flex-col justify-between relative z-[2]">
+              <div>
+                <div className="font-mono text-[10px] tracking-[0.05em] uppercase text-gold/70 mb-2">Founder</div>
+                <div className="text-[15px] text-ink leading-snug">Building the next chapter</div>
+              </div>
+              <div className="bg-gold text-bg text-[10.5px] font-bold font-mono px-2.5 py-1.5 rounded-md text-center">
+                Ryoka Group
+              </div>
+            </div>
+
+            {/* Blogger */}
+            <div className="w-[110px] h-[150px] rounded-[10px] bg-[#1D1E22] border border-white/10 p-4 rotate-[2deg] translate-y-2 flex flex-col justify-center">
+              <div className="font-mono text-[10px] tracking-[0.05em] uppercase text-ink/35 mb-2">Blogger</div>
+              <div className="text-sm text-ink">Since 2025</div>
+            </div>
+
+            {/* Builder */}
+            <div className="w-[110px] h-[150px] rounded-[10px] bg-[#1D1E22] border border-white/10 p-4 rotate-[-2deg] translate-y-2 flex flex-col justify-center">
+              <div className="font-mono text-[10px] tracking-[0.05em] uppercase text-ink/35 mb-2">Builder</div>
+              <div className="text-sm text-ink leading-snug">5 shipped,<br />4 in progress</div>
+            </div>
+
           </div>
 
-          <div className="flex items-center justify-center gap-8 text-xs font-medium tracking-[0.06em] uppercase text-ink/40 mb-10 flex-wrap">
-            <span className="flex items-center gap-2">
+          {/* Writing / Recording / Building — real internal links now, not just labels */}
+          <div className="flex items-center justify-center gap-8 text-xs font-medium tracking-[0.06em] uppercase text-ink/40 flex-wrap">
+            <a href="/blog" className="flex items-center gap-2 hover:text-ink/70 transition-colors">
               <svg className="text-ink/70" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
               Writing
-            </span>
-            <span className="flex items-center gap-2">
+            </a>
+            <a href="/podcast" className="flex items-center gap-2 hover:text-ink/70 transition-colors">
               <svg className="text-red/70" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
               Recording
-            </span>
-            <span className="flex items-center gap-2">
+            </a>
+            <a href="/projects" className="flex items-center gap-2 hover:text-ink/70 transition-colors">
               <svg className="text-gold/70" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
               Building
-            </span>
-          </div>
-
-          {/* Terminal card */}
-          <div className="bg-[#1D1E22] border border-white/10 rounded-[10px] overflow-hidden">
-            <div className="flex items-center gap-2 px-3.5 py-2.5 border-b border-white/10">
-              <span className="h-[9px] w-[9px] rounded-full bg-red" />
-              <span className="h-[9px] w-[9px] rounded-full bg-gold" />
-              <span className="h-[9px] w-[9px] rounded-full bg-[#3BA35C]" />
-              <span className="flex-1 text-center font-mono text-[11px] text-ink/40">status.sh</span>
-            </div>
-            <div className="px-5 py-4.5 font-mono text-[13px] leading-[1.9]">
-              <div><span className="text-ink/40">pieter@ryoka ~ %</span> whoami</div>
-              <div className="mb-2.5">Pieter Borremans — founder, writer, builder</div>
-
-              <div><span className="text-ink/40">pieter@ryoka ~ %</span> status</div>
-              <div className="ml-0.5">
-                <div><span className="text-gold">&#9679;</span> building: Ryoka OS, Sorano, TWO Docs</div>
-                <div><span className="text-gold">&#9679;</span> writing since: 2018</div>
-                <div className="mb-2.5"><span className="text-gold">&#9679;</span> based in: Taichung, TW</div>
-              </div>
-
-              <div>
-                <span className="text-ink/40">pieter@ryoka ~ %</span>{" "}
-                <span className="cursor-blink bg-ink text-[#1D1E22] px-[1px]">&nbsp;</span>
-              </div>
-            </div>
-            <div className="flex justify-end px-5 pb-3.5 pt-2.5">
-              <a href="/about" className="font-mono text-[11px] text-ink/40 hover:text-ink/70 transition-colors">
-                full status &rarr;
-              </a>
-            </div>
+            </a>
           </div>
 
           <PhotoStrip />
