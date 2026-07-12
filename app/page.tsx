@@ -43,76 +43,112 @@ const posts = [
 export default function Home() {
   return (
     <main className="min-h-screen">
-      {/* Nav */}
-      <header className="flex items-center justify-between px-6 py-6 md:px-12 md:py-8">
-        <div className="flex items-center gap-3">
-          <div className="h-9 w-9 rounded-full overflow-hidden shrink-0">
-            <Image
-              src="/images/pieter-borremans-founder-avatar.jpg"
-              alt="Pieter Borremans"
-              width={72}
-              height={72}
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <span className="text-xs md:text-[13px] font-bold tracking-[0.15em]">
-            PIETER BORREMANS
-          </span>
-        </div>
-        <nav className="hidden md:flex items-center gap-8 text-[13px] tracking-wide text-muted">
-          <a href="/blog" className="hover:text-ink transition-colors">BLOG</a>
-          <a href="/about" className="hover:text-ink transition-colors">ABOUT</a>
-          <a href="/projects" className="hover:text-ink transition-colors">PROJECTS</a>
-          <a href="/contact" className="hover:text-ink transition-colors">CONTACT</a>
-        </nav>
-        <span className="flex items-center gap-2 rounded-full border border-white/15 px-3 py-1.5 text-[11px] tracking-wide text-muted">
-          <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-          JOURNAL
-        </span>
-      </header>
-
-      {/* Hero */}
-      <section className="px-6 pb-20 pt-8 md:px-12 md:pb-28 md:pt-16">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-10">
-          <div className="max-w-2xl">
-            <h1 className="font-serif font-normal text-4xl md:text-6xl leading-[1.15]">
-              Content creator, blogger, and entrepreneur with an occasional{" "}
-              <span className="italic">experiment.</span>
-            </h1>
-            <p className="text-muted text-base md:text-lg leading-relaxed mt-6 max-w-md">
-              I write, build, and share things that interest me. This is my journal.
-            </p>
-          </div>
-
-          <div className="flex flex-col items-start md:items-end gap-3 shrink-0">
-            <a
-              href="/blog"
-              className="inline-flex items-center gap-2 rounded-full bg-ink text-bg px-7 py-4 text-[13px] font-bold tracking-wide whitespace-nowrap"
-            >
-              READ THE JOURNAL
-              <span aria-hidden="true">&rarr;</span>
-            </a>
-            <span className="flex items-center gap-2 text-[11px] tracking-wide text-muted">
-              <span className="h-1.5 w-1.5 rounded-full bg-gold inline-block" />
-              WRITING SINCE 2018
+      <div className="max-w-[600px] mx-auto px-7 pt-9 pb-14">
+        {/* Nav */}
+        <header className="flex items-center justify-between mb-12">
+          <div className="flex items-center gap-2.5">
+            <div className="h-[30px] w-[30px] rounded-full overflow-hidden shrink-0 bg-white/10">
+              <Image
+                src="/images/pieter-borremans-founder-avatar.jpg"
+                alt="Pieter Borremans"
+                width={60}
+                height={60}
+                className="h-full w-full object-cover"
+                priority
+              />
+            </div>
+            <span className="text-[13px] font-semibold tracking-[0.16em] uppercase">
+              Pieter Borremans
             </span>
           </div>
-        </div>
-      </section>
+          <nav className="hidden md:flex items-center gap-6 text-xs font-medium tracking-[0.08em] uppercase text-ink/45">
+            <a href="/blog" className="hover:text-ink/80 transition-colors">Blog</a>
+            <a href="/about" className="hover:text-ink/80 transition-colors">About</a>
+            <a href="/projects" className="hover:text-ink/80 transition-colors">Projects</a>
+            <a href="/contact" className="hover:text-ink/80 transition-colors">Contact</a>
+          </nav>
+        </header>
 
-      <div className="border-t border-hairline" />
+        {/* Hero */}
+        <section>
+          <div className="text-[11px] font-medium tracking-[0.18em] uppercase text-ink/40">
+            Field notes on building
+          </div>
+
+          <h1 className="font-serif font-normal text-[40px] md:text-[52px] leading-[1.1] tracking-[-0.02em] mt-4">
+            Content creator, blogger, and entrepreneur with an occasional{" "}
+            <em className="italic text-ink/55">experiment.</em>
+          </h1>
+
+          <p className="text-base leading-[1.72] text-ink/70 max-w-[440px] mt-5">
+            I write, build, and share things that interest me. This is my journal.
+          </p>
+
+          <div className="h-px bg-white/10 my-8" />
+
+          <div className="flex items-center gap-6 text-xs font-medium tracking-[0.06em] uppercase text-ink/40 mb-6 flex-wrap">
+            <span>Building</span>
+            <span>Writing</span>
+            <span>Shipping</span>
+            <span>Ryoka Group</span>
+          </div>
+
+          {/* Terminal card */}
+          <div className="bg-[#1D1E22] border border-white/10 rounded-[10px] overflow-hidden">
+            <div className="flex items-center gap-2 px-3.5 py-2.5 border-b border-white/10">
+              <span className="h-[9px] w-[9px] rounded-full bg-red" />
+              <span className="h-[9px] w-[9px] rounded-full bg-gold" />
+              <span className="h-[9px] w-[9px] rounded-full bg-[#3BA35C]" />
+              <span className="flex-1 text-center font-mono text-[11px] text-ink/40">status.sh</span>
+            </div>
+            <div className="px-5 py-4.5 font-mono text-[13px] leading-[1.9]">
+              <div><span className="text-ink/40">pieter@ryoka ~ %</span> whoami</div>
+              <div className="mb-2.5">Pieter Borremans — founder, writer, builder</div>
+
+              <div><span className="text-ink/40">pieter@ryoka ~ %</span> status</div>
+              <div className="ml-0.5">
+                <div><span className="text-gold">&#9679;</span> building: Ryoka OS, Sorano, TWO Docs</div>
+                <div><span className="text-gold">&#9679;</span> writing since: 2018</div>
+                <div className="mb-2.5"><span className="text-gold">&#9679;</span> based in: Taichung, TW</div>
+              </div>
+
+              <div>
+                <span className="text-ink/40">pieter@ryoka ~ %</span>{" "}
+                <span className="cursor-blink bg-ink text-[#1D1E22] px-[1px]">&nbsp;</span>
+              </div>
+            </div>
+            <div className="flex justify-end px-5 pb-3.5 pt-2.5">
+              <a href="/about" className="font-mono text-[11px] text-ink/40 hover:text-ink/70 transition-colors">
+                full status &rarr;
+              </a>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3.5 mt-7">
+            <a
+              href="/blog"
+              className="inline-flex items-center gap-2.5 rounded-full bg-ink text-bg px-6 py-3.5 text-xs font-semibold tracking-[0.07em] uppercase"
+            >
+              Read the journal
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <div className="border-t border-white/10" />
 
       {/* Latest posts */}
-      <section className="max-w-3xl mx-auto px-6 md:px-12 py-10">
+      <section className="max-w-[600px] mx-auto px-7 py-10">
         <div className="flex items-center justify-between mb-6">
-          <span className="text-[11.5px] font-semibold tracking-[0.15em] text-muted">
-            LATEST POSTS
+          <span className="text-[11px] font-medium tracking-[0.18em] uppercase text-ink/40">
+            Latest posts
           </span>
           <a
             href="/blog"
-            className="flex items-center gap-1.5 text-[11.5px] tracking-wide text-muted hover:text-ink transition-colors"
+            className="flex items-center gap-1.5 text-[11px] font-medium tracking-[0.06em] uppercase text-ink/40 hover:text-ink/70 transition-colors"
           >
-            VIEW ALL POSTS <span aria-hidden="true">&rarr;</span>
+            View all posts <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
 
@@ -121,15 +157,15 @@ export default function Home() {
             <li
               key={post.title}
               className={`flex justify-between items-start gap-6 py-4 ${
-                i !== posts.length - 1 ? "border-b border-hairline" : ""
+                i !== posts.length - 1 ? "border-b border-white/10" : ""
               }`}
             >
-              <div className="max-w-[560px]">
-                <div className="text-[11px] text-muted mb-1.5">{post.date}</div>
+              <div className="max-w-[440px]">
+                <div className="text-[11px] text-ink/40 mb-1.5">{post.date}</div>
                 <h2 className="font-serif text-[19px]">{post.title}</h2>
-                <p className="text-[13px] text-muted mt-1.5 leading-relaxed">{post.excerpt}</p>
+                <p className="text-[13px] text-ink/70 mt-1.5 leading-relaxed">{post.excerpt}</p>
               </div>
-              <span className="text-[11.5px] text-muted whitespace-nowrap mt-0.5">
+              <span className="text-[11px] text-ink/40 whitespace-nowrap mt-0.5">
                 {post.readTime}
               </span>
             </li>
