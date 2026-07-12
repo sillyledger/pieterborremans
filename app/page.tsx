@@ -1,45 +1,6 @@
 import Image from "next/image";
 import PhotoStrip from "@/components/PhotoStrip";
-
-// NOTE: once Supabase is wired in, this will become:
-// export const dynamic = "force-dynamic";
-// and `posts` below will be a fetched array where target_site = 'pieterborremans.com'
-
-const posts = [
-  {
-    date: "Jul 12, 2026",
-    title: "Building in public is the ultimate leverage",
-    excerpt:
-      "Why sharing your journey online compounds your progress, attracts opportunities, and forces you to level up.",
-    readTime: "5 min read",
-  },
-  {
-    date: "Jul 09, 2026",
-    title: "The systems I use to stay focused",
-    excerpt:
-      "A look at the daily habits, tools, and frameworks that help me ship consistently and protect my attention.",
-    readTime: "6 min read",
-  },
-  {
-    date: "Jul 06, 2026",
-    title: "Lessons from shipping 20+ side projects",
-    excerpt: "What actually moves the needle, what doesn't, and the mistakes I keep repeating.",
-    readTime: "7 min read",
-  },
-  {
-    date: "Jul 03, 2026",
-    title: "Why I built my own OS for everything",
-    excerpt: "How Ryoka OS helps me write, build, and publish across all my brands from a single place.",
-    readTime: "6 min read",
-  },
-  {
-    date: "Jun 30, 2026",
-    title: "Curating signal in a world of noise",
-    excerpt:
-      "My approach to finding, capturing, and connecting the right information across research, markets, and AI.",
-    readTime: "4 min read",
-  },
-];
+import { posts } from "@/lib/posts";
 
 export default function Home() {
   return (
@@ -158,9 +119,12 @@ export default function Home() {
         </div>
 
         <ul>
+          {posts.length === 0 && (
+            <li className="py-6 text-[13px] text-ink/40">No posts yet, check back soon.</li>
+          )}
           {posts.map((post, i) => (
             <li
-              key={post.title}
+              key={post.slug}
               className={`flex justify-between items-start gap-6 py-4 ${
                 i !== posts.length - 1 ? "border-b border-white/10" : ""
               }`}
