@@ -27,7 +27,7 @@ const legalLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-bg border-t border-hairline">
+    <footer className="bg-bg">
       <div className="max-w-[720px] mx-auto px-6 pt-16 pb-10">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 border-t border-hairline pt-10">
           {/* Navigate */}
