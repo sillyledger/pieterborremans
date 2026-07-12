@@ -1,4 +1,5 @@
 import Image from "next/image";
+import PhotoStrip from "@/components/PhotoStrip";
 
 // NOTE: once Supabase is wired in, this will become:
 // export const dynamic = "force-dynamic";
@@ -141,6 +142,8 @@ export default function Home() {
               <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
+
+          <PhotoStrip />
         </section>
       </div>
 
