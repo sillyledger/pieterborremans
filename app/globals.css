@@ -9,6 +9,9 @@ html {
 body {
   background-color: #161618;
   color: #F5F3EE;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.75;
 }
 
 @keyframes cursor-blink {
