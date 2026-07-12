@@ -31,7 +31,7 @@ export default function Post() {
           Building in public is the ultimate leverage
         </h1>
 
-        <div className="space-y-6 text-[20px] font-normal leading-[1.75] text-black/80">
+        <div className="space-y-6 text-[18px] font-normal leading-[1.75] text-black/80">
           <p>
             For the first few years of building Ryoka, I kept almost everything to myself.
             The products, the failed experiments, the slow months where nothing seemed to
