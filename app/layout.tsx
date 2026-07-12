@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Open_Sans, Reddit_Mono } from "next/font/google";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const openSans = Open_Sans({
@@ -30,6 +31,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${openSans.variable} ${redditMono.variable} font-sans bg-bg text-ink antialiased`}>
         {children}
+        <Footer />
       </body>
     </html>
   );
