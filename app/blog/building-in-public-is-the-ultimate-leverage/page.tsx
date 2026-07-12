@@ -5,7 +5,6 @@ import { Reddit_Sans, Reddit_Mono } from "next/font/google";
 
 const redditSans = Reddit_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
 });
 
 const redditMono = Reddit_Mono({
@@ -23,11 +22,11 @@ export default function Post() {
           Jul 12, 2026 &middot; 5 min read
         </div>
 
-        <h1 className="text-[36px] font-bold leading-[1.2] mb-8">
+        <h1 className="text-[38px] font-bold leading-[1.2] mb-8">
           Building in public is the ultimate leverage
         </h1>
 
-        <div className="space-y-6 text-[17px] leading-[1.75] text-white/85">
+        <div className="space-y-6 text-[19px] font-[350] leading-[1.75] text-white/85">
           <p>
             For the first few years of building Ryoka, I kept almost everything to myself.
             The products, the failed experiments, the slow months where nothing seemed to
