@@ -40,7 +40,7 @@ export default function Podcast() {
         <div className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-ink/40 mb-3">
           Podcast
         </div>
-        <div className="text-[28px] font-normal leading-[1.35] max-w-[520px] mb-3">
+        <div className="text-[34px] font-normal leading-[1.4] tracking-[-0.005em] max-w-[520px] mb-3">
           Two shows. One mic. No script.
         </div>
         <div className="text-[15px] text-ink/60 leading-relaxed max-w-[480px] mb-12">
