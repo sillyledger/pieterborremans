@@ -83,6 +83,9 @@ export default async function BlogIndex({
 
         {/* Feed */}
         <ul className="border-t border-white/10">
+          {pagePosts.length === 0 && (
+            <li className="py-6 text-[13px] text-ink/40">No posts yet, check back soon.</li>
+          )}
           {pagePosts.map((post, i) => (
             <li
               key={post.slug}
