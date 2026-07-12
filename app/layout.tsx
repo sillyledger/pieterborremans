@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Plus_Jakarta_Sans } from "next/font/google";
+import { Lora, Plus_Jakarta_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const instrumentSerif = Instrument_Serif({
+const lora = Lora({
   subsets: ["latin"],
   weight: ["400"],
   style: ["normal", "italic"],
@@ -11,8 +11,14 @@ const instrumentSerif = Instrument_Serif({
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600"],
   variable: "--font-jakarta",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
@@ -29,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${instrumentSerif.variable} ${jakarta.variable} font-sans bg-bg text-ink antialiased`}>
+      <body className={`${lora.variable} ${jakarta.variable} ${plexMono.variable} font-sans bg-bg text-ink antialiased`}>
         {children}
       </body>
     </html>
