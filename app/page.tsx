@@ -43,7 +43,7 @@ const posts = [
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <div className="max-w-[600px] mx-auto px-7 pt-9 pb-14">
+      <div className="max-w-[720px] mx-auto px-7 pt-9 pb-14">
         {/* Nav */}
         <header className="flex items-center justify-between mb-12">
           <div className="flex items-center gap-2.5">
@@ -139,7 +139,7 @@ export default function Home() {
       <div className="border-t border-white/10" />
 
       {/* Latest posts */}
-      <section className="max-w-[600px] mx-auto px-7 py-10">
+      <section className="max-w-[720px] mx-auto px-7 py-10">
         <div className="flex items-center justify-between mb-6">
           <span className="text-[11px] font-medium tracking-[0.18em] uppercase text-ink/40">
             Latest posts
