@@ -8,14 +8,14 @@ export const metadata: Metadata = {
 };
 
 const projects = [
-  { code: "RY-01", name: "Ryoka Group", domain: "ryoka.xyz", gate: "Holding · Investing", status: "On time", tier: "active", since: "2016" },
-  { code: "SO-02", name: "Sorano", domain: "sorano.space", gate: "SaaS · Indie", status: "Active", tier: "active", since: "2024" },
-  { code: "TD-03", name: "TWO Docs", domain: "two.so", gate: "SaaS · B2B & B2C", status: "Boarding", tier: "building", since: "2024" },
-  { code: "AI-04", name: "Aegos Intel", domain: "aegosintel.com", gate: "SaaS · B2B", status: "In progress", tier: "building", since: "2025" },
+  { code: "RY-01", name: "Ryoka Group", domain: "ryoka.xyz", gate: "Holding · Investing", status: "On time", tier: "active", since: "2025" },
+  { code: "SO-02", name: "Sorano", domain: "sorano.space", gate: "SaaS · Indie", status: "Active", tier: "active", since: "2026" },
+  { code: "TD-03", name: "TWO Docs", domain: "two.so", gate: "SaaS · B2B & B2C", status: "Boarding", tier: "building", since: "2026" },
+  { code: "AI-04", name: "Aegos Intel", domain: "aegosintel.com", gate: "SaaS · B2B", status: "In progress", tier: "building", since: "2026" },
   { code: "KI-05", name: "Kiroka", domain: "subscription tracker", gate: "Free · Donation", status: "Active", tier: "active", since: "2025" },
   { code: "HA-06", name: "Harova", domain: "harova.xyz", gate: "Web Directory", status: "Boarding", tier: "building", since: "2026" },
   { code: "ER-07", name: "Echo Room", domain: "solo podcast", gate: "Audio", status: "On time", tier: "active", since: "2026" },
-  { code: "??-08", name: "— add project —", domain: "replace me", gate: "—", status: "TBA", tier: "idle", since: "—" },
+  { code: "LY-08", name: "Liyo", domain: "liyo.dev", gate: "SaaS · Social", status: "Boarding", tier: "building", since: "2026" },
 ];
 
 const tierDot: Record<string, string> = {
