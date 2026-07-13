@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const navLinks = [
   { label: "Blog", href: "/blog" },
@@ -12,7 +13,7 @@ const navLinks = [
 export default function Header({ active }: { active?: string }) {
   return (
     <header className="flex items-center justify-between mb-14">
-      <div className="flex items-center gap-2.5">
+      <Link href="/" className="flex items-center gap-2.5">
         <div className="h-[42px] w-[42px] rounded-full overflow-hidden shrink-0 bg-white/10">
           <Image
             src="/images/pieter-borremans-writer.png"
@@ -25,7 +26,7 @@ export default function Header({ active }: { active?: string }) {
         <span className="text-[13px] font-semibold tracking-[0.16em] uppercase">
           Pieter Borremans
         </span>
-      </div>
+      </Link>
       <nav className="hidden md:flex items-center gap-6 text-xs font-medium tracking-[0.08em] uppercase text-ink/45">
         {navLinks.map((link) => (
           <a
