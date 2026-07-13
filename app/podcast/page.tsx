@@ -44,7 +44,7 @@ export default function Podcast() {
               self-improvement. Five to ten minutes, unscripted.
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              
+              <a
                 href="https://open.spotify.com/show/765k4LuyZrS2sYEkXHOZ47"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -52,7 +52,7 @@ export default function Podcast() {
               >
                 Spotify
               </a>
-              
+              <a
                 href="https://podcasts.apple.com/tw/podcast/pieter-borremans/id1893263919?l=en-GB"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -60,7 +60,7 @@ export default function Podcast() {
               >
                 Apple
               </a>
-              
+              <a
                 href="https://music.amazon.com/podcasts/051af7fe-5f1a-4168-a97f-baa269a30408/pieter-borremans"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -68,7 +68,7 @@ export default function Podcast() {
               >
                 Amazon
               </a>
-              
+              <a
                 href="https://www.youtube.com/@pieterborremans"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -76,7 +76,7 @@ export default function Podcast() {
               >
                 YouTube
               </a>
-              
+              <a
                 href="https://www.tiktok.com/@borremanspieter"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -104,13 +104,13 @@ export default function Podcast() {
               The deeper, unfiltered monologue, covering entrepreneurship, technology, investing, creativity, and
               whatever I can&apos;t stop thinking about. Longer, heavier, its own home.
             </div>
-            
+            <a
               href="https://www.echoroom.xyz"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.04em] bg-red text-ink rounded-md px-4 py-2.5 hover:opacity-90 transition-opacity"
             >
-              Visit echoroom.xyz ↗
+              Visit echoroom.xyz
             </a>
           </div>
 
