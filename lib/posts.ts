@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { supabase } from "./supabase";
 
 export interface Post {
@@ -65,7 +66,9 @@ function formatDate(dateString: string): string {
 }
 
 // Fetches every published post tagged for this site, newest first.
-export async function getPosts(): Promise<Post[]> {
+// Wrapped in React's cache() so multiple calls within the same request
+// (e.g. the page itself + Footer both calling getPosts()) hit Supabase once.
+export const getPosts = cache(async (): Promise<Post[]> => {
   const { data, error } = await supabase
     .from("posts")
     .select("slug, title, content, category, published_at, spotify_url")
@@ -88,10 +91,10 @@ export async function getPosts(): Promise<Post[]> {
     content: row.content ?? "",
     spotifyUrl: row.spotify_url || undefined,
   }));
-}
+});
 
 // Fetches a single post by slug, or null if it doesn't exist / isn't published.
-export async function getPostBySlug(slug: string): Promise<Post | null> {
+export const getPostBySlug = cache(async (slug: string): Promise<Post | null> => {
   const { data, error } = await supabase
     .from("posts")
     .select("slug, title, content, category, published_at, spotify_url")
@@ -112,4 +115,4 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     content: data.content ?? "",
     spotifyUrl: data.spotify_url || undefined,
   };
-}
+});
