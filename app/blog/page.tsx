@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { posts, categories } from "@/lib/posts";
+import { getPosts, categories } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "Blog | Pieter Borremans",
   description:
     "Pieter Borremans writes about entrepreneurship, independent business-building, and the unfiltered reality of creating things online.",
 };
+
+export const dynamic = "force-dynamic";
 
 const POSTS_PER_PAGE = 9;
 
@@ -19,6 +21,7 @@ export default async function BlogIndex({
   searchParams: Promise<{ page?: string }>;
 }) {
   const params = await searchParams;
+  const posts = await getPosts();
   const requestedPage = parseInt(params.page ?? "1", 10);
   const totalPages = Math.max(1, Math.ceil(posts.length / POSTS_PER_PAGE));
   const currentPage = Math.min(Math.max(1, isNaN(requestedPage) ? 1 : requestedPage), totalPages);
