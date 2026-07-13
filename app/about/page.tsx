@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "About | Pieter Borremans",
@@ -12,31 +13,7 @@ export default function About() {
   return (
     <main className="min-h-screen">
       <div className="max-w-[750px] mx-auto px-7 pt-9 pb-16">
-        {/* Nav */}
-        <header className="flex items-center justify-between mb-12">
-          <div className="flex items-center gap-2.5">
-            <div className="h-[30px] w-[30px] rounded-full overflow-hidden shrink-0 bg-white/10">
-              <Image
-                src="/images/pieter-borremans-writer.png"
-                alt="Pieter Borremans"
-                width={60}
-                height={60}
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <span className="text-[13px] font-semibold tracking-[0.16em] uppercase">
-              Pieter Borremans
-            </span>
-          </div>
-          <nav className="hidden md:flex items-center gap-6 text-xs font-medium tracking-[0.08em] uppercase text-ink/45">
-            <a href="/blog" className="hover:text-ink/80 transition-colors">Blog</a>
-            <a href="/podcast" className="hover:text-ink/80 transition-colors">Podcast</a>
-            <a href="/projects" className="hover:text-ink/80 transition-colors">Projects</a>
-            <a href="/gallery" className="hover:text-ink/80 transition-colors">Gallery</a>
-            <a href="/about" className="text-ink">About</a>
-            <a href="/contact" className="hover:text-ink/80 transition-colors">Contact</a>
-          </nav>
-        </header>
+        <Header active="About" />
 
         <div className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-ink/40">
           about
