@@ -14,20 +14,31 @@ export interface Post {
 export interface Category {
   name: string;
   slug: string;
-  count: number;
 }
 
-// Category counts below are pulled from the real WordPress categories screenshot.
-// They're separate from the live Supabase post count and may not match exactly
-// until the full WordPress migration happens.
+// Static list of known categories. Counts are NOT stored here — they're
+// computed live from Supabase via getCategoryCounts() so they never go stale.
 export const categories: Category[] = [
-  { name: "Listen", slug: "listen", count: 10 },
-  { name: "Personal", slug: "personal", count: 1 },
-  { name: "Thinking", slug: "thinking", count: 7 },
-  { name: "Updates", slug: "updates", count: 4 },
-  { name: "Watching", slug: "watching", count: 2 },
-  { name: "Working", slug: "working", count: 7 },
+  { name: "Listen", slug: "listen" },
+  { name: "Personal", slug: "personal" },
+  { name: "Thinking", slug: "thinking" },
+  { name: "Updates", slug: "updates" },
+  { name: "Watching", slug: "watching" },
+  { name: "Working", slug: "working" },
 ];
+
+// Tallies published posts per category from a live post list.
+// Returns a slug -> count map; unknown/uncategorized posts are ignored.
+export function getCategoryCounts(posts: Post[]): Record<string, number> {
+  const counts: Record<string, number> = {};
+  for (const cat of categories) counts[cat.slug] = 0;
+  for (const post of posts) {
+    if (counts[post.category] !== undefined) {
+      counts[post.category]++;
+    }
+  }
+  return counts;
+}
 
 function stripHtml(html: string): string {
   return html.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
