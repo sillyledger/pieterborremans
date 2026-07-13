@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { posts, categories } from "@/lib/posts";
+import { getPosts, categories } from "@/lib/posts";
+
+export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
   return categories.map((cat) => ({ slug: cat.slug }));
@@ -34,6 +36,7 @@ export default async function CategoryPage({
     notFound();
   }
 
+  const posts = await getPosts();
   const categoryPosts = posts.filter((post) => post.category === slug);
 
   return (
