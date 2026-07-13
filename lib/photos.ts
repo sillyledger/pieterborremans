@@ -20,4 +20,19 @@ export const photos: Photo[] = [
     alt: "Pieter Borremans in Taichung",
     caption: "Taichung, low light.",
   },
+  {
+    src: "/images/pieter-borremans-poker-night-taipei.jpeg",
+    alt: "Pieter Borremans at a poker night in Taipei",
+    caption: "Poker night in Taipei.",
+  },
+  {
+    src: "/images/pieter-borremans-switzerland-visit.jpeg",
+    alt: "Pieter Borremans visiting Switzerland",
+    caption: "A trip to Switzerland.",
+  },
+  {
+    src: "/images/pieter-borremans-berlin-visit.jpeg",
+    alt: "Pieter Borremans visiting Berlin",
+    caption: "A stop in Berlin.",
+  },
 ];
