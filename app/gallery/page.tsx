@@ -40,7 +40,7 @@ function GalleryJsonLd() {
 
 export default function GalleryPage() {
   return (
-    <main className="max-w-[720px] mx-auto px-7 py-16">
+    <main className="max-w-[750px] mx-auto px-7 pt-9 pb-16">
       <GalleryJsonLd />
 
       {/* Nav */}
