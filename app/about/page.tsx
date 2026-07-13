@@ -46,14 +46,28 @@ export default function About() {
           I stripped things back.
         </h1>
 
-        <div className="text-[18px] leading-[1.75] text-ink/85 mt-6 space-y-[18px]">
-          <p>
+        {/* Photo + intro sentence — two-column hero, rest of the page stays single column */}
+        <div className="flex items-center gap-6 mt-8">
+          <div className="w-24 h-24 rounded-full overflow-hidden shrink-0 bg-white/10">
+            <Image
+              src="/images/pieter-borremans-living-in-taiwan.jpeg"
+              alt="Pieter Borremans"
+              width={192}
+              height={192}
+              className="w-full h-full object-cover"
+              priority
+            />
+          </div>
+          <p className="text-[18px] leading-[1.75] text-ink/85">
             I&apos;m Pieter Borremans. Writer, content creator, and{" "}
             <Link href="https://www.ryoka.xyz/" className="underline decoration-ink/30 hover:decoration-ink/60 transition-colors">
               founder
             </Link>
             . I was born in Asia but raised in Belgium.
           </p>
+        </div>
+
+        <div className="text-[18px] leading-[1.75] text-ink/85 mt-6 space-y-[18px]">
           <p>
             Being raised in the center of Brussels, and having spent my early adulthood in
             Antwerp for university, I went on a trip that never ended when I moved abroad. An
