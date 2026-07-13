@@ -4,6 +4,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPosts, getPostBySlug, categories } from "@/lib/posts";
 
+// Converts a normal open.spotify.com link (episode/track/show/etc) into the
+// /embed/ version that can actually be dropped into an iframe.
+function getSpotifyEmbedUrl(url: string): string | null {
+  const match = url.match(/open\.spotify\.com\/(episode|track|show|album|playlist)\/([a-zA-Z0-9]+)/);
+  if (!match) return null;
+  const [, type, id] = match;
+  return `https://open.spotify.com/embed/${type}/${id}`;
+}
+
 export const dynamic = "force-dynamic";
 
 export async function generateStaticParams() {
@@ -86,6 +95,20 @@ export default async function BlogPost({
         <h1 className="text-[34px] font-normal leading-[1.4] tracking-[-0.005em] mb-8 max-w-[620px]">
           {post.title}
         </h1>
+
+        {post.spotifyUrl && getSpotifyEmbedUrl(post.spotifyUrl) && (
+          <iframe
+            src={getSpotifyEmbedUrl(post.spotifyUrl)!}
+            width="100%"
+            height="152"
+            style={{ borderRadius: "12px", maxWidth: "620px" }}
+            className="mb-8"
+            frameBorder="0"
+            allowFullScreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          />
+        )}
 
         {/* Real post content is HTML from Ryoka OS, so it's rendered directly
             rather than mapped as plain paragraphs. The [&_x] classes style
