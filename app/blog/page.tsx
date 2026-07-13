@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
-import { getPosts, categories } from "@/lib/posts";
+import { getPosts, getCategoryCounts, categories } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "Blog | Pieter Borremans",
@@ -22,6 +22,7 @@ export default async function BlogIndex({
 }) {
   const params = await searchParams;
   const posts = await getPosts();
+  const categoryCounts = getCategoryCounts(posts);
   const requestedPage = parseInt(params.page ?? "1", 10);
   const totalPages = Math.max(1, Math.ceil(posts.length / POSTS_PER_PAGE));
   const currentPage = Math.min(Math.max(1, isNaN(requestedPage) ? 1 : requestedPage), totalPages);
@@ -42,19 +43,22 @@ export default async function BlogIndex({
 
         {/* Category cards */}
         <div className="grid grid-cols-3 gap-3.5 items-start mb-12">
-          {categories.map((cat, i) => (
-            <Link
-              key={cat.slug}
-              href={`/${cat.slug}`}
-              className="block bg-[#1D1E22] border border-white/10 rounded-xl p-[18px] hover:border-white/20 transition-colors"
-              style={{ transform: `rotate(${i % 2 === 0 ? "-2deg" : "2deg"})` }}
-            >
-              <div className="text-[15px] font-semibold mb-1">{cat.name}</div>
-              <div className="font-mono text-[11px] text-gold">
-                {cat.count} {cat.count === 1 ? "entry" : "entries"}
-              </div>
-            </Link>
-          ))}
+          {categories.map((cat, i) => {
+            const count = categoryCounts[cat.slug] ?? 0;
+            return (
+              <Link
+                key={cat.slug}
+                href={`/${cat.slug}`}
+                className="block bg-[#1D1E22] border border-white/10 rounded-xl p-[18px] hover:border-white/20 transition-colors"
+                style={{ transform: `rotate(${i % 2 === 0 ? "-2deg" : "2deg"})` }}
+              >
+                <div className="text-[15px] font-semibold mb-1">{cat.name}</div>
+                <div className="font-mono text-[11px] text-gold">
+                  {count} {count === 1 ? "entry" : "entries"}
+                </div>
+              </Link>
+            );
+          })}
         </div>
 
         <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink/35 mb-4">
