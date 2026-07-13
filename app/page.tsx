@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import PhotoStrip from "@/components/PhotoStrip";
 import { getPosts } from "@/lib/posts";
 
@@ -128,18 +129,18 @@ export default async function Home() {
           {posts.map((post, i) => (
             <li
               key={post.slug}
-              className={`flex justify-between items-start gap-6 py-4 ${
-                i !== posts.length - 1 ? "border-b border-white/10" : ""
-              }`}
+              className={`py-4 ${i !== posts.length - 1 ? "border-b border-white/10" : ""}`}
             >
-              <div className="max-w-[440px]">
-                <div className="font-mono text-[11px] text-ink/40 mb-1.5">{post.date}</div>
-                <h2 className="font-semibold text-[19px]">{post.title}</h2>
-                <p className="text-[13px] font-medium text-ink/70 mt-1.5 leading-relaxed">{post.excerpt}</p>
-              </div>
-              <span className="font-mono text-[11px] text-ink/40 whitespace-nowrap mt-0.5">
-                {post.readTime}
-              </span>
+              <Link href={`/blog/${post.slug}`} className="flex justify-between items-start gap-6 group">
+                <div className="max-w-[440px]">
+                  <div className="font-mono text-[11px] text-ink/40 mb-1.5">{post.date}</div>
+                  <h2 className="font-semibold text-[19px] group-hover:text-ink/80 transition-colors">{post.title}</h2>
+                  <p className="text-[13px] font-medium text-ink/70 mt-1.5 leading-relaxed">{post.excerpt}</p>
+                </div>
+                <span className="font-mono text-[11px] text-ink/40 whitespace-nowrap mt-0.5">
+                  {post.readTime}
+                </span>
+              </Link>
             </li>
           ))}
         </ul>
