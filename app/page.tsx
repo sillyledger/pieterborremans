@@ -1,8 +1,11 @@
 import Image from "next/image";
 import PhotoStrip from "@/components/PhotoStrip";
-import { posts } from "@/lib/posts";
+import { getPosts } from "@/lib/posts";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const posts = (await getPosts()).slice(0, 5);
   return (
     <main className="min-h-screen">
       <div className="max-w-[750px] mx-auto px-7 pt-9 pb-14">
