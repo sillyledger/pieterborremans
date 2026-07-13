@@ -1,3 +1,5 @@
+import { supabase } from "./supabase";
+
 export interface Post {
   slug: string;
   date: string;
@@ -5,7 +7,7 @@ export interface Post {
   excerpt: string;
   readTime: string;
   category: string;
-  content?: string[];
+  content: string; // raw HTML from Ryoka OS
 }
 
 export interface Category {
@@ -14,16 +16,9 @@ export interface Category {
   count: number;
 }
 
-// NOTE: once Supabase is wired in, `posts` becomes a fetched array where
-// target_site = 'pieterborremans.com', ordered by date desc. This file stays
-// as the single import point either way — only the internals change.
-
-// Empty until real posts are migrated from WordPress or published via Ryoka OS.
-export const posts: Post[] = [];
-
-// Category counts below are pulled from the real WordPress categories screenshot,
-// not computed from the placeholder posts array above — they'll need to be
-// recomputed from real data once the WordPress migration happens.
+// Category counts below are pulled from the real WordPress categories screenshot.
+// They're separate from the live Supabase post count and may not match exactly
+// until the full WordPress migration happens.
 export const categories: Category[] = [
   { name: "Listen", slug: "listen", count: 10 },
   { name: "Personal", slug: "personal", count: 1 },
@@ -32,3 +27,75 @@ export const categories: Category[] = [
   { name: "Watching", slug: "watching", count: 2 },
   { name: "Working", slug: "working", count: 7 },
 ];
+
+function stripHtml(html: string): string {
+  return html.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function makeExcerpt(html: string, maxLength = 160): string {
+  const text = stripHtml(html);
+  if (text.length <= maxLength) return text;
+  return text.slice(0, maxLength).trim() + "…";
+}
+
+function estimateReadTime(html: string): string {
+  const wordCount = stripHtml(html).split(" ").filter(Boolean).length;
+  const minutes = Math.max(1, Math.round(wordCount / 200));
+  return `${minutes} min read`;
+}
+
+function formatDate(dateString: string): string {
+  return new Date(dateString).toLocaleDateString("en-US", {
+    month: "short",
+    day: "2-digit",
+    year: "numeric",
+  });
+}
+
+// Fetches every published post tagged for this site, newest first.
+export async function getPosts(): Promise<Post[]> {
+  const { data, error } = await supabase
+    .from("posts")
+    .select("slug, title, content, category, published_at")
+    .eq("target_site", "pieterborremans.com")
+    .eq("status", "published")
+    .order("published_at", { ascending: false });
+
+  if (error || !data) {
+    console.error("Failed to fetch posts:", error);
+    return [];
+  }
+
+  return data.map((row) => ({
+    slug: row.slug,
+    date: formatDate(row.published_at),
+    title: row.title,
+    excerpt: makeExcerpt(row.content ?? ""),
+    readTime: estimateReadTime(row.content ?? ""),
+    category: (row.category ?? "").toLowerCase().trim(),
+    content: row.content ?? "",
+  }));
+}
+
+// Fetches a single post by slug, or null if it doesn't exist / isn't published.
+export async function getPostBySlug(slug: string): Promise<Post | null> {
+  const { data, error } = await supabase
+    .from("posts")
+    .select("slug, title, content, category, published_at")
+    .eq("target_site", "pieterborremans.com")
+    .eq("status", "published")
+    .eq("slug", slug)
+    .single();
+
+  if (error || !data) return null;
+
+  return {
+    slug: data.slug,
+    date: formatDate(data.published_at),
+    title: data.title,
+    excerpt: makeExcerpt(data.content ?? ""),
+    readTime: estimateReadTime(data.content ?? ""),
+    category: (data.category ?? "").toLowerCase().trim(),
+    content: data.content ?? "",
+  };
+}
