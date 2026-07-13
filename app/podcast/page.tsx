@@ -44,7 +44,7 @@ export default function Podcast() {
               self-improvement. Five to ten minutes, unscripted.
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              <a
+              
                 href="https://open.spotify.com/show/765k4LuyZrS2sYEkXHOZ47"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -52,29 +52,37 @@ export default function Podcast() {
               >
                 Spotify
               </a>
-              <a
-                href="#"
+              
+                href="https://podcasts.apple.com/tw/podcast/pieter-borremans/id1893263919?l=en-GB"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="font-mono text-xs uppercase tracking-[0.04em] border border-white/15 rounded-md px-3.5 py-2 text-ink/70 hover:text-ink hover:border-white/30 transition-colors"
               >
                 Apple
               </a>
-              <a
-                href="#"
+              
+                href="https://music.amazon.com/podcasts/051af7fe-5f1a-4168-a97f-baa269a30408/pieter-borremans"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="font-mono text-xs uppercase tracking-[0.04em] border border-white/15 rounded-md px-3.5 py-2 text-ink/70 hover:text-ink hover:border-white/30 transition-colors"
               >
                 Amazon
               </a>
-              <a
-                href="#"
+              
+                href="https://www.youtube.com/@pieterborremans"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="font-mono text-xs uppercase tracking-[0.04em] border border-white/15 rounded-md px-3.5 py-2 text-ink/70 hover:text-ink hover:border-white/30 transition-colors"
               >
                 YouTube
               </a>
-              <a
-                href="#"
+              
+                href="https://www.tiktok.com/@borremanspieter"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="font-mono text-xs uppercase tracking-[0.04em] border border-white/15 rounded-md px-3.5 py-2 text-ink/70 hover:text-ink hover:border-white/30 transition-colors"
               >
-                Substack
+                TikTok
               </a>
             </div>
           </div>
@@ -96,7 +104,7 @@ export default function Podcast() {
               The deeper, unfiltered monologue, covering entrepreneurship, technology, investing, creativity, and
               whatever I can&apos;t stop thinking about. Longer, heavier, its own home.
             </div>
-            <a
+            
               href="https://www.echoroom.xyz"
               target="_blank"
               rel="noopener noreferrer"
