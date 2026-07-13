@@ -13,7 +13,7 @@ export const photos: Photo[] = [
   {
     src: "/images/pieter-borremans-living-in-taiwan.jpeg",
     alt: "Pieter Borremans living in Taiwan",
-    caption: "Taichung — living here since 2018.",
+    caption: "Going to Taichung — living here since 2018.",
   },
   {
     src: "/images/pieter-borremans-taichung-mirror-shot-dark.jpeg",
