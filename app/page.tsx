@@ -23,43 +23,43 @@ export default async function Home() {
           </div>
 
           {/* No separate tagline headline — this statement IS the h1, just styled as body text */}
-          <h1 className="text-[34px] font-normal leading-[1.4] tracking-[-0.005em]">
+          <h1 className="text-[26px] sm:text-[34px] font-normal leading-[1.4] tracking-[-0.005em]">
             I write, build, and share things that interest me. Mostly entrepreneurship,
             independent business-building, and the unfiltered reality of creating things
             online.
           </h1>
 
           {/* Fact cards — replaced the terminal. Real, confirmed details, not placeholders. */}
-          <div className="flex items-center justify-center gap-5 flex-wrap mt-14 mb-16">
+          <div className="flex items-center justify-center gap-3 sm:gap-5 flex-wrap mt-8 sm:mt-14 mb-10 sm:mb-16">
 
             {/* Location */}
-            <div className="w-[150px] h-[190px] rounded-xl bg-[#1D1E22] border border-white/10 p-5 rotate-[-3deg] translate-y-2 relative flex flex-col justify-center">
-              <span className="absolute -top-3 -right-3 text-[28px] rotate-[3deg] drop-shadow-md" aria-hidden="true">🇹🇼</span>
-              <div className="font-mono text-[11px] tracking-[0.05em] uppercase text-ink/35 mb-2.5">Location</div>
-              <div className="text-lg text-ink">Taichung</div>
+            <div className="w-[108px] h-[140px] sm:w-[150px] sm:h-[190px] rounded-xl bg-[#1D1E22] border border-white/10 p-3 sm:p-5 rotate-[-3deg] translate-y-2 relative flex flex-col justify-center">
+              <span className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 text-[20px] sm:text-[28px] rotate-[3deg] drop-shadow-md" aria-hidden="true">🇹🇼</span>
+              <div className="font-mono text-[9px] sm:text-[11px] tracking-[0.05em] uppercase text-ink/35 mb-1.5 sm:mb-2.5">Location</div>
+              <div className="text-sm sm:text-lg text-ink">Taiwan</div>
             </div>
 
             {/* Founder — featured card, badge anchored bottom on purpose */}
-            <div className="w-[172px] h-[224px] rounded-xl bg-gold/[0.07] border border-gold/40 p-6 flex flex-col justify-between relative z-[2]">
+            <div className="w-[124px] h-[164px] sm:w-[172px] sm:h-[224px] rounded-xl bg-gold/[0.07] border border-gold/40 p-4 sm:p-6 flex flex-col justify-between relative z-[2]">
               <div>
-                <div className="font-mono text-[11px] tracking-[0.05em] uppercase text-gold/70 mb-2.5">Founder</div>
-                <div className="text-lg text-ink leading-snug">Building the next chapter</div>
+                <div className="font-mono text-[9px] sm:text-[11px] tracking-[0.05em] uppercase text-gold/70 mb-1.5 sm:mb-2.5">Founder</div>
+                <div className="text-sm sm:text-lg text-ink leading-snug">Building the next chapter</div>
               </div>
-              <div className="bg-gold text-bg text-xs font-bold font-mono px-3 py-2 rounded-md text-center">
+              <div className="bg-gold text-bg text-[10px] sm:text-xs font-bold font-mono px-2 sm:px-3 py-1.5 sm:py-2 rounded-md text-center">
                 Ryoka Group
               </div>
             </div>
 
             {/* Blogger */}
-            <div className="w-[150px] h-[190px] rounded-xl bg-[#1D1E22] border border-white/10 p-5 rotate-[2deg] translate-y-2 flex flex-col justify-center">
-              <div className="font-mono text-[11px] tracking-[0.05em] uppercase text-ink/35 mb-2.5">Blogger</div>
-              <div className="text-lg text-ink">Since 2025</div>
+            <div className="w-[108px] h-[140px] sm:w-[150px] sm:h-[190px] rounded-xl bg-[#1D1E22] border border-white/10 p-3 sm:p-5 rotate-[2deg] translate-y-2 flex flex-col justify-center">
+              <div className="font-mono text-[9px] sm:text-[11px] tracking-[0.05em] uppercase text-ink/35 mb-1.5 sm:mb-2.5">Blogger</div>
+              <div className="text-sm sm:text-lg text-ink">Since 2025</div>
             </div>
 
             {/* Builder */}
-            <div className="w-[150px] h-[190px] rounded-xl bg-[#1D1E22] border border-white/10 p-5 rotate-[-2deg] translate-y-2 flex flex-col justify-center">
-              <div className="font-mono text-[11px] tracking-[0.05em] uppercase text-ink/35 mb-2.5">Builder</div>
-              <div className="text-lg text-ink leading-snug">5 shipped,<br />4 in progress</div>
+            <div className="w-[108px] h-[140px] sm:w-[150px] sm:h-[190px] rounded-xl bg-[#1D1E22] border border-white/10 p-3 sm:p-5 rotate-[-2deg] translate-y-2 flex flex-col justify-center">
+              <div className="font-mono text-[9px] sm:text-[11px] tracking-[0.05em] uppercase text-ink/35 mb-1.5 sm:mb-2.5">Builder</div>
+              <div className="text-sm sm:text-lg text-ink leading-snug">5 shipped,<br />4 in progress</div>
             </div>
 
           </div>
