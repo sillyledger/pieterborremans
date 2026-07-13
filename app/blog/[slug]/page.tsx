@@ -114,7 +114,7 @@ export default async function BlogPost({
             rather than mapped as plain paragraphs. The [&_x] classes style
             the tags that come out of the editor (p, a, strong, em, lists). */}
         <div
-          className="text-[15px] leading-[1.85] text-ink/75 max-w-[620px]
+          className="text-[18px] leading-[1.75] text-ink/85 max-w-[620px]
             [&_p]:mb-[18px] [&_p:last-child]:mb-0
             [&_a]:underline [&_a]:decoration-ink/30 hover:[&_a]:decoration-ink/60
             [&_strong]:text-ink [&_strong]:font-semibold [&_em]:italic
