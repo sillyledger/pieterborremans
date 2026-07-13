@@ -114,13 +114,14 @@ export default async function BlogPost({
             rather than mapped as plain paragraphs. The [&_x] classes style
             the tags that come out of the editor (p, a, strong, em, lists). */}
         <div
-          className="text-[18px] leading-[1.75] text-ink/85 max-w-[620px]
-            [&_p]:mb-[18px] [&_p:last-child]:mb-0
+          className="text-[18px] leading-[1.75] text-ink/85
+            [&_p]:max-w-[620px] [&_p]:mb-[18px] [&_p:last-child]:mb-0
             [&_a]:text-gold [&_a]:underline [&_a]:decoration-dotted [&_a]:decoration-gold/50 [&_a]:underline-offset-4 hover:[&_a]:decoration-gold
             [&_strong]:text-ink [&_strong]:font-semibold [&_em]:italic
-            [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-[18px]
-            [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-[18px]
-            [&_li]:mb-1.5"
+            [&_ul]:max-w-[620px] [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-[18px]
+            [&_ol]:max-w-[620px] [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-[18px]
+            [&_li]:mb-1.5
+            [&_img]:w-full [&_img]:rounded-xl [&_img]:my-8"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
