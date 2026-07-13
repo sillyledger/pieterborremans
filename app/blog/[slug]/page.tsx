@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { posts, categories } from "@/lib/posts";
+import { getPosts, getPostBySlug, categories } from "@/lib/posts";
 
-export function generateStaticParams() {
+export const dynamic = "force-dynamic";
+
+export async function generateStaticParams() {
+  const posts = await getPosts();
   return posts.map((post) => ({ slug: post.slug }));
 }
 
@@ -14,7 +17,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = posts.find((p) => p.slug === slug);
+  const post = await getPostBySlug(slug);
   if (!post) return {};
   return {
     title: `${post.title} | Pieter Borremans`,
@@ -28,7 +31,7 @@ export default async function BlogPost({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = posts.find((p) => p.slug === slug);
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     notFound();
@@ -84,11 +87,19 @@ export default async function BlogPost({
           {post.title}
         </h1>
 
-        <div className="flex flex-col gap-[18px] text-[15px] leading-[1.85] text-ink/75 max-w-[620px]">
-          {(post.content ?? [post.excerpt]).map((paragraph, i) => (
-            <p key={i}>{paragraph}</p>
-          ))}
-        </div>
+        {/* Real post content is HTML from Ryoka OS, so it's rendered directly
+            rather than mapped as plain paragraphs. The [&_x] classes style
+            the tags that come out of the editor (p, a, strong, em, lists). */}
+        <div
+          className="text-[15px] leading-[1.85] text-ink/75 max-w-[620px]
+            [&_p]:mb-[18px] [&_p:last-child]:mb-0
+            [&_a]:underline [&_a]:decoration-ink/30 hover:[&_a]:decoration-ink/60
+            [&_strong]:text-ink [&_strong]:font-semibold [&_em]:italic
+            [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-[18px]
+            [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-[18px]
+            [&_li]:mb-1.5"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
 
         <div className="border-t border-hairline mt-11 pt-5">
           <Link
