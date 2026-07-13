@@ -121,7 +121,7 @@ export default async function BlogPost({
             [&_ul]:max-w-[620px] [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-[18px]
             [&_ol]:max-w-[620px] [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-[18px]
             [&_li]:mb-1.5
-            [&_img]:w-full [&_img]:rounded-xl [&_img]:my-8"
+            [&_img]:relative [&_img]:left-1/2 [&_img]:-translate-x-1/2 [&_img]:w-screen [&_img]:max-w-[840px] [&_img]:rounded-xl [&_img]:my-8"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
