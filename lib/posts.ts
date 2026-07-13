@@ -8,6 +8,7 @@ export interface Post {
   readTime: string;
   category: string;
   content: string; // raw HTML from Ryoka OS
+  spotifyUrl?: string;
 }
 
 export interface Category {
@@ -56,7 +57,7 @@ function formatDate(dateString: string): string {
 export async function getPosts(): Promise<Post[]> {
   const { data, error } = await supabase
     .from("posts")
-    .select("slug, title, content, category, published_at")
+    .select("slug, title, content, category, published_at, spotify_url")
     .eq("target_site", "pieterborremans.com")
     .eq("status", "published")
     .order("published_at", { ascending: false });
@@ -74,6 +75,7 @@ export async function getPosts(): Promise<Post[]> {
     readTime: estimateReadTime(row.content ?? ""),
     category: (row.category ?? "").toLowerCase().trim(),
     content: row.content ?? "",
+    spotifyUrl: row.spotify_url || undefined,
   }));
 }
 
@@ -81,7 +83,7 @@ export async function getPosts(): Promise<Post[]> {
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   const { data, error } = await supabase
     .from("posts")
-    .select("slug, title, content, category, published_at")
+    .select("slug, title, content, category, published_at, spotify_url")
     .eq("target_site", "pieterborremans.com")
     .eq("status", "published")
     .eq("slug", slug)
@@ -97,5 +99,6 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     readTime: estimateReadTime(data.content ?? ""),
     category: (data.category ?? "").toLowerCase().trim(),
     content: data.content ?? "",
+    spotifyUrl: data.spotify_url || undefined,
   };
 }
