@@ -116,7 +116,7 @@ export default async function BlogPost({
         <div
           className="text-[18px] leading-[1.75] text-ink/85 max-w-[620px]
             [&_p]:mb-[18px] [&_p:last-child]:mb-0
-            [&_a]:underline [&_a]:decoration-ink/30 hover:[&_a]:decoration-ink/60
+            [&_a]:text-gold [&_a]:underline [&_a]:decoration-dotted [&_a]:decoration-gold/50 [&_a]:underline-offset-4 hover:[&_a]:decoration-gold
             [&_strong]:text-ink [&_strong]:font-semibold [&_em]:italic
             [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-[18px]
             [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-[18px]
