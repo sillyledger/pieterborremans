@@ -1,13 +1,5 @@
 import Link from "next/link";
-
-const categories = [
-  { slug: "listen", name: "Listen", count: 10 },
-  { slug: "personal", name: "Personal", count: 1 },
-  { slug: "thinking", name: "Thinking", count: 7 },
-  { slug: "updates", name: "Updates", count: 4 },
-  { slug: "watching", name: "Watching", count: 2 },
-  { slug: "working", name: "Working", count: 7 },
-];
+import { getPosts, getCategoryCounts, categories } from "@/lib/posts";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -25,7 +17,10 @@ const legalLinks = [
   { label: "Terms", href: "/terms" },
 ];
 
-export default function Footer() {
+export default async function Footer() {
+  const posts = await getPosts();
+  const categoryCounts = getCategoryCounts(posts);
+
   return (
     <footer className="bg-bg">
       <div className="max-w-[720px] mx-auto px-6 pt-16 pb-10">
@@ -48,7 +43,6 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-
           {/* Categories */}
           <div>
             <p className="font-mono text-[11px] tracking-wider text-ink/40 mb-4">
@@ -63,14 +57,13 @@ export default function Footer() {
                   >
                     <span>{category.name}</span>
                     <span className="font-mono text-xs text-ink/30">
-                      {category.count}
+                      {categoryCounts[category.slug] ?? 0}
                     </span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-
           {/* Legal */}
           <div>
             <p className="font-mono text-[11px] tracking-wider text-ink/40 mb-4">
@@ -90,7 +83,6 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-
         <div className="mt-12 pt-5 border-t border-hairline flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <p className="font-mono text-xs text-ink/35">
             © {new Date().getFullYear()} Pieter Borremans
