@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   description:
     "Pieter Borremans is a writer, content creator, and founder based in Taichung, Taiwan and London, UK. He writes about entrepreneurship, independent business-building, and the unfiltered reality of creating things online.",
   metadataBase: new URL("https://pieterborremans.com"),
+  icons: {
+    icon: "/images/pieter-borremans-writer.png",
+    shortcut: "/images/pieter-borremans-writer.png",
+    apple: "/images/pieter-borremans-writer.png",
+  },
 };
 
 export default function RootLayout({
