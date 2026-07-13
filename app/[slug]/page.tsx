@@ -31,7 +31,6 @@ export default async function CategoryPage({
 }) {
   const { slug } = await params;
   const category = categories.find((c) => c.slug === slug);
-
   if (!category) {
     notFound();
   }
@@ -59,7 +58,7 @@ export default async function CategoryPage({
           {category!.name}
         </h1>
         <div className="font-mono text-[12px] text-ink/40 mb-9">
-          {category!.count} {category!.count === 1 ? "entry" : "entries"}
+          {categoryPosts.length} {categoryPosts.length === 1 ? "entry" : "entries"}
         </div>
 
         <ul className="border-t border-white/10">
