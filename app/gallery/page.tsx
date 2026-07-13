@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Header from "@/components/Header";
 import { photos } from "@/lib/photos";
 
 export const metadata: Metadata = {
@@ -43,30 +44,7 @@ export default function GalleryPage() {
       <GalleryJsonLd />
 
       {/* Nav */}
-      <header className="flex items-center justify-between mb-14">
-        <div className="flex items-center gap-2.5">
-          <div className="h-[30px] w-[30px] rounded-full overflow-hidden shrink-0 bg-white/10">
-            <Image
-              src="/images/pieter-borremans-writer.png"
-              alt="Pieter Borremans"
-              width={60}
-              height={60}
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <span className="text-[13px] font-semibold tracking-[0.16em] uppercase">
-            Pieter Borremans
-          </span>
-        </div>
-        <nav className="hidden md:flex items-center gap-6 text-xs font-medium tracking-[0.08em] uppercase text-ink/45">
-          <a href="/blog" className="hover:text-ink/80 transition-colors">Blog</a>
-          <a href="/podcast" className="hover:text-ink/80 transition-colors">Podcast</a>
-          <a href="/projects" className="hover:text-ink/80 transition-colors">Projects</a>
-          <a href="/gallery" className="text-ink">Gallery</a>
-          <a href="/about" className="hover:text-ink/80 transition-colors">About</a>
-          <a href="/contact" className="hover:text-ink/80 transition-colors">Contact</a>
-        </nav>
-      </header>
+      <Header active="Gallery" />
 
       <div className="flex items-center justify-between mb-6">
         <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink/40">

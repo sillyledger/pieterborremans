@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import PhotoStrip from "@/components/PhotoStrip";
+import Header from "@/components/Header";
 import { getPosts } from "@/lib/posts";
 
 export const dynamic = "force-dynamic";
@@ -11,34 +11,10 @@ export default async function Home() {
     <main className="min-h-screen">
       <div className="max-w-[750px] mx-auto px-7 pt-9 pb-14">
         {/* Nav */}
-        <header className="flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="h-[30px] w-[30px] rounded-full overflow-hidden shrink-0 bg-white/10">
-              <Image
-                src="/images/pieter-borremans-writer.png"
-                alt="Pieter Borremans"
-                width={60}
-                height={60}
-                className="h-full w-full object-cover"
-                priority
-              />
-            </div>
-            <span className="text-[13px] font-semibold tracking-[0.16em] uppercase">
-              Pieter Borremans
-            </span>
-          </div>
-          <nav className="hidden md:flex items-center gap-6 text-xs font-medium tracking-[0.08em] uppercase text-ink/45">
-            <a href="/blog" className="hover:text-ink/80 transition-colors">Blog</a>
-            <a href="/podcast" className="hover:text-ink/80 transition-colors">Podcast</a>
-            <a href="/projects" className="hover:text-ink/80 transition-colors">Projects</a>
-            <a href="/gallery" className="hover:text-ink/80 transition-colors">Gallery</a>
-            <a href="/about" className="hover:text-ink/80 transition-colors">About</a>
-            <a href="/contact" className="hover:text-ink/80 transition-colors">Contact</a>
-          </nav>
-        </header>
+        <Header />
 
         {/* Generous breathing room before the statement, ryoka.xyz-style */}
-        <div className="h-24" />
+        <div className="h-10" />
 
         {/* Hero */}
         <section>
