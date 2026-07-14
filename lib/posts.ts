@@ -65,6 +65,30 @@ function formatDate(dateString: string): string {
   });
 }
 
+// A Ryoka OS editor bug used to force target="_blank" onto every link,
+// including internal ones. This strips target/rel from links that point
+// back to our own sites so old posts stop opening internal links in a new
+// tab. External links are left untouched.
+function fixInternalLinkTargets(html: string): string {
+  return html.replace(/<a\s+([^>]*)>/gi, (match, attrs) => {
+    const hrefMatch = attrs.match(/href\s*=\s*["']([^"']*)["']/i);
+    const href = hrefMatch?.[1] ?? "";
+    const isInternal =
+      href.startsWith("/") ||
+      href.startsWith("#") ||
+      /^https?:\/\/(www\.)?(pieterborremans\.com|pieter\.tw)/i.test(href);
+
+    if (!isInternal) return match;
+
+    const cleanedAttrs = attrs
+      .replace(/\s*target\s*=\s*["'][^"']*["']/i, "")
+      .replace(/\s*rel\s*=\s*["'][^"']*["']/i, "")
+      .trim();
+
+    return cleanedAttrs ? `<a ${cleanedAttrs}>` : "<a>";
+  });
+}
+
 // Fetches every published post tagged for this site, newest first.
 // Wrapped in React's cache() so multiple calls within the same request
 // (e.g. the page itself + Footer both calling getPosts()) hit Supabase once.
@@ -88,7 +112,7 @@ export const getPosts = cache(async (): Promise<Post[]> => {
     excerpt: makeExcerpt(row.content ?? ""),
     readTime: estimateReadTime(row.content ?? ""),
     category: (row.category ?? "").toLowerCase().trim(),
-    content: row.content ?? "",
+    content: fixInternalLinkTargets(row.content ?? ""),
     spotifyUrl: row.spotify_url || undefined,
   }));
 });
@@ -112,7 +136,7 @@ export const getPostBySlug = cache(async (slug: string): Promise<Post | null> =>
     excerpt: makeExcerpt(data.content ?? ""),
     readTime: estimateReadTime(data.content ?? ""),
     category: (data.category ?? "").toLowerCase().trim(),
-    content: data.content ?? "",
+    content: fixInternalLinkTargets(data.content ?? ""),
     spotifyUrl: data.spotify_url || undefined,
   };
 });
