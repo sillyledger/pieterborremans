@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Updates | Pieter Borremans",
-  description: "Short, frequent notes on what's shipping, what's stuck, and what changed.",
+  description: "Updates on my builds, decisions, and progress — published frequently.",
 };
 
 // Same 160-char excerpt the rest of the site uses (see lib/posts.ts) — kept
@@ -51,7 +51,7 @@ export default async function UpdatesPage() {
           </div>
         </div>
         <p className="text-[15px] text-ink/55 leading-relaxed max-w-[520px] mb-10">
-          Short, frequent notes on what&rsquo;s shipping, what&rsquo;s stuck, and what changed.
+          Updates on my builds, decisions, and progress, published frequently.
         </p>
 
         {updatesPosts.length === 0 && (
