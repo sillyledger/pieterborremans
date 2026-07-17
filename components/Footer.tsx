@@ -87,7 +87,7 @@ export default async function Footer() {
           <p className="font-mono text-xs text-ink/35">
             © {new Date().getFullYear()} Pieter Borremans
           </p>
-          <p className="font-mono text-xs text-ink/35">TAICHUNG · LONDON</p>
+          <p className="font-mono text-xs text-ink/35">🇧🇪 🇬🇧 🇹🇼 TAICHUNG · LONDON</p>
         </div>
       </div>
     </footer>
