@@ -61,6 +61,13 @@ export default function GalleryPage() {
         one roll at a time.
       </h1>
 
+      <p className="font-mono text-[11px] text-ink/40 max-w-[480px] mb-12">
+        All photographs on this page are original works by Pieter Borremans
+        and are protected by copyright. No image may be copied, downloaded,
+        reproduced, or used in any form without prior written permission.
+        Unauthorized use may result in legal action.
+      </p>
+
       <div className="grid grid-cols-3 gap-4">
         {photos.map((photo, i) => (
           <figure
