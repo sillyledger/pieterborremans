@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getPosts, getCategoryCounts, categories } from "@/lib/posts";
+import { getCategoryCounts, categories } from "@/lib/posts";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -18,8 +18,7 @@ const legalLinks = [
 ];
 
 export default async function Footer() {
-  const posts = await getPosts();
-  const categoryCounts = getCategoryCounts(posts);
+  const categoryCounts = await getCategoryCounts();
 
   return (
     <footer className="bg-bg">

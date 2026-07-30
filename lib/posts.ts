@@ -28,9 +28,9 @@ export const categories: Category[] = [
   { name: "Working", slug: "working" },
 ];
 
-// Tallies published posts per category from a live post list.
+// Tallies published posts per category from a post list already in hand.
 // Returns a slug -> count map; unknown/uncategorized posts are ignored.
-export function getCategoryCounts(posts: Post[]): Record<string, number> {
+export function countCategories(posts: Post[]): Record<string, number> {
   const counts: Record<string, number> = {};
   for (const cat of categories) counts[cat.slug] = 0;
   for (const post of posts) {
@@ -40,6 +40,34 @@ export function getCategoryCounts(posts: Post[]): Record<string, number> {
   }
   return counts;
 }
+
+// Lightweight variant of countCategories() for callers (like Footer) that
+// only need category tallies — fetches just the "category" column instead
+// of pulling full post content via getPosts().
+export const getCategoryCounts = cache(async (): Promise<Record<string, number>> => {
+  const counts: Record<string, number> = {};
+  for (const cat of categories) counts[cat.slug] = 0;
+
+  const { data, error } = await supabase
+    .from("posts")
+    .select("category")
+    .eq("target_site", "pieterborremans.com")
+    .eq("status", "published");
+
+  if (error || !data) {
+    console.error("Failed to fetch category counts:", error);
+    return counts;
+  }
+
+  for (const row of data) {
+    const slug = (row.category ?? "").toLowerCase().trim();
+    if (counts[slug] !== undefined) {
+      counts[slug]++;
+    }
+  }
+
+  return counts;
+});
 
 function stripHtml(html: string): string {
   return html.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
