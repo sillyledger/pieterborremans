@@ -24,9 +24,14 @@ export default async function Home() {
 
           {/* No separate tagline headline — this statement IS the h1, just styled as body text */}
           <h1 className="text-[26px] sm:text-[34px] font-normal leading-[1.4] tracking-[-0.005em]">
-            I write, build, and share things that interest me. Mostly entrepreneurship,
-            independent business-building, and the unfiltered reality of creating things
-            online.
+            I write, build, and chase one absurd goal in public:{" "}
+            <Link
+              href="/168"
+              className="text-red font-semibold border-b border-red/40 hover:border-red/70 transition-colors"
+            >
+              $168M USD
+            </Link>
+            , tracked live from zero.
           </h1>
 
           {/* Fact cards — replaced the terminal. Real, confirmed details, not placeholders. */}
@@ -40,21 +45,30 @@ export default async function Home() {
             </div>
 
             {/* Founder — featured card, badge anchored bottom on purpose */}
-            <div className="w-[124px] h-[164px] sm:w-[172px] sm:h-[224px] rounded-xl bg-gold/[0.07] border border-gold/40 p-4 sm:p-6 flex flex-col justify-between relative z-[2]">
+            <div className="w-[116px] h-[164px] sm:w-[160px] sm:h-[224px] rounded-xl bg-gold/[0.07] border border-gold/40 p-4 sm:p-6 flex flex-col justify-between relative z-[2]">
               <div>
                 <div className="font-mono text-[9px] sm:text-[11px] tracking-[0.05em] uppercase text-gold/70 mb-1.5 sm:mb-2.5">Founder</div>
-                <div className="text-sm sm:text-lg text-ink leading-snug">Building the next chapter</div>
+                <div className="text-sm sm:text-lg text-ink leading-snug">Builder, blogger & creator</div>
               </div>
               <div className="bg-gold text-bg text-[10px] sm:text-xs font-bold font-mono px-2 sm:px-3 py-1.5 sm:py-2 rounded-md text-center">
                 Ryoka Group
               </div>
             </div>
 
-            {/* Blogger */}
-            <div className="w-[108px] h-[140px] sm:w-[150px] sm:h-[190px] rounded-xl bg-[#1D1E22] border border-white/10 p-3 sm:p-5 rotate-[2deg] translate-y-2 flex flex-col justify-center">
-              <div className="font-mono text-[9px] sm:text-[11px] tracking-[0.05em] uppercase text-ink/35 mb-1.5 sm:mb-2.5">Blogger</div>
-              <div className="text-sm sm:text-lg text-ink">Since 2025</div>
-            </div>
+            {/* $168M challenge — matches Founder's featured pattern, in red */}
+            <Link
+              href="/168"
+              className="w-[116px] h-[164px] sm:w-[160px] sm:h-[224px] rounded-xl bg-red/[0.08] border border-red/45 p-4 sm:p-6 flex flex-col justify-between relative z-[1] rotate-[2deg] translate-y-1"
+            >
+              <div>
+                <div className="font-mono text-[9px] sm:text-[11px] tracking-[0.05em] uppercase text-red/70 mb-1.5 sm:mb-2.5">$168M challenge</div>
+                <div className="font-mono font-bold text-ink text-lg sm:text-2xl">$0.00</div>
+                <div className="font-mono text-ink/40 text-[10px] sm:text-xs">of $168M USD</div>
+              </div>
+              <div className="bg-red text-[#2a0e0e] text-[10px] sm:text-xs font-bold font-mono px-2 sm:px-3 py-1.5 sm:py-2 rounded-md text-center">
+                See tracker →
+              </div>
+            </Link>
 
             {/* Builder */}
             <div className="w-[108px] h-[140px] sm:w-[150px] sm:h-[190px] rounded-xl bg-[#1D1E22] border border-white/10 p-3 sm:p-5 rotate-[-2deg] translate-y-2 flex flex-col justify-center">
