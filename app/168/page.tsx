@@ -7,9 +7,26 @@ import { getPosts } from "@/lib/posts";
 // category route for this slug — same pattern as app/updates/page.tsx.
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "The $168 million challenge | Pieter Borremans",
-  description: "Tracking progress toward a $168,000,000 lifetime target — income, expenses, and milestones along the way.",
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "The $168 million challenge | Pieter Borremans",
+    description:
+      "I'm publicly tracking my long shot goal of $168 million in lifetime earnings, dollar by dollar, starting from zero.",
+  };
+}
+
+// References the sitewide Person entity defined in app/layout.tsx by @id
+// rather than declaring a new one — that root-layout schema already covers
+// every page, this one included.
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://pieterborremans.com/168#webpage",
+  "url": "https://pieterborremans.com/168",
+  "name": "The $168 million challenge | Pieter Borremans",
+  "author": { "@id": "https://ryokagroup.com/founder#pieter" },
+  "description":
+    "A public, live-tracked challenge to reach $168 million in lifetime earnings, covering Ryoka Group's SaaS products, trading, and acquisitions.",
 };
 
 // --- Static config — update these by hand as the numbers move. Not wired
@@ -107,6 +124,10 @@ export default async function ChallengePage() {
 
   return (
     <main className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+      />
       <div className="max-w-[750px] mx-auto px-7 pt-9 pb-16">
         {/* Nav */}
         <Header active="Blog" />
