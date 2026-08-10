@@ -66,7 +66,7 @@ export default async function Home() {
                 <div className="font-mono text-ink/40 text-[10px] sm:text-xs">of $168M USD</div>
               </div>
               <div className="bg-red text-[#2a0e0e] text-[10px] sm:text-xs font-bold font-mono px-2 sm:px-3 py-1.5 sm:py-2 rounded-md text-center">
-                See tracker →
+                See tracker
               </div>
             </Link>
 
