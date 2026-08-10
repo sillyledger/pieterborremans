@@ -26,6 +26,8 @@ export const categories: Category[] = [
   { name: "Updates", slug: "updates" },
   { name: "Watching", slug: "watching" },
   { name: "Working", slug: "working" },
+  { name: "$168M", slug: "168" },
+  { name: "Opinion", slug: "opinion" },
 ];
 
 // Tallies published posts per category from a post list already in hand.
