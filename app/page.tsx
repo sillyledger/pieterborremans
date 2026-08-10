@@ -27,7 +27,7 @@ export default async function Home() {
             I write, build, and chase one absurd goal in public:{" "}
             <Link
               href="/168"
-              className="text-red font-semibold border-b border-red/40 hover:border-red/70 transition-colors"
+              className="text-gold font-semibold border-b border-gold/40 hover:border-gold/70 transition-colors"
             >
               $168M USD
             </Link>
@@ -48,7 +48,7 @@ export default async function Home() {
             <div className="w-[116px] h-[164px] sm:w-[160px] sm:h-[224px] rounded-xl bg-gold/[0.07] border border-gold/40 p-4 sm:p-6 flex flex-col justify-between relative z-[2]">
               <div>
                 <div className="font-mono text-[9px] sm:text-[11px] tracking-[0.05em] uppercase text-gold/70 mb-1.5 sm:mb-2.5">Founder</div>
-                <div className="text-sm sm:text-lg text-ink leading-snug">Builder, blogger & creator</div>
+                <div className="text-sm sm:text-lg text-ink leading-snug">Blogger & creator</div>
               </div>
               <div className="bg-gold text-bg text-[10px] sm:text-xs font-bold font-mono px-2 sm:px-3 py-1.5 sm:py-2 rounded-md text-center">
                 Ryoka Group
