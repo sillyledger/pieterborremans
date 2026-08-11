@@ -19,7 +19,7 @@ export default function About() {
           about
         </div>
 
-        <h1 className="text-[34px] font-normal leading-[1.4] tracking-[-0.005em] mt-4">
+        <h1 className="font-heading text-[34px] font-normal leading-[1.4] tracking-[-0.005em] mt-4">
           I stripped things back.
         </h1>
 

@@ -54,7 +54,7 @@ export default async function CategoryPage({
         <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink/35 mb-2">
           Category
         </div>
-        <h1 className="text-[34px] font-normal leading-[1.4] tracking-[-0.005em] mb-1.5">
+        <h1 className="font-heading text-[34px] font-normal leading-[1.4] tracking-[-0.005em] mb-1.5">
           {category!.name}
         </h1>
         <div className="font-mono text-[12px] text-ink/40 mb-9">

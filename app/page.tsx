@@ -23,7 +23,7 @@ export default async function Home() {
           </div>
 
           {/* No separate tagline headline — this statement IS the h1, just styled as body text */}
-          <h1 className="text-[26px] sm:text-[34px] font-normal leading-[1.4] tracking-[-0.005em]">
+          <h1 className="font-heading text-[26px] sm:text-[34px] font-normal leading-[1.4] tracking-[-0.005em]">
             I write, build, and chase one absurd goal in public:{" "}
             <Link
               href="/168"
@@ -124,7 +124,7 @@ export default async function Home() {
               <Link href={`/blog/${post.slug}`} className="flex justify-between items-start gap-6 group">
                 <div className="max-w-[440px]">
                   <div className="font-mono text-[11px] text-ink/40 mb-1.5">{post.date}</div>
-                  <h2 className="font-semibold text-[19px] group-hover:text-ink/80 transition-colors">{post.title}</h2>
+                  <h2 className="font-heading font-semibold text-[19px] group-hover:text-ink/80 transition-colors">{post.title}</h2>
                   <p className="text-[13px] font-medium text-ink/70 mt-1.5 leading-relaxed">{post.excerpt}</p>
                 </div>
                 <span className="font-mono text-[11px] text-ink/40 whitespace-nowrap mt-0.5">

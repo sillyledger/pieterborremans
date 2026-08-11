@@ -55,7 +55,7 @@ export default function GalleryPage() {
         </span>
       </div>
 
-      <h1 className="text-[34px] font-normal leading-[1.4] tracking-[-0.005em] mb-12">
+      <h1 className="font-heading text-[34px] font-normal leading-[1.4] tracking-[-0.005em] mb-12">
         Unfiltered,
         <br />
         one roll at a time.

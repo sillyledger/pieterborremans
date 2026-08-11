@@ -45,7 +45,7 @@ export default async function UpdatesPage() {
           Category
         </div>
         <div className="flex items-baseline justify-between flex-wrap gap-2 mb-1.5">
-          <h1 className="text-[34px] font-normal leading-[1.4] tracking-[-0.005em]">Updates</h1>
+          <h1 className="font-heading text-[34px] font-normal leading-[1.4] tracking-[-0.005em]">Updates</h1>
           <div className="font-mono text-[11px] text-ink/40">
             {updatesPosts.length} {updatesPosts.length === 1 ? "entry" : "entries"}
           </div>

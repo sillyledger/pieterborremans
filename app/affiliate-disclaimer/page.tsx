@@ -39,7 +39,7 @@ export default function AffiliateDisclosure() {
         <div className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-ink/40 mb-3">
           Legal
         </div>
-        <h1 className="text-[34px] font-normal leading-[1.4] tracking-[-0.005em] mb-3">
+        <h1 className="font-heading text-[34px] font-normal leading-[1.4] tracking-[-0.005em] mb-3">
           Affiliate Disclosure
         </h1>
         <div className="font-mono text-[12px] text-ink/40 mb-10">Last updated: July 2026</div>

@@ -69,7 +69,7 @@ export default async function BlogPost({
           <span className="text-ink/45">{post.readTime}</span>
         </div>
 
-        <h1 className="text-[34px] font-normal leading-[1.4] tracking-[-0.005em] mb-8 max-w-[620px]">
+        <h1 className="font-heading text-[34px] font-normal leading-[1.4] tracking-[-0.005em] mb-8 max-w-[620px]">
           {post.title}
         </h1>
 
@@ -95,8 +95,8 @@ export default async function BlogPost({
             [&_p]:max-w-[620px] [&_p]:mb-[18px] [&_p:last-child]:mb-0
             [&_a]:text-gold [&_a]:underline [&_a]:decoration-dotted [&_a]:decoration-gold/50 [&_a]:underline-offset-4 hover:[&_a]:decoration-gold
             [&_strong]:text-ink [&_strong]:font-semibold [&_em]:italic
-            [&_h2]:text-[26px] [&_h2]:font-normal [&_h2]:leading-[1.3] [&_h2]:tracking-[-0.005em] [&_h2]:text-ink [&_h2]:max-w-[620px] [&_h2]:mt-11 [&_h2]:mb-4
-            [&_h3]:text-[21px] [&_h3]:font-normal [&_h3]:leading-[1.35] [&_h3]:text-ink [&_h3]:max-w-[620px] [&_h3]:mt-9 [&_h3]:mb-3
+            [&_h2]:font-heading [&_h2]:text-[26px] [&_h2]:font-normal [&_h2]:leading-[1.3] [&_h2]:tracking-[-0.005em] [&_h2]:text-ink [&_h2]:max-w-[620px] [&_h2]:mt-11 [&_h2]:mb-4
+            [&_h3]:font-heading [&_h3]:text-[21px] [&_h3]:font-normal [&_h3]:leading-[1.35] [&_h3]:text-ink [&_h3]:max-w-[620px] [&_h3]:mt-9 [&_h3]:mb-3
             [&_h2:first-child]:mt-0 [&_h3:first-child]:mt-0
             [&_ul]:max-w-[620px] [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-[18px]
             [&_ol]:max-w-[620px] [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-[18px]

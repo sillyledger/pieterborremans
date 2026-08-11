@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Open_Sans, Reddit_Mono } from "next/font/google";
+import { Open_Sans, Reddit_Mono, Fira_Sans } from "next/font/google";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
@@ -13,6 +13,12 @@ const redditMono = Reddit_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-mono",
+});
+
+const firaSans = Fira_Sans({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  variable: "--font-heading",
 });
 
 export const metadata: Metadata = {
@@ -85,7 +91,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${openSans.variable} ${redditMono.variable} font-sans bg-bg text-ink antialiased`}>
+      <body className={`${openSans.variable} ${redditMono.variable} ${firaSans.variable} font-sans bg-bg text-ink antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
