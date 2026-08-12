@@ -36,7 +36,7 @@ export default function AuthorBioBox() {
           </Link>
           <Link
             href="/168"
-            className="group inline-flex items-center gap-1.5 bg-red text-bg font-mono font-medium text-[13.5px] uppercase tracking-[0.03em] px-4 py-[9px] rounded-md hover:bg-[#d4482f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-[3px] transition-colors"
+            className="group inline-flex items-center gap-1.5 bg-red text-ink font-mono font-medium text-[13.5px] uppercase tracking-[0.03em] px-4 py-[9px] rounded-md hover:bg-[#d4482f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-[3px] transition-colors"
           >
             Track the $168M challenge
             <span className="transition-transform group-hover:translate-x-[3px]" aria-hidden="true">&rarr;</span>
