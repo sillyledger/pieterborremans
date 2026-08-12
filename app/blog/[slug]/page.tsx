@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
+import AuthorBioBox from "@/components/AuthorBioBox";
 import { getPosts, getPostBySlug, categories } from "@/lib/posts";
 
 // Converts a normal open.spotify.com link (episode/track/show/etc) into the
@@ -104,6 +105,8 @@ export default async function BlogPost({
             [&_img]:relative [&_img]:left-1/2 [&_img]:-translate-x-1/2 [&_img]:w-screen [&_img]:max-w-[840px] [&_img]:rounded-xl [&_img]:my-8"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
+
+        <AuthorBioBox />
 
         <div className="border-t border-hairline mt-11 pt-5">
           <Link
