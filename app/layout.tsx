@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Open_Sans, Reddit_Mono, Fira_Sans } from "next/font/google";
 import Footer from "@/components/Footer";
 import "./globals.css";
+
+const GA_MEASUREMENT_ID = "G-QGDD5MLN6M";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -92,6 +95,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${openSans.variable} ${redditMono.variable} ${firaSans.variable} font-sans bg-bg text-ink antialiased`}>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
