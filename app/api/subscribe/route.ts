@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (token) {
-      const confirmUrl = `${SITE_URL}/newsletter/confirm?token=${token}`;
+      const confirmUrl = `${SITE_URL}/api/confirm?token=${token}`;
       try {
         const { error: emailError } = await resend.emails.send({
           from: "Pieter Borremans <journal@pieterborremans.com>",
