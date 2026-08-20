@@ -1,6 +1,7 @@
 import Link from "next/link";
 import PhotoStrip from "@/components/PhotoStrip";
 import Header from "@/components/Header";
+import NewsletterForm from "@/components/NewsletterForm";
 import { getPosts } from "@/lib/posts";
 
 export const dynamic = "force-dynamic";
@@ -97,6 +98,26 @@ export default async function Home() {
           <PhotoStrip />
         </section>
       </div>
+
+      {/* Newsletter signup */}
+      <section className="max-w-[750px] mx-auto px-7 pb-10">
+        <div className="border border-[#2a2a2e] bg-[#1c1c1f] rounded-2xl p-10">
+          <div className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-gold mb-3">
+            The journal
+          </div>
+          <h2 className="font-heading font-bold text-[22px] sm:text-[26px] leading-[1.3] mb-3">
+            Get new posts before anyone else
+          </h2>
+          <p className="text-[14px] sm:text-[15px] text-ink/65 leading-relaxed max-w-[520px] mb-7">
+            No noise, no automation sequences. Just what I&apos;m writing, thinking about, and building, sent when
+            there&apos;s something worth sending.
+          </p>
+          <NewsletterForm variant="compact" />
+          <p className="font-mono text-[11px] text-ink/40 tracking-[0.04em] mt-4">
+            One email per post. Unsubscribe anytime.
+          </p>
+        </div>
+      </section>
 
       {/* Latest posts */}
       <section className="max-w-[750px] mx-auto px-7 py-10">

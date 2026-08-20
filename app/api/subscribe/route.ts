@@ -21,11 +21,16 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    await resend.contacts.create({
+    const { error } = await resend.contacts.create({
       email: email.trim(),
       audienceId: AUDIENCE_ID,
       unsubscribed: false,
     });
+
+    if (error) {
+      console.error("Failed to subscribe contact:", error);
+      return NextResponse.json({ error: "Failed to subscribe" }, { status: 500 });
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
