@@ -76,22 +76,32 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Failed to subscribe" }, { status: 500 });
     }
 
+    let token: string | undefined;
     try {
-      const token = createConfirmToken(trimmedEmail);
+      if (!process.env.CONFIRM_TOKEN_SECRET) {
+        console.error("CONFIRM_TOKEN_SECRET is not set, cannot generate confirm token");
+      }
+      token = createConfirmToken(trimmedEmail);
+    } catch (tokenError) {
+      console.error("Failed to generate confirm token:", tokenError);
+    }
+
+    if (token) {
       const confirmUrl = `${SITE_URL}/newsletter/confirm?token=${token}`;
+      try {
+        const { error: emailError } = await resend.emails.send({
+          from: "Pieter Borremans <journal@pieterborremans.com>",
+          to: trimmedEmail,
+          subject: "Confirm your subscription",
+          html: confirmEmailHtml(confirmUrl),
+        });
 
-      const { error: emailError } = await resend.emails.send({
-        from: "Pieter Borremans <journal@pieterborremans.com>",
-        to: trimmedEmail,
-        subject: "Confirm your subscription",
-        html: confirmEmailHtml(confirmUrl),
-      });
-
-      if (emailError) {
+        if (emailError) {
+          console.error("Failed to send confirmation email:", emailError);
+        }
+      } catch (emailError) {
         console.error("Failed to send confirmation email:", emailError);
       }
-    } catch (emailError) {
-      console.error("Failed to send confirmation email:", emailError);
     }
 
     return NextResponse.json({ success: true });
