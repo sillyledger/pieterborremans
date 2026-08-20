@@ -44,7 +44,7 @@ export default function NewsletterForm({ variant }: NewsletterFormProps) {
   if (status === "success") {
     return (
       <p className={isCompact ? "text-[14px] text-ink/85 font-medium" : "text-[17px] text-ink/85 font-medium"}>
-        You&apos;re in. Check your inbox to confirm.
+        Check your inbox to confirm your subscription.
       </p>
     );
   }
