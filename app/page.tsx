@@ -110,7 +110,7 @@ export default async function Home() {
               </p>
               <NewsletterForm variant="compact" />
               <p className="font-mono text-[11px] text-ink/40 tracking-[0.04em] mt-4">
-                One email per post. Unsubscribe anytime.
+                An email once in a while. Unsubscribe anytime.
               </p>
             </div>
           </div>

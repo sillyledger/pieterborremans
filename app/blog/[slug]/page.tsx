@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import AuthorBioBox from "@/components/AuthorBioBox";
+import NewsletterForm from "@/components/NewsletterForm";
 import { getPosts, getPostBySlug, categories } from "@/lib/posts";
 
 // Converts a normal open.spotify.com link (episode/track/show/etc) into the
@@ -105,6 +106,25 @@ export default async function BlogPost({
             [&_img]:relative [&_img]:left-1/2 [&_img]:-translate-x-1/2 [&_img]:w-screen [&_img]:max-w-[840px] [&_img]:rounded-xl [&_img]:my-8"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
+
+        <div className="mt-14">
+          <div className="border border-[#2a2a2e] bg-[#1c1c1f] rounded-2xl p-10">
+            <div className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-gold mb-3">
+              The journal
+            </div>
+            <h2 className="font-heading font-bold text-[22px] sm:text-[26px] leading-[1.3] mb-3">
+              Get new posts before anyone else
+            </h2>
+            <p className="text-[14px] sm:text-[15px] text-ink/65 leading-relaxed max-w-[520px] mb-7">
+              No noise, no automation sequences. Just what I&apos;m writing, thinking about, and building, sent
+              when there&apos;s something worth sending.
+            </p>
+            <NewsletterForm variant="compact" />
+            <p className="font-mono text-[11px] text-ink/40 tracking-[0.04em] mt-4">
+              An email once in a while. Unsubscribe anytime.
+            </p>
+          </div>
+        </div>
 
         <AuthorBioBox />
 
