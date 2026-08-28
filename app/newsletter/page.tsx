@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const details = [
   {
     label: "Format",
-    description: "Every new post, sent the day it publishes.",
+    description: "An email once in a while, no overload.",
   },
   {
     label: "Frequency",
