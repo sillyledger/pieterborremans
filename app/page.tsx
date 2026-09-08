@@ -63,7 +63,7 @@ export default async function Home() {
             >
               <div>
                 <div className="font-mono text-[9px] sm:text-[11px] tracking-[0.05em] uppercase text-red/70 mb-1.5 sm:mb-2.5">$168M challenge</div>
-                <div className="font-mono font-bold text-ink text-lg sm:text-2xl">$0.00</div>
+                <div className="font-mono font-bold text-ink text-lg sm:text-2xl">-$80.00</div>
                 <div className="font-mono text-ink/40 text-[10px] sm:text-xs">of $168M USD</div>
               </div>
               <div className="bg-red text-[#2a0e0e] text-[10px] sm:text-xs font-bold font-mono px-2 sm:px-3 py-1.5 sm:py-2 rounded-md text-center">
