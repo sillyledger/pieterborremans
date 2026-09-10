@@ -34,6 +34,7 @@ const webPageSchema = {
 
 const CURRENT_TOTAL = -315.25;
 const LIFETIME_TARGET = 168_000_000;
+const RUNWAY_TARGET = 5000;
 const LAST_UPDATED = "Sep 10, 2026";
 const CHALLENGE_START = new Date(2026, 7, 10); // Aug 10, 2026
 
@@ -120,6 +121,8 @@ export default async function ChallengePage() {
   const incomeTotal = income.reduce((sum, item) => sum + item.amount, 0);
   const expensesTotal = expenses.reduce((sum, item) => sum + item.amount, 0);
   const net = incomeTotal - expensesTotal;
+  const runwayRemaining = RUNWAY_TARGET - expensesTotal;
+  const runwayUsedPct = (expensesTotal / RUNWAY_TARGET) * 100;
 
   const dotPosition = positionForAmount(CURRENT_TOTAL, MILESTONES);
   const dayNumber = getDayNumber(CHALLENGE_START);
@@ -226,6 +229,32 @@ export default async function ChallengePage() {
               ))}
             </ul>
           </div>
+        </div>
+
+        {/* Runway */}
+        <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink/35 mb-4">
+          Runway
+        </div>
+        <div className="bg-[#1B1C22] border border-hairline rounded-xl p-7 mb-12">
+          <div className="flex items-baseline justify-between flex-wrap gap-2 mb-1.5">
+            <div className="font-mono font-bold text-[26px] text-ink">
+              {formatUSD(runwayRemaining)}
+              <span className="font-sans font-normal text-[13px] text-muted ml-2">remaining</span>
+            </div>
+            <div className="font-mono text-[12px] text-red">{runwayUsedPct.toFixed(1)}% used</div>
+          </div>
+          <div className="font-mono text-[12px] text-muted mb-4">
+            of {formatUSD(RUNWAY_TARGET)} runway &middot; {formatUSD(expensesTotal)} spent
+          </div>
+          <div className="w-full h-1.5 rounded-full bg-white/[0.06] border border-hairline overflow-hidden mb-4">
+            <div
+              className="h-full bg-red rounded-full"
+              style={{ width: `${Math.min(runwayUsedPct, 100)}%` }}
+            />
+          </div>
+          <p className="text-[13px] text-muted leading-relaxed border-t border-hairline pt-4 m-0">
+            Self-funded like a pre-seed round. This money can't go toward day trading, poker, or anything else high-risk. It only exists to keep the $168M challenge alive.
+          </p>
         </div>
 
         {/* Footer strip */}
