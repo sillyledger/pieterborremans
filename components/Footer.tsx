@@ -24,7 +24,7 @@ export default async function Footer() {
   return (
     <footer className="bg-bg">
       <div className="max-w-[720px] mx-auto px-6 pt-16 pb-10">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 border-t border-hairline pt-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-10 sm:gap-10 border-t border-hairline pt-10">
           {/* Navigate */}
           <div>
             <p className="font-mono text-[11px] tracking-wider text-ink/40 mb-4">
@@ -65,11 +65,11 @@ export default async function Footer() {
             </ul>
           </div>
           {/* Legal */}
-          <div>
+          <div className="col-span-2 sm:col-span-1">
             <p className="font-mono text-[11px] tracking-wider text-ink/40 mb-4">
               LEGAL
             </p>
-            <ul className="flex flex-col gap-2.5">
+            <ul className="flex flex-row flex-wrap gap-x-5 gap-y-2 sm:flex-col sm:gap-2.5">
               {legalLinks.map((link) => (
                 <li key={link.href}>
                   <Link
