@@ -31,18 +31,20 @@ interface Idea {
   boring: number;
   status: string;
   added: string;
+  url?: string;
 }
 
 const ideas: Idea[] = [
   {
     code: "IB-01",
-    title: "AI rubber duck",
-    blurb: "Talks back while you debug and judges your code.",
-    stupid: 4,
-    genius: 2,
+    title: "Equity",
+    blurb: "Bigger poker sessions, riskier trades, and weird bets, chasing a billion dollars in public.",
+    stupid: 5,
+    genius: 1,
     boring: 1,
-    status: "Too stupid",
-    added: "Sep 2",
+    status: "In dev",
+    added: "Aug 20",
+    url: "https://equity.tw",
   },
   {
     code: "IB-02",
@@ -184,12 +186,12 @@ export default function IdeaBench() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {ideas.map((idea, i) => {
             const statusColor = getStatusColor(idea.status);
-            return (
-              <div
-                key={idea.code}
-                className="bg-[#1D1E22] border border-hairline rounded-xl p-4"
-                style={{ transform: `rotate(${i % 2 === 0 ? 1 : -1}deg)` }}
-              >
+            const cardClassName = `bg-[#1D1E22] border border-hairline rounded-xl p-4${
+              idea.url ? " hover:border-white/15 transition-colors" : ""
+            }`;
+            const cardStyle = { transform: `rotate(${i % 2 === 0 ? 1 : -1}deg)` };
+            const cardContent = (
+              <>
                 <div className="flex items-start justify-between gap-3 mb-1.5">
                   <span className="text-[15px] font-semibold">{idea.title}</span>
                   <span
@@ -211,6 +213,27 @@ export default function IdeaBench() {
                 </div>
 
                 <div className="font-mono text-[10px] text-ink/30">Added {idea.added}</div>
+              </>
+            );
+
+            if (idea.url) {
+              return (
+                <a
+                  key={idea.code}
+                  href={idea.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cardClassName}
+                  style={cardStyle}
+                >
+                  {cardContent}
+                </a>
+              );
+            }
+
+            return (
+              <div key={idea.code} className={cardClassName} style={cardStyle}>
+                {cardContent}
               </div>
             );
           })}
