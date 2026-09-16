@@ -42,18 +42,18 @@ const ideas: Idea[] = [
     stupid: 5,
     genius: 1,
     boring: 1,
-    status: "In dev",
+    status: "In progress",
     added: "Aug 20",
     url: "https://equity.tw",
   },
   {
     code: "IB-02",
-    title: "Bad news newsletter",
+    title: "Stupid Hit",
     blurb: "The anti-optimism newsletter, only worse updates.",
     stupid: 3,
     genius: 4,
     boring: 1,
-    status: "Shelved",
+    status: "Live",
     added: "Aug 28",
   },
   {
@@ -63,17 +63,17 @@ const ideas: Idea[] = [
     stupid: 2,
     genius: 3,
     boring: 2,
-    status: "In dev",
+    status: "In progress",
     added: "Sep 10",
   },
   {
     code: "IB-04",
-    title: "Dead domain subscription box",
+    title: "Random Facts",
     blurb: "A new expired domain shipped to you every month.",
     stupid: 5,
     genius: 1,
     boring: 3,
-    status: "Too stupid",
+    status: "In progress",
     added: "Aug 15",
   },
   {
@@ -83,7 +83,7 @@ const ideas: Idea[] = [
     stupid: 2,
     genius: 4,
     boring: 1,
-    status: "Build it",
+    status: "In progress",
     added: "Sep 13",
   },
   {
@@ -113,7 +113,7 @@ const ideas: Idea[] = [
     stupid: 1,
     genius: 4,
     boring: 2,
-    status: "In dev",
+    status: "In progress",
     added: "Sep 5",
   },
 ];
@@ -123,8 +123,8 @@ const ideas: Idea[] = [
 // muted gray for any status string that isn't one of the recognized ones,
 // so custom statuses never break the page.
 const STATUS_COLORS: Record<string, { r: number; g: number; b: number; a: number }> = {
-  "build it": { r: 74, g: 222, b: 128, a: 1 }, // #4ADE80
-  "in dev": { r: 232, g: 185, b: 35, a: 1 }, // gold #E8B923
+  "live": { r: 74, g: 222, b: 128, a: 1 }, // #4ADE80
+  "in progress": { r: 232, g: 185, b: 35, a: 1 }, // gold #E8B923
   "shelved": { r: 245, g: 243, b: 238, a: 0.55 }, // ink/55
   "too stupid": { r: 194, g: 59, b: 59, a: 1 }, // red #C23B3B
 };
