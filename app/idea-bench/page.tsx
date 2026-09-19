@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Header from "@/components/Header";
+import { getPosts } from "@/lib/posts";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -49,7 +51,7 @@ const ideas: Idea[] = [
   {
     code: "IB-02",
     title: "Stupid Hit",
-    blurb: "The anti-optimism newsletter, only worse updates.",
+    blurb: "A collection of ideas so stupid they went viral or made real money anyway.",
     stupid: 3,
     genius: 4,
     boring: 1,
@@ -59,7 +61,7 @@ const ideas: Idea[] = [
   {
     code: "IB-04",
     title: "Random Facts",
-    blurb: "A new expired domain shipped to you every month.",
+    blurb: "A growing collection of random facts from all over the world.",
     stupid: 5,
     genius: 1,
     boring: 3,
@@ -111,7 +113,10 @@ function Meter({ label, score, color }: { label: string; score: number; color: s
   );
 }
 
-export default function IdeaBench() {
+export default async function IdeaBench() {
+  const posts = await getPosts();
+  const relatedPosts = posts.filter((post) => post.category === "idea-bench");
+
   return (
     <main className="min-h-screen">
       <script
@@ -188,6 +193,35 @@ export default function IdeaBench() {
             );
           })}
         </div>
+
+        {/* Related posts */}
+        <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink/35 mb-4">
+          Related posts
+        </div>
+        <ul className="border-t border-hairline">
+          {relatedPosts.length === 0 && (
+            <li className="py-6 text-[13px] text-ink/40">No posts yet, check back soon.</li>
+          )}
+          {relatedPosts.map((post, i) => (
+            <li
+              key={post.slug}
+              className={`py-[18px] ${i !== relatedPosts.length - 1 ? "border-b border-hairline" : ""}`}
+            >
+              <Link href={`/blog/${post.slug}`} className="flex justify-between items-start gap-6 group">
+                <div className="max-w-[520px]">
+                  <div className="font-mono text-[11px] text-ink/40 mb-1.5">{post.date}</div>
+                  <div className="text-lg font-semibold mb-1.5 group-hover:text-ink/80 transition-colors">
+                    {post.title}
+                  </div>
+                  <p className="text-[13px] text-ink/55 leading-relaxed">{post.excerpt}</p>
+                </div>
+                <span className="font-mono text-[11px] text-ink/40 whitespace-nowrap mt-0.5">
+                  {post.readTime}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </main>
   );
