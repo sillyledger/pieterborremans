@@ -6,7 +6,6 @@ const navLinks = [
   { label: "Blog", href: "/blog" },
   { label: "Podcast", href: "/podcast" },
   { label: "Projects", href: "/projects" },
-  { label: "Idea Bench", href: "/idea-bench" },
   { label: "Gallery", href: "/gallery" },
   { label: "About", href: "/about" },
   { label: "Newsletter", href: "/newsletter" },

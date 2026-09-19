@@ -3,6 +3,8 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import { getPosts } from "@/lib/posts";
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Idea Bench | Pieter Borremans",
