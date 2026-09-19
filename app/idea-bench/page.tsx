@@ -115,7 +115,7 @@ function Meter({ label, score, color }: { label: string; score: number; color: s
 
 export default async function IdeaBench() {
   const posts = await getPosts();
-  const relatedPosts = posts.filter((post) => post.category === "idea-bench");
+  const relatedPosts = posts.filter((post) => post.category?.toLowerCase() === "ideas");
 
   return (
     <main className="min-h-screen">

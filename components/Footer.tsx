@@ -53,7 +53,7 @@ export default async function Footer() {
               {categories.map((category) => (
                 <li key={category.slug}>
                   <Link
-                    href={`/${category.slug}`}
+                    href={category.href ?? `/${category.slug}`}
                     className="flex items-center justify-between text-sm font-medium text-ink/70 hover:text-ink transition-colors"
                   >
                     <span>{category.name}</span>

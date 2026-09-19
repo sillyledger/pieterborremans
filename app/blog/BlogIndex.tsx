@@ -37,7 +37,7 @@ export default async function BlogIndex({ page }: { page: number }) {
             return (
               <Link
                 key={cat.slug}
-                href={`/${cat.slug}`}
+                href={cat.href ?? `/${cat.slug}`}
                 className="block bg-[#1D1E22] border border-white/10 rounded-xl p-[18px] hover:border-white/20 transition-colors"
                 style={{ transform: `rotate(${i % 2 === 0 ? "-2deg" : "2deg"})` }}
               >

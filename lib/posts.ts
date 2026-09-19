@@ -15,6 +15,7 @@ export interface Post {
 export interface Category {
   name: string;
   slug: string;
+  href?: string;
 }
 
 // Static list of known categories. Counts are NOT stored here — they're
@@ -28,7 +29,7 @@ export const categories: Category[] = [
   { name: "Working", slug: "working" },
   { name: "$168M", slug: "168" },
   { name: "Opinion", slug: "opinion" },
-  { name: "Ideas", slug: "idea-bench" },
+  { name: "Ideas", slug: "ideas", href: "/idea-bench" },
 ];
 
 // Tallies published posts per category from a post list already in hand.
