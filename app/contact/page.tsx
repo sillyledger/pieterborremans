@@ -15,9 +15,9 @@ export default function Contact() {
         <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink/35 mb-3">
           Get in touch
         </div>
-        <div className="text-[34px] font-normal leading-[1.4] tracking-[-0.005em] max-w-[480px] mb-12">
+        <h1 className="font-heading text-[34px] font-normal leading-[1.4] tracking-[-0.005em] max-w-[480px] mb-12">
           Say hello, pitch something, or point out where I got it wrong.
-        </div>
+        </h1>
 
         <div className="flex items-center justify-center gap-4 flex-wrap">
 
@@ -46,6 +46,33 @@ export default function Contact() {
             </div>
           </div>
 
+        </div>
+
+        <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink/35 mb-4">
+          Elsewhere
+        </div>
+        <div className="flex items-center gap-3 flex-wrap">
+          <a
+            href="https://www.linkedin.com/in/pieter-borremans/"
+            className="group flex items-center gap-3 pl-3 pr-5 py-3 rounded-full bg-[#1D1E22] border border-white/10 hover:border-gold/50 hover:bg-gold/[0.06] transition-colors"
+          >
+            <span className="w-[30px] h-[30px] rounded-full border border-gold/35 group-hover:border-gold/70 flex items-center justify-center font-mono text-[10.5px] font-bold text-gold transition-colors">in</span>
+            <span className="text-sm font-medium text-ink">LinkedIn</span>
+          </a>
+          <a
+            href="https://www.pinterest.com/borremanspieter/"
+            className="group flex items-center gap-3 pl-3 pr-5 py-3 rounded-full bg-[#1D1E22] border border-white/10 hover:border-gold/50 hover:bg-gold/[0.06] transition-colors"
+          >
+            <span className="w-[30px] h-[30px] rounded-full border border-gold/35 group-hover:border-gold/70 flex items-center justify-center font-mono text-[10.5px] font-bold text-gold transition-colors">P</span>
+            <span className="text-sm font-medium text-ink">Pinterest</span>
+          </a>
+          <a
+            href="https://www.f6s.com/pieterborremans"
+            className="group flex items-center gap-3 pl-3 pr-5 py-3 rounded-full bg-[#1D1E22] border border-white/10 hover:border-gold/50 hover:bg-gold/[0.06] transition-colors"
+          >
+            <span className="w-[34px] h-[30px] rounded-lg border border-gold/35 group-hover:border-gold/70 flex items-center justify-center font-mono text-[9.5px] font-bold text-gold transition-colors">F6S</span>
+            <span className="text-sm font-medium text-ink">F6S</span>
+          </a>
         </div>
       </div>
     </main>
