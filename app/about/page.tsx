@@ -104,21 +104,21 @@ export default function About() {
             You can also find me on{" "}
             <Link
               href="https://www.linkedin.com/in/pieter-borremans/"
-              className="underline decoration-ink/30 hover:decoration-ink/60 transition-colors"
+              className="text-gold underline decoration-dotted decoration-gold/50 underline-offset-4 hover:decoration-gold transition-colors"
             >
               LinkedIn
             </Link>
             ,{" "}
             <Link
               href="https://www.pinterest.com/borremanspieter/"
-              className="underline decoration-ink/30 hover:decoration-ink/60 transition-colors"
+              className="text-gold underline decoration-dotted decoration-gold/50 underline-offset-4 hover:decoration-gold transition-colors"
             >
               Pinterest
             </Link>
             , and{" "}
             <Link
               href="https://www.f6s.com/pieterborremans"
-              className="underline decoration-ink/30 hover:decoration-ink/60 transition-colors"
+              className="text-gold underline decoration-dotted decoration-gold/50 underline-offset-4 hover:decoration-gold transition-colors"
             >
               F6S
             </Link>
