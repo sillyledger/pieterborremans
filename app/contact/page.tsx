@@ -48,31 +48,33 @@ export default function Contact() {
 
         </div>
 
-        <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink/35 mb-4">
-          Elsewhere
-        </div>
-        <div className="flex items-center gap-3 flex-wrap">
-          <a
-            href="https://www.linkedin.com/in/pieter-borremans/"
-            className="group flex items-center gap-3 pl-3 pr-5 py-3 rounded-full bg-[#1D1E22] border border-white/10 hover:border-gold/50 hover:bg-gold/[0.06] transition-colors"
-          >
-            <span className="w-[30px] h-[30px] rounded-full border border-gold/35 group-hover:border-gold/70 flex items-center justify-center font-mono text-[10.5px] font-bold text-gold transition-colors">in</span>
-            <span className="text-sm font-medium text-ink">LinkedIn</span>
-          </a>
-          <a
-            href="https://www.pinterest.com/borremanspieter/"
-            className="group flex items-center gap-3 pl-3 pr-5 py-3 rounded-full bg-[#1D1E22] border border-white/10 hover:border-gold/50 hover:bg-gold/[0.06] transition-colors"
-          >
-            <span className="w-[30px] h-[30px] rounded-full border border-gold/35 group-hover:border-gold/70 flex items-center justify-center font-mono text-[10.5px] font-bold text-gold transition-colors">P</span>
-            <span className="text-sm font-medium text-ink">Pinterest</span>
-          </a>
-          <a
-            href="https://www.f6s.com/pieterborremans"
-            className="group flex items-center gap-3 pl-3 pr-5 py-3 rounded-full bg-[#1D1E22] border border-white/10 hover:border-gold/50 hover:bg-gold/[0.06] transition-colors"
-          >
-            <span className="w-[34px] h-[30px] rounded-lg border border-gold/35 group-hover:border-gold/70 flex items-center justify-center font-mono text-[9.5px] font-bold text-gold transition-colors">F6S</span>
-            <span className="text-sm font-medium text-ink">F6S</span>
-          </a>
+        <div className="flex flex-col items-center mt-12">
+          <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink/35 mb-4">
+            Elsewhere
+          </div>
+          <div className="flex items-center justify-center gap-3 flex-wrap">
+            <a
+              href="https://www.linkedin.com/in/pieter-borremans/"
+              className="group flex items-center gap-3 pl-3 pr-5 py-3 rounded-full bg-[#1D1E22] border border-white/10 hover:border-gold/50 hover:bg-gold/[0.06] transition-colors"
+            >
+              <span className="w-[30px] h-[30px] rounded-full border border-gold/35 group-hover:border-gold/70 flex items-center justify-center font-mono text-[10.5px] font-bold text-gold transition-colors">in</span>
+              <span className="text-sm font-medium text-ink">LinkedIn</span>
+            </a>
+            <a
+              href="https://www.pinterest.com/borremanspieter/"
+              className="group flex items-center gap-3 pl-3 pr-5 py-3 rounded-full bg-[#1D1E22] border border-white/10 hover:border-gold/50 hover:bg-gold/[0.06] transition-colors"
+            >
+              <span className="w-[30px] h-[30px] rounded-full border border-gold/35 group-hover:border-gold/70 flex items-center justify-center font-mono text-[10.5px] font-bold text-gold transition-colors">P</span>
+              <span className="text-sm font-medium text-ink">Pinterest</span>
+            </a>
+            <a
+              href="https://www.f6s.com/pieterborremans"
+              className="group flex items-center gap-3 pl-3 pr-5 py-3 rounded-full bg-[#1D1E22] border border-white/10 hover:border-gold/50 hover:bg-gold/[0.06] transition-colors"
+            >
+              <span className="w-[34px] h-[30px] rounded-lg border border-gold/35 group-hover:border-gold/70 flex items-center justify-center font-mono text-[9.5px] font-bold text-gold transition-colors">F6S</span>
+              <span className="text-sm font-medium text-ink">F6S</span>
+            </a>
+          </div>
         </div>
       </div>
     </main>
