@@ -197,7 +197,7 @@ export default async function IdeaBench() {
         </div>
 
         {/* Related posts */}
-        <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink/35 mb-4">
+        <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink/35 mb-4 mt-14">
           Related posts
         </div>
         <ul className="border-t border-hairline">
