@@ -54,10 +54,9 @@ const flagship = {
   armName: "OnPoint VC",
   armUrl: "https://onpointvc.com",
   armDomain: "onpointvc.com",
-  since: "2025",
-  status: "On time",
+  since: "2026",
   blurb:
-    "The holding company every other project on this page sits under. Day to day it operates through OnPoint VC: investing, acquisitions, and whatever gets built next.",
+    "Ryoka Group is the parent company of OnPoint VC and its portfolio of businesses, products, and investments.",
   earned: 0,
 };
 
@@ -174,9 +173,9 @@ interface Row {
   valueClassName?: string;
 }
 
-function LeaderRows({ rows }: { rows: Row[] }) {
+function LeaderRows({ rows, divider = true }: { rows: Row[]; divider?: boolean }) {
   return (
-    <ul className="border-t border-hairline pt-2">
+    <ul className={divider ? "border-t border-hairline pt-2" : undefined}>
       {rows.map((row) => (
         <li key={row.label} className="flex items-baseline gap-2 py-[3px]">
           <span className="text-xs text-ink/55 whitespace-nowrap">{row.label}</span>
@@ -361,7 +360,7 @@ export default function Projects() {
         </div>
 
         {/* Flagship */}
-        <SectionLabel left="Held for the long run" />
+        <SectionLabel left="The glue" />
         <div className="grid grid-cols-1 sm:grid-cols-[1.3fr_1fr] gap-7 bg-gold/[0.06] border border-gold/40 rounded-2xl p-[22px] sm:p-7 mb-14 rotate-[-0.6deg]">
           <div>
             <div className="font-mono text-[11px] uppercase tracking-[0.05em] text-gold/75">
@@ -389,12 +388,12 @@ export default function Projects() {
           </div>
 
           <div className="self-end">
-            <div className="mb-3.5">
+            <div className="mb-5">
               <StageTrack stage="live" tier="live" />
             </div>
             <LeaderRows
+              divider={false}
               rows={[
-                { label: "Status", value: flagship.status, valueClassName: "text-[#4ADE80]" },
                 { label: "Entity", value: flagship.entityDomain },
                 { label: "Operating arm", value: flagship.armDomain, valueClassName: "text-gold" },
                 { label: "Projects under it", value: projects.length },
