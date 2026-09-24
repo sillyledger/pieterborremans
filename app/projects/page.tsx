@@ -25,7 +25,7 @@ const webPageSchema = {
 
 // --- Data: edit content here, not in the JSX. ---
 
-type Stage = "idea" | "build" | "boarding" | "live";
+type Stage = "idea" | "progress" | "live";
 type Tier = "live" | "build" | "crashed";
 
 interface Project {
@@ -33,12 +33,13 @@ interface Project {
   domain: string; // shown under the name
   url?: string; // card link, external
   blurb: string;
-  status: string; // pill text, e.g. "Active", "Boarding", "In progress", "On time"
+  status: string; // pill text, e.g. "Active", "In progress", "On time"
   tier: Tier;
   stage: Stage;
   type: string;
   since: string;
   earned: number;
+  beta?: boolean;
 }
 
 interface CrashedProject extends Project {
@@ -61,13 +62,13 @@ const flagship = {
 };
 
 const projects: Project[] = [
-  { name: "Sorano", domain: "sorano.space", url: "https://sorano.space", blurb: "Public roadmaps for indie founders who build in the open.", status: "Active", tier: "live", stage: "live", type: "SaaS, indie", since: "2026", earned: 0 },
-  { name: "TWO Docs", domain: "two.so", url: "https://two.so", blurb: "Docs for people and small teams.", status: "Boarding", tier: "build", stage: "boarding", type: "SaaS, B2B & B2C", since: "2026", earned: 0 },
-  { name: "Aegos Intel", domain: "aegosintel.com", url: "https://aegosintel.com", blurb: "B2B intelligence tool.", status: "In progress", tier: "build", stage: "build", type: "SaaS, B2B", since: "2026", earned: 0 },
+  { name: "Sorano", domain: "sorano.space", url: "https://sorano.space", blurb: "Public roadmaps for indie founders who build in the open.", status: "Active", tier: "live", stage: "live", type: "SaaS, indie", since: "2026", earned: 0, beta: true },
+  { name: "TWO Docs", domain: "two.so", url: "https://two.so", blurb: "Docs for bloggers and small teams, with a built-in split-view screen.", status: "Live", tier: "live", stage: "live", type: "SaaS, B2B & B2C", since: "2026", earned: 0, beta: true },
+  { name: "Aegos Intel", domain: "aegosintel.com", url: "https://aegosintel.com", blurb: "B2B intelligence tool.", status: "In progress", tier: "build", stage: "progress", type: "SaaS, B2B", since: "2026", earned: 0 },
   { name: "Kiroka", domain: "kiroka.xyz", url: "https://kiroka.xyz", blurb: "A free subscription tracker, kept alive by donations.", status: "Active", tier: "live", stage: "live", type: "Free, donation", since: "2025", earned: 0 },
-  { name: "Harova", domain: "harova.xyz", url: "https://harova.xyz", blurb: "A curated directory of tools, a few new ones added every day.", status: "Boarding", tier: "build", stage: "boarding", type: "Web directory", since: "2026", earned: 0 },
+  { name: "Harova", domain: "harova.xyz", url: "https://harova.xyz", blurb: "A curated directory of tools, a few new ones added every day.", status: "In progress", tier: "build", stage: "progress", type: "Web directory", since: "2026", earned: 0 },
   { name: "Echo Room", domain: "echoroom.xyz", url: "https://echoroom.xyz", blurb: "A solo monologue podcast, recorded without a script.", status: "On time", tier: "live", stage: "live", type: "Audio", since: "2026", earned: 0 },
-  { name: "Liyo", domain: "liyo.dev", url: "https://liyo.dev", blurb: "A shelf for developers: one shareable page for your stack, tools, books, and desk.", status: "Boarding", tier: "build", stage: "boarding", type: "SaaS, social", since: "2026", earned: 0 },
+  { name: "Liyo", domain: "liyo.dev", url: "https://liyo.dev", blurb: "A shelf for developers: one shareable page for your stack, tools, books, and desk.", status: "In progress", tier: "build", stage: "progress", type: "SaaS, social", since: "2026", earned: 0 },
 ];
 
 const crashed: CrashedProject[] = []; // empty for now, populated later
@@ -89,19 +90,15 @@ function pad2(n: number): string {
   return String(n).padStart(2, "0");
 }
 
-// "build" sits short of its tick on purpose: the project is mid-build, not
-// done building.
 const STAGE_POSITION: Record<Stage, number> = {
   idea: 0,
-  build: 40,
-  boarding: 66.6,
+  progress: 50,
   live: 100,
 };
 
 const TICKS = [
   { pos: 0, label: "Idea" },
-  { pos: 33.3, label: "Build" },
-  { pos: 66.6, label: "Boarding" },
+  { pos: 50, label: "In progress" },
   { pos: 100, label: "Live" },
 ];
 
@@ -218,7 +215,19 @@ function ProjectCard({ project }: { project: Project }) {
     "block bg-[#1D1E22] border border-hairline rounded-xl p-[18px] hover:border-white/15 transition-colors";
   const content = (
     <>
-      <CardHeader project={project} pill={<StatusPill tier={project.tier}>{project.status}</StatusPill>} />
+      <CardHeader
+        project={project}
+        pill={
+          <div className="flex items-center gap-1.5">
+            {project.beta && (
+              <span className="font-mono text-[9px] uppercase px-2 py-[3px] rounded-full whitespace-nowrap border border-ink/20 text-ink/60 bg-transparent">
+                In beta
+              </span>
+            )}
+            <StatusPill tier={project.tier}>{project.status}</StatusPill>
+          </div>
+        }
+      />
       <p className="text-xs text-ink/50 leading-relaxed mt-2 mb-4">{project.blurb}</p>
       <StageTrack stage={project.stage} tier={project.tier} />
       <LeaderRows
@@ -288,8 +297,6 @@ const placeholderClassName =
 export default function Projects() {
   const liveCount = projects.filter((p) => p.tier === "live").length + 1; // +1 for the flagship
   const buildCount = projects.filter((p) => p.tier === "build").length;
-  const boardingCount = projects.filter((p) => p.stage === "boarding").length;
-  const inProgressCount = projects.filter((p) => p.stage === "build").length;
   const crashedCount = crashed.length;
 
   const statLabel = "font-mono text-[9px] sm:text-[11px] tracking-[0.05em] uppercase";
@@ -329,9 +336,9 @@ export default function Projects() {
             <div className={`${statLabel} text-gold/70`}>Building</div>
             <div className={`${statNumber} text-gold`}>{pad2(buildCount)}</div>
             <div className={`${statFoot} text-gold/60`}>
-              {boardingCount} boarding,
+              still being
               <br />
-              {inProgressCount} in progress
+              built
             </div>
           </div>
 
@@ -375,16 +382,20 @@ export default function Projects() {
               </a>
             </h2>
             <p className="text-[13px] text-ink/60 leading-relaxed">{flagship.blurb}</p>
-            <div className="font-mono text-[10px] uppercase tracking-[0.05em] text-gold/60 mt-5 mb-1.5">
-              Operating arm
+            <div className="flex items-center gap-3 mt-5 flex-wrap">
+              <div className="font-mono text-[10px] uppercase tracking-[0.05em] text-gold/60">
+                Operating arm
+              </div>
+              <a
+                href={flagship.armUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex flex-col items-center bg-gold text-bg px-[18px] py-[9px] rounded-lg leading-snug"
+              >
+                <span className="font-mono text-sm font-bold">{flagship.armName}</span>
+                <span className="font-mono text-[10px] font-medium text-bg/65">by {flagship.name}</span>
+              </a>
             </div>
-            <a
-              href={flagship.armUrl}
-              className="inline-flex flex-col items-center bg-gold text-bg px-[18px] py-[9px] rounded-lg leading-snug"
-            >
-              <span className="font-mono text-sm font-bold">{flagship.armName}</span>
-              <span className="font-mono text-[10px] font-medium text-bg/65">by {flagship.name}</span>
-            </a>
           </div>
 
           <div className="self-end">
