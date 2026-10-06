@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Header from "@/components/Header";
 
 export const metadata: Metadata = {
@@ -17,9 +18,9 @@ export default function Podcast() {
         <div className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-ink/40 mb-3">
           Podcast
         </div>
-        <div className="text-[34px] font-normal leading-[1.4] tracking-[-0.005em] max-w-[520px] mb-3">
+        <h1 className="font-heading text-[26px] sm:text-[34px] font-normal leading-[1.4] tracking-[-0.005em] max-w-[520px] mb-3">
           Two shows. One mic. No script.
-        </div>
+        </h1>
         <div className="text-[15px] text-ink/60 leading-relaxed max-w-[480px] mb-12">
           Both are solo monologues, no edits, no guests. One is a short daily habit. The other goes a lot deeper.
         </div>
@@ -36,7 +37,7 @@ export default function Podcast() {
                 Daily-ish
               </div>
             </div>
-            <div className="text-xl font-semibold text-ink mb-2.5">
+            <div className="font-heading text-xl font-semibold text-ink mb-2.5">
               Short entries, no editing
             </div>
             <div className="text-[13.5px] text-ink/70 leading-relaxed max-w-[460px] mb-6">
@@ -97,7 +98,7 @@ export default function Podcast() {
                 Launching Sept 2026
               </div>
             </div>
-            <div className="text-xl font-semibold text-ink mb-2.5">
+            <div className="font-heading text-xl font-semibold text-ink mb-2.5">
               One voice. No script. No exit.
             </div>
             <div className="text-[13.5px] text-ink/70 leading-relaxed max-w-[460px] mb-6">
@@ -115,6 +116,17 @@ export default function Podcast() {
           </div>
 
         </div>
+
+        <p className="mt-[72px] pt-[22px] border-t border-white/10 text-[15px] text-ink/60">
+          I also voice three English-learning shows. Those are on the{" "}
+          <Link
+            href="/creator"
+            className="text-ink underline decoration-ink/30 underline-offset-[3px] hover:decoration-ink/60 transition-colors"
+          >
+            creator page
+          </Link>
+          .
+        </p>
       </div>
     </main>
   );
