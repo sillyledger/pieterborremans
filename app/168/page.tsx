@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "The $168 million challenge | Pieter Borremans",
     description:
-      "I'm publicly tracking my long shot goal of $168 million in lifetime earnings, dollar by dollar, starting from zero.",
+      "I'm publicly tracking my long shot goal of $168 million in lifetime gross earnings, dollar by dollar, starting from zero.",
   };
 }
 
@@ -26,13 +26,13 @@ const webPageSchema = {
   "name": "The $168 million challenge | Pieter Borremans",
   "author": { "@id": "https://ryokagroup.com/founder#pieter" },
   "description":
-    "A public, live-tracked challenge to reach $168 million in lifetime earnings, covering Ryoka Group's SaaS products, trading, and acquisitions.",
+    "A public, live-tracked challenge to reach $168 million in lifetime gross earnings, covering Ryoka Group's SaaS products, trading, and acquisitions.",
 };
 
 // --- Static config — update these by hand as the numbers move. Not wired
 // to Supabase yet; that's a separate future task. ---
 
-const CURRENT_TOTAL = -335.25;
+const CURRENT_TOTAL = -285.75;
 const LIFETIME_TARGET = 168_000_000;
 const RUNWAY_TARGET = 5000;
 const LAST_UPDATED = "Oct 6, 2026";
@@ -64,7 +64,8 @@ interface LineItem {
 }
 
 const income: LineItem[] = [
-  { label: "Apps & SaaS", amount: 0 },
+  { label: "TWO Docs", amount: 49.5 },
+  { label: "Other apps & SaaS", amount: 0 },
   { label: "Futures trading", amount: 0 },
   { label: "Poker", amount: 0 },
   { label: "Affiliate", amount: 0 },
@@ -154,7 +155,7 @@ export default async function ChallengePage() {
           {formatUSD(CURRENT_TOTAL)}
         </h1>
         <div className="font-mono text-[13px] text-muted mb-12">
-          of {formatUSD(LIFETIME_TARGET)} lifetime target &middot; updated {LAST_UPDATED}
+          of {formatUSD(LIFETIME_TARGET)} lifetime gross target &middot; updated {LAST_UPDATED}
         </div>
 
         {/* Milestone ruler */}
