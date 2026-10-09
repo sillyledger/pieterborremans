@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { Noto_Serif_TC } from "next/font/google";
 import Header from "@/components/Header";
@@ -21,8 +20,6 @@ const notoSerifTC = Noto_Serif_TC({
 
 // --- Data: edit content here, not in the JSX. ---
 
-const STUDY_BREW_STORIES = "https://www.studybrew.co/stories";
-
 // Order matches the level scale and the show list.
 const SHOWS = [
   {
@@ -35,6 +32,7 @@ const SHOWS = [
       "Simple English stories to share with your child. I'm recording toward 365 of them, one for every night of the year.",
     spotify: "",
     youtube: "",
+    cta: { label: "Discover", href: "https://www.studybrew.co/stories/story-valley" },
   },
   {
     key: "study-brew",
@@ -46,6 +44,7 @@ const SHOWS = [
       "Short everyday stories about daily life, travel, and work. Kept short on purpose, so you can listen closely the whole way through.",
     spotify: "",
     youtube: "",
+    cta: { label: "Visit", href: "https://www.studybrew.co/stories" },
   },
   {
     key: "story-brew",
@@ -56,6 +55,7 @@ const SHOWS = [
     description: "Bedtime stories in slow, calm English to fall asleep to.",
     spotify: "",
     youtube: "",
+    cta: { label: "Listen", href: "https://www.studybrew.co/stories/bedtime" },
   },
 ];
 
@@ -96,7 +96,7 @@ const schema = {
       "@id": `https://pieterborremans.com/creator#${show.key}`,
       "name": show.name,
       "description": show.description,
-      "url": STUDY_BREW_STORIES,
+      "url": show.cta.href,
       "inLanguage": "en",
       "author": { "@id": PERSON_ID },
     })),
@@ -147,46 +147,8 @@ export default function Creator() {
           </p>
         </div>
 
-        {/* Chinese name note card */}
-        <div
-          className={`${notoSerifTC.variable} mt-14 rounded-xl bg-gold/[0.06] border border-gold/40 p-7 -rotate-[1.2deg]`}
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(to bottom, transparent 0 37px, rgba(232,185,35,0.08) 37px 38px)",
-            backgroundPosition: "0 22px",
-          }}
-        >
-          <div className="font-mono text-[11px] tracking-[0.1em] uppercase text-gold/80">
-            My Chinese name
-          </div>
-          <div lang="zh-Hant" className="flex gap-[clamp(18px,6vw,48px)] my-5">
-            {NAME.map((c) => (
-              <div key={c.char} className="flex flex-col items-center text-center">
-                <span lang="zh-Latn-pinyin" className="font-mono text-[15px] text-gold">
-                  {c.pinyin}
-                </span>
-                <span className="font-[family-name:var(--font-cjk)] font-medium text-[56px] sm:text-[84px] leading-[1.1] text-ink my-1">
-                  {c.char}
-                </span>
-                <span lang="en" className="text-[13.5px] text-ink/60">
-                  {c.meaning}
-                </span>
-              </div>
-            ))}
-          </div>
-          <p className="text-[15px] leading-[1.7] text-ink/75 max-w-[520px]">
-            In Taiwan the roles are reversed and I&apos;m the learner, working through Chinese one
-            character at a time. I know what it&apos;s like to catch half a sentence and lose the
-            rest. I write about that side on{" "}
-            <Link href="https://pieter.tw" className={goldLink}>
-              pieter.tw
-            </Link>
-            .
-          </p>
-        </div>
-
         {/* Shows */}
-        <section className="mt-[72px]">
+        <section className="mt-16">
           <h2 className={h2}>Three shows, one voice</h2>
           <p className={body}>
             Each show is pitched at a level, so you can start where you are and move up.
@@ -248,8 +210,8 @@ export default function Creator() {
                         YouTube
                       </a>
                     )}
-                    <a href={STUDY_BREW_STORIES} target="_blank" rel="noopener noreferrer" className={pill}>
-                      Study Brew page
+                    <a href={show.cta.href} target="_blank" rel="noopener noreferrer" className={pill}>
+                      {show.cta.label}
                     </a>
                   </div>
                 </div>
@@ -279,6 +241,46 @@ export default function Creator() {
           </div>
         </section>
 
+        {/* Chinese name note card */}
+        <div
+          className={`${notoSerifTC.variable} mt-14 rounded-xl bg-gold/[0.06] border border-gold/40 px-[26px] py-[22px] -rotate-[0.8deg] grid sm:grid-cols-[auto_1fr] gap-3.5 sm:gap-7 items-center`}
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(to bottom, transparent 0 37px, rgba(232,185,35,0.08) 37px 38px)",
+            backgroundPosition: "0 22px",
+          }}
+        >
+          <div lang="zh-Hant" className="flex gap-[22px]">
+            {NAME.map((c) => (
+              <div key={c.char} className="flex flex-col items-center text-center">
+                <span lang="zh-Latn-pinyin" className="font-mono text-[12px] text-gold">
+                  {c.pinyin}
+                </span>
+                <span className="font-[family-name:var(--font-cjk)] font-medium text-[38px] sm:text-[44px] leading-[1.15] text-ink my-0.5">
+                  {c.char}
+                </span>
+                <span lang="en" className="text-[11.5px] text-ink/60 leading-[1.4]">
+                  {c.meaning}
+                </span>
+              </div>
+            ))}
+          </div>
+          <div>
+            <div className="font-mono text-[11px] tracking-[0.1em] uppercase text-gold/80 mb-2">
+              My Chinese name
+            </div>
+            <p className="text-[15px] leading-[1.7] text-ink/75">
+              In Taiwan the roles are reversed and I&apos;m the learner, working through Chinese one
+              character at a time. I know what it&apos;s like to catch half a sentence and lose the
+              rest. I write about that side on{" "}
+              <Link href="https://pieter.tw" className={goldLink}>
+                pieter.tw
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
+
         {/* The app */}
         <section className="mt-[72px]">
           <h2 className={h2}>Why I&apos;m also building an app</h2>
@@ -292,18 +294,7 @@ export default function Creator() {
             </Link>
             .
           </p>
-          <figure className="mt-6">
-            <Image
-              src="/images/study-brew-stories-1024x517.jpg"
-              alt="The stories page on studybrew.co, listing story categories and the three shows"
-              width={1024}
-              height={517}
-              className="w-full rounded-[10px] border border-white/10"
-            />
-            <figcaption className="text-[13px] text-ink/45 mt-2.5">
-              The stories page on studybrew.co
-            </figcaption>
-          </figure>
+          {/* Reserved: future build-progress CTA for the Study Brew app */}
         </section>
 
         {/* Cross-link */}
