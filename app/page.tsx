@@ -49,7 +49,15 @@ export default async function Home() {
             <div className="w-[116px] h-[164px] sm:w-[160px] sm:h-[224px] rounded-xl bg-gold/[0.07] border border-gold/40 p-4 sm:p-6 flex flex-col justify-between relative z-[2]">
               <div>
                 <div className="font-mono text-[9px] sm:text-[11px] tracking-[0.05em] uppercase text-gold/70 mb-1.5 sm:mb-2.5">Founder</div>
-                <div className="text-sm sm:text-lg text-ink leading-snug">Blogger & creator</div>
+                <div className="text-sm sm:text-lg text-ink leading-snug">
+                  Blogger &{" "}
+                  <Link
+                    href="/creator"
+                    className="underline decoration-dotted decoration-gold/50 underline-offset-4 hover:decoration-gold hover:text-gold transition-colors"
+                  >
+                    creator
+                  </Link>
+                </div>
               </div>
               <div className="bg-gold text-bg px-2 sm:px-3 py-1.5 sm:py-2 rounded-md text-center flex flex-col gap-0.5">
                 <div className="text-[10px] sm:text-xs font-bold font-mono">OnPoint VC</div>
