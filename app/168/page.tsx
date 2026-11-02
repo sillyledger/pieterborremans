@@ -32,10 +32,10 @@ const webPageSchema = {
 // --- Static config — update these by hand as the numbers move. Not wired
 // to Supabase yet; that's a separate future task. ---
 
-const CURRENT_TOTAL = -285.75;
+const CURRENT_TOTAL = -305.75;
 const LIFETIME_TARGET = 168_000_000;
 const RUNWAY_TARGET = 5000;
-const LAST_UPDATED = "Oct 6, 2026";
+const LAST_UPDATED = "Nov 2, 2026";
 const CHALLENGE_START = new Date(2026, 7, 10); // Aug 10, 2026
 
 interface Milestone {
@@ -75,7 +75,7 @@ const income: LineItem[] = [
 ];
 
 const expenses: LineItem[] = [
-  { label: "Claude Subscription", amount: 100 },
+  { label: "Claude Subscription", amount: 120 },
   { label: "Domain names", amount: 188.21 },
   { label: "Spacemail", amount: 47.04 },
   { label: "Acquisitions", amount: 0 },
