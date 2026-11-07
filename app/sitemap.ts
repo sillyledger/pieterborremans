@@ -3,7 +3,8 @@ import { getPosts, categories } from "@/lib/posts";
 
 const BASE_URL = "https://pieterborremans.com";
 
-export const dynamic = "force-dynamic";
+// Static, regenerated at most once a day (or on demand via /api/revalidate).
+export const revalidate = 86400;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getPosts();

@@ -35,6 +35,10 @@ export async function POST(request: NextRequest) {
   for (const path of paths) {
     revalidatePath(path);
   }
+  // Every page is statically cached and the root layout's Footer shows
+  // category counts, so a publish refreshes the whole site (sitemap, category
+  // pages, blog pagination, footer) rather than just the paths above.
+  revalidatePath("/", "layout");
 
   return NextResponse.json({
     revalidated: true,

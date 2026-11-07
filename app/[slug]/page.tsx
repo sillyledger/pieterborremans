@@ -4,7 +4,13 @@ import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import { getPosts, categories } from "@/lib/posts";
 
-export const dynamic = "force-dynamic";
+// Static, regenerated at most once a day (or on demand via /api/revalidate).
+export const revalidate = 86400;
+
+// Only the known category slugs exist at this root catch-all. Anything else
+// (e.g. bots probing /wp-login.php, /xmlrpc.php) gets the static 404 without
+// invoking a function.
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return categories.map((cat) => ({ slug: cat.slug }));

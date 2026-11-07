@@ -59,8 +59,9 @@ export const getCategoryCounts = cache(async (): Promise<Record<string, number>>
     .eq("status", "published");
 
   if (error || !data) {
-    console.error("Failed to fetch category counts:", error);
-    return counts;
+    // Throw rather than returning zeros: pages are statically cached (ISR), and
+    // a thrown error keeps the last good version instead of caching bad data.
+    throw new Error(`Failed to fetch category counts: ${error?.message ?? "no data"}`);
   }
 
   for (const row of data) {
@@ -133,8 +134,9 @@ export const getPosts = cache(async (): Promise<Post[]> => {
     .order("published_at", { ascending: false });
 
   if (error || !data) {
-    console.error("Failed to fetch posts:", error);
-    return [];
+    // Throw rather than returning []: pages are statically cached (ISR), and a
+    // thrown error keeps the last good version instead of caching an empty list.
+    throw new Error(`Failed to fetch posts: ${error?.message ?? "no data"}`);
   }
 
   return data.map((row) => ({
@@ -159,7 +161,12 @@ export const getPostBySlug = cache(async (slug: string): Promise<Post | null> =>
     .eq("slug", slug)
     .single();
 
-  if (error || !data) return null;
+  // PGRST116 = no matching row, i.e. a genuine 404. Any other error is
+  // thrown so ISR keeps serving the last good page instead of caching a 404.
+  if (error?.code === "PGRST116") return null;
+  if (error || !data) {
+    throw new Error(`Failed to fetch post "${slug}": ${error?.message ?? "no data"}`);
+  }
 
   return {
     slug: data.slug,

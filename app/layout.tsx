@@ -4,6 +4,10 @@ import { Open_Sans, Reddit_Mono, Fira_Sans } from "next/font/google";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
+// The Footer (rendered on every page) shows live category counts from
+// Supabase, so even otherwise-static pages regenerate once a day.
+export const revalidate = 86400;
+
 const GA_MEASUREMENT_ID = "G-QGDD5MLN6M";
 
 const openSans = Open_Sans({

@@ -3,7 +3,8 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import { getPosts } from "@/lib/posts";
 
-export const dynamic = "force-dynamic";
+// Static, regenerated at most once a day (or on demand via /api/revalidate).
+export const revalidate = 86400;
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

@@ -4,7 +4,8 @@ import Header from "@/components/Header";
 import NewsletterForm from "@/components/NewsletterForm";
 import { getPosts } from "@/lib/posts";
 
-export const dynamic = "force-dynamic";
+// Static, regenerated at most once a day (or on demand via /api/revalidate).
+export const revalidate = 86400;
 
 export default async function Home() {
   const posts = (await getPosts()).slice(0, 5);
