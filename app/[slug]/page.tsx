@@ -4,13 +4,14 @@ import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import { getPosts, categories } from "@/lib/posts";
 
-// Static, regenerated at most once a day (or on demand via /api/revalidate).
-export const revalidate = 86400;
+// Static, regenerated at most once a minute (or instantly via /api/revalidate).
+export const revalidate = 60;
 
-// Only the known category slugs exist at this root catch-all. Anything else
-// (e.g. bots probing /wp-login.php, /xmlrpc.php) gets the static 404 without
-// invoking a function.
-export const dynamicParams = false;
+// Note: don't set dynamicParams = false here. In Next 15.1, on-demand
+// revalidation (/api/revalidate) of a dynamicParams=false route turns its
+// prerendered pages into 404s. Unknown slugs (e.g. bots probing
+// /wp-login.php) still 404 below before any page-level data fetch, and that
+// 404 is ISR-cached per path.
 
 export function generateStaticParams() {
   return categories.map((cat) => ({ slug: cat.slug }));

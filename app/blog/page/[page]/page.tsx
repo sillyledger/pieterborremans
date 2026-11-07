@@ -8,8 +8,8 @@ export const metadata: Metadata = {
     "Pieter Borremans writes about entrepreneurship, independent business-building, and the unfiltered reality of creating things online.",
 };
 
-// Static, regenerated at most once a day (or on demand via /api/revalidate).
-export const revalidate = 86400;
+// Static, regenerated at most once a minute (or instantly via /api/revalidate).
+export const revalidate = 60;
 
 // Page 1 is served by /blog itself; only pre-render pages 2+ here.
 export async function generateStaticParams() {

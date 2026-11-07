@@ -5,8 +5,8 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 
 // The Footer (rendered on every page) shows live category counts from
-// Supabase, so even otherwise-static pages regenerate once a day.
-export const revalidate = 86400;
+// Supabase, so even otherwise-static pages regenerate at most once a minute.
+export const revalidate = 60;
 
 const GA_MEASUREMENT_ID = "G-QGDD5MLN6M";
 

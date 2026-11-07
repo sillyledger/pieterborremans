@@ -4,8 +4,8 @@ import Header from "@/components/Header";
 import NewsletterForm from "@/components/NewsletterForm";
 import { getPosts } from "@/lib/posts";
 
-// Static, regenerated at most once a day (or on demand via /api/revalidate).
-export const revalidate = 86400;
+// Static, regenerated at most once a minute (or instantly via /api/revalidate).
+export const revalidate = 60;
 
 export default async function Home() {
   const posts = (await getPosts()).slice(0, 5);

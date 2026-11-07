@@ -5,7 +5,8 @@ import { getPosts } from "@/lib/posts";
 
 // Static file at /168 takes priority over the generic app/[slug]/page.tsx
 // category route for this slug — same pattern as app/updates/page.tsx.
-// Hourly (not daily) so the "Day N of the challenge" counter stays current.
+// At most hourly so the "Day N of the challenge" counter stays current (the
+// root layout's revalidate = 60 is lower, so 60s is what applies in practice).
 export const revalidate = 3600;
 
 export async function generateMetadata(): Promise<Metadata> {

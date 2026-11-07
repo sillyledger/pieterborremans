@@ -3,8 +3,8 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import { getPosts } from "@/lib/posts";
 
-// Static, regenerated at most once a day (or on demand via /api/revalidate).
-export const revalidate = 86400;
+// Static, regenerated at most once a minute (or instantly via /api/revalidate).
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Updates | Pieter Borremans",

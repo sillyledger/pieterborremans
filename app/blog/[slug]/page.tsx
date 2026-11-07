@@ -15,8 +15,8 @@ function getSpotifyEmbedUrl(url: string): string | null {
   return `https://open.spotify.com/embed/${type}/${id}`;
 }
 
-// Static, regenerated at most once a day (or on demand via /api/revalidate).
-export const revalidate = 86400;
+// Static, regenerated at most once a minute (or instantly via /api/revalidate).
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   const posts = await getPosts();
