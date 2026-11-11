@@ -6,9 +6,10 @@ import { getPosts, type Post } from "@/lib/posts";
 import {
   activeSeries,
   getSeries,
+  isOpenEnded,
   series as allSeries,
+  slotCount,
   statusLine,
-  totalParts,
   type Series,
 } from "@/lib/series";
 
@@ -83,7 +84,8 @@ export default async function SeriesDetailPage({
 
   const posts = await getSeriesPosts(s);
   const published = posts.length;
-  const total = Math.max(totalParts(s), published);
+  const openEnded = isOpenEnded(s);
+  const total = slotCount(s, published); // open-ended: published + 1 "next part" slot
   const upcoming = total - published;
   const range = dateRange(posts);
   const otherSeries = allSeries.filter((o) => o.slug !== s.slug);
@@ -149,9 +151,16 @@ export default async function SeriesDetailPage({
             ))}
           </div>
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[12px] text-ink/50">
-            <span>
-              <span className="text-ink">{published}</span> of {total} parts
-            </span>
+            {openEnded ? (
+              <span>
+                <span className="text-ink">{published}</span>{" "}
+                {published === 1 ? "part" : "parts"} so far
+              </span>
+            ) : (
+              <span>
+                <span className="text-ink">{published}</span> of {total} parts
+              </span>
+            )}
             {range && (
               <>
                 <span className="text-ink/25">&middot;</span>
@@ -222,7 +231,7 @@ export default async function SeriesDetailPage({
                   <div className="min-w-0 pt-1">
                     <div className="font-mono text-[11px] text-ink/40 mb-1.5">Coming soon</div>
                     <div className="text-[19px] font-semibold leading-snug text-ink/45 mb-1.5">
-                      {upcoming === 1 ? "The closing chapter" : `Part ${part}`}
+                      {upcoming === 1 && !openEnded ? "The closing chapter" : `Part ${part}`}
                     </div>
                     {isLastSlot && (
                       <p className="text-[14px] text-ink/45 leading-relaxed">

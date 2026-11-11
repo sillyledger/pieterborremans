@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
-import { series, statusLine, totalParts, type Series } from "@/lib/series";
+import { series, slotCount, statusLine, type Series } from "@/lib/series";
 
 export const metadata: Metadata = {
   title: "Series | Pieter Borremans",
@@ -18,7 +18,7 @@ const SPINE_HEIGHTS = [38, 46, 34, 50, 42, 30];
 
 function Spines({ s }: { s: Series }) {
   const published = s.postSlugs.length;
-  const total = totalParts(s);
+  const total = s.status === "planned" ? 0 : slotCount(s, published);
   if (total === 0) return null;
 
   return (

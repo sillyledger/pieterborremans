@@ -10,7 +10,7 @@ export type Series = {
   intro?: string; // longer lead paragraph on the detail page
   status: "active" | "planned";
   statusNote?: string; // shown instead of the part count for planned series
-  totalParts?: number; // planned length, including parts not yet published
+  totalParts?: number; // planned length incl. unpublished parts; undefined = open-ended
   postSlugs: string[];
 };
 
@@ -33,13 +33,16 @@ export const series: Series[] = [
     ],
   },
   {
-    slug: "ipad-app",
+    slug: "vibe-coding-ipad-app",
     title: "Taking TWO to the iPad",
     shortName: "iPad app",
-    description: "What happens after the Mac app ships. The endgame all along.",
-    status: "planned",
-    statusNote: "Starts after the Mac series wraps",
-    postSlugs: [],
+    description:
+      "Taking TWO from Mac to iPad: touch, gestures and screen sizes I've never built for.",
+    intro:
+      "iPad users were always who I had in mind for TWO. The Mac app was the training ground, and this is the end boss: touch, gestures, Split View and screen sizes I've never built for. Documented from the first confused audit onward.",
+    status: "active",
+    // No totalParts: open-ended, always shows one "next part" slot.
+    postSlugs: ["building-ipad-app-confusing"],
   },
 ];
 
@@ -49,28 +52,41 @@ export function getSeries(slug: string): Series | undefined {
   return series.find((s) => s.slug === slug);
 }
 
-// Planned length of a series, never less than what's already listed.
-export function totalParts(s: Series): number {
-  return Math.max(s.totalParts ?? s.postSlugs.length, s.postSlugs.length);
+// Open-ended series have no planned length; there's always a "next part".
+export function isOpenEnded(s: Series): boolean {
+  return s.totalParts === undefined;
+}
+
+// Number of slots to draw for a series given how many parts are published:
+// the planned length (never less than published), or published + 1 for an
+// open-ended series.
+export function slotCount(s: Series, published: number): number {
+  return isOpenEnded(s) ? published + 1 : Math.max(s.totalParts!, published);
 }
 
 // Finds the active series a post belongs to, with its 1-based part number.
+// `total` is undefined for open-ended series.
 export function findSeriesForPost(
   postSlug: string,
-): { series: Series; part: number; total: number } | null {
+): { series: Series; part: number; total?: number } | null {
   for (const s of activeSeries) {
     const index = s.postSlugs.indexOf(postSlug);
-    if (index !== -1) return { series: s, part: index + 1, total: totalParts(s) };
+    if (index !== -1) {
+      const total = isOpenEnded(s) ? undefined : slotCount(s, s.postSlugs.length);
+      return { series: s, part: index + 1, total };
+    }
   }
   return null;
 }
 
-// e.g. "4 parts, closing chapter coming". Planned series use their statusNote.
+// e.g. "4 parts, closing chapter coming" or "1 part so far, more coming".
+// Planned series use their statusNote.
 export function statusLine(s: Series): string {
   if (s.status === "planned") return s.statusNote ?? "Coming later";
   const published = s.postSlugs.length;
-  const remaining = totalParts(s) - published;
   const parts = `${published} ${published === 1 ? "part" : "parts"}`;
+  if (isOpenEnded(s)) return `${parts} so far, more coming`;
+  const remaining = slotCount(s, published) - published;
   if (remaining <= 0) return parts;
   if (remaining === 1) return `${parts}, closing chapter coming`;
   return `${parts}, ${remaining} more coming`;

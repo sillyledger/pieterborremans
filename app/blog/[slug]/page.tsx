@@ -97,7 +97,8 @@ export default async function BlogPost({
             href={`/series/${inSeries.series.slug}`}
             className="block font-mono text-[12px] text-ink/50 hover:text-ink/70 transition-colors mb-6 max-w-[620px]"
           >
-            Part {inSeries.part} of {inSeries.total} in{" "}
+            Part {inSeries.part}
+            {inSeries.total !== undefined && ` of ${inSeries.total}`} in{" "}
             <span className="text-ink">{inSeries.series.title}</span>
           </Link>
         )}
