@@ -4,6 +4,7 @@ import { getCategoryCounts, categories } from "@/lib/posts";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Blog", href: "/blog" },
+  { label: "Series", href: "/series" },
   { label: "Podcast", href: "/podcast" },
   { label: "Creator", href: "/creator" },
   { label: "Projects", href: "/projects" },
