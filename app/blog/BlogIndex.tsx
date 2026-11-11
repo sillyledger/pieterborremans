@@ -50,8 +50,11 @@ export default async function BlogIndex({ page }: { page: number }) {
           })}
         </div>
 
-        <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink/35 mb-4">
-          All entries
+        <div className="flex items-baseline justify-between font-mono text-[11px] tracking-[0.18em] uppercase mb-4">
+          <span className="text-ink/35">All entries</span>
+          <Link href="/series" className="text-gold/80 hover:text-gold transition-colors">
+            Follow a series &rarr;
+          </Link>
         </div>
 
         {/* Feed */}
