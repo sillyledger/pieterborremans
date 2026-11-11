@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
-import { series, type Series } from "@/lib/series";
+import { series, statusLine, totalParts, type Series } from "@/lib/series";
 
 export const metadata: Metadata = {
   title: "Series | Pieter Borremans",
@@ -16,18 +16,9 @@ export const revalidate = 60;
 // Spine heights cycle through this pattern so the bars look like book spines.
 const SPINE_HEIGHTS = [38, 46, 34, 50, 42, 30];
 
-function statusLine(s: Series): string {
-  const published = s.postSlugs.length;
-  const remaining = (s.totalParts ?? published) - published;
-  const parts = `${published} ${published === 1 ? "part" : "parts"}`;
-  if (remaining <= 0) return parts;
-  if (remaining === 1) return `${parts}, closing chapter coming`;
-  return `${parts}, ${remaining} more coming`;
-}
-
 function Spines({ s }: { s: Series }) {
   const published = s.postSlugs.length;
-  const total = Math.max(s.totalParts ?? published, published);
+  const total = totalParts(s);
   if (total === 0) return null;
 
   return (
@@ -63,11 +54,11 @@ function SeriesCard({ s }: { s: Series }) {
       <div className="min-w-0">
         <h2 className="font-heading text-[22px] font-normal leading-[1.3] mb-1.5">{s.title}</h2>
         <p className="text-[14px] text-ink/55 leading-relaxed mb-3">{s.description}</p>
-        {s.status === "planned" ? (
-          <div className="font-mono text-[11px] text-ink/40">Starts after the Mac series wraps</div>
-        ) : (
-          <div className="font-mono text-[11px] text-gold">{statusLine(s)}</div>
-        )}
+        <div
+          className={`font-mono text-[11px] ${s.status === "planned" ? "text-ink/40" : "text-gold"}`}
+        >
+          {statusLine(s)}
+        </div>
       </div>
       <Spines s={s} />
     </>
@@ -75,11 +66,11 @@ function SeriesCard({ s }: { s: Series }) {
 
   const layout = "flex justify-between items-center gap-6 rounded-[14px] p-[22px]";
 
-  // Active series link to their first part for now; planned ones aren't links.
-  if (s.status === "active" && s.postSlugs.length > 0) {
+  // Active series link to their detail page; planned ones aren't links.
+  if (s.status === "active") {
     return (
       <Link
-        href={`/blog/${s.postSlugs[0]}`}
+        href={`/series/${s.slug}`}
         className={`${layout} bg-[#1D1E22] border border-white/10 hover:border-white/20 transition-colors`}
       >
         {body}

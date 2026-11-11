@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { getPosts, categories } from "@/lib/posts";
+import { activeSeries } from "@/lib/series";
 
 const BASE_URL = "https://pieterborremans.com";
 
@@ -30,6 +31,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
+  const seriesRoutes: MetadataRoute.Sitemap = activeSeries.map((s) => ({
+    url: `${BASE_URL}/series/${s.slug}`,
+    changeFrequency: "weekly",
+    priority: 0.7,
+  }));
+
   const postRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${BASE_URL}/blog/${post.slug}`,
     lastModified: new Date(post.date),
@@ -37,5 +44,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...categoryRoutes, ...postRoutes];
+  return [...staticRoutes, ...categoryRoutes, ...seriesRoutes, ...postRoutes];
 }

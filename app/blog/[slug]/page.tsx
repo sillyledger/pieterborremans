@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import AuthorBioBox from "@/components/AuthorBioBox";
 import NewsletterForm from "@/components/NewsletterForm";
 import { getPosts, getPostBySlug, categories } from "@/lib/posts";
+import { findSeriesForPost } from "@/lib/series";
 
 // Converts a normal open.spotify.com link (episode/track/show/etc) into the
 // /embed/ version that can actually be dropped into an iframe.
@@ -50,6 +51,7 @@ export default async function BlogPost({
   }
 
   const category = categories.find((c) => c.slug === post.category);
+  const inSeries = findSeriesForPost(post.slug);
 
   return (
     <main className="min-h-screen">
@@ -88,6 +90,16 @@ export default async function BlogPost({
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy"
           />
+        )}
+
+        {inSeries && (
+          <Link
+            href={`/series/${inSeries.series.slug}`}
+            className="block font-mono text-[12px] text-ink/50 hover:text-ink/70 transition-colors mb-6 max-w-[620px]"
+          >
+            Part {inSeries.part} of {inSeries.total} in{" "}
+            <span className="text-ink">{inSeries.series.title}</span>
+          </Link>
         )}
 
         {/* Real post content is HTML from Ryoka OS, so it's rendered directly
