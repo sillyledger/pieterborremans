@@ -235,7 +235,7 @@ export default async function SeriesDetailPage({
                     </div>
                     {isLastSlot && (
                       <p className="text-[14px] text-ink/45 leading-relaxed">
-                        How it ends.{" "}
+                        {upcoming === 1 && !openEnded ? "How it ends." : "What's next."}{" "}
                         <Link
                           href="/newsletter"
                           className="text-ink/70 underline underline-offset-2 hover:text-gold transition-colors"
