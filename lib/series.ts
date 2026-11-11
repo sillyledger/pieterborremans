@@ -44,6 +44,16 @@ export const series: Series[] = [
     // No totalParts: open-ended, always shows one "next part" slot.
     postSlugs: ["building-ipad-app-confusing"],
   },
+  {
+    slug: "building-study-brew",
+    title: "Building Study Brew",
+    shortName: "Study Brew",
+    description:
+      "A note-taking app for language learners, built from scratch alongside everything else.",
+    status: "planned",
+    statusNote: "First post coming soon",
+    postSlugs: [],
+  },
 ];
 
 export const activeSeries = series.filter((s) => s.status === "active");
