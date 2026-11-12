@@ -85,7 +85,7 @@ export default function SeriesPage() {
   return (
     <main className="min-h-screen">
       <div className="max-w-[750px] mx-auto px-7 pt-9 pb-16">
-        <Header active="Blog" />
+        <Header active="Series" />
 
         <nav
           aria-label="Breadcrumb"

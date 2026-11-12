@@ -112,7 +112,7 @@ export default async function SeriesDetailPage({
         }}
       />
       <div className="max-w-[750px] mx-auto px-7 pt-9 pb-16">
-        <Header active="Blog" />
+        <Header active="Series" />
 
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className={`${monoLabel} mb-2`}>
