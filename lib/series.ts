@@ -49,10 +49,12 @@ export const series: Series[] = [
     title: "Building Study Brew",
     shortName: "Study Brew",
     description:
-      "A note-taking app for language learners, built from scratch alongside everything else.",
-    status: "planned",
-    statusNote: "First post coming soon",
-    postSlugs: [],
+      "A note-taking app for language learners, built in public after one failed attempt.",
+    intro:
+      "Last year I tried to build a note-taking app for language learners and had no idea what I was doing. This time there's a plan: notebooks, flashcards and a dictionary that grows with its users, built in public from the first overhaul onward.",
+    status: "active",
+    // No totalParts: open-ended, always shows one "next part" slot.
+    postSlugs: ["building-study-brew-app-1-going-real"],
   },
 ];
 
