@@ -13,8 +13,17 @@ export const revalidate = 60;
 // /wp-login.php) still 404 below before any page-level data fetch, and that
 // 404 is ISR-cached per path.
 
+// Category slugs that have their own route folder (app/168, app/updates).
+// They must never be prerendered here: a prerendered /[slug] page for one of
+// these paths shares the "/168" / "/updates" ISR cache entry with the real
+// page and replaces it in production (this happened after the ISR switch in
+// adef809, when /168 started serving the category archive).
+const OWN_ROUTE_SLUGS = new Set(["168", "updates"]);
+
 export function generateStaticParams() {
-  return categories.map((cat) => ({ slug: cat.slug }));
+  return categories
+    .filter((cat) => !OWN_ROUTE_SLUGS.has(cat.slug))
+    .map((cat) => ({ slug: cat.slug }));
 }
 
 export async function generateMetadata({
@@ -23,6 +32,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  if (OWN_ROUTE_SLUGS.has(slug)) notFound();
   const category = categories.find((c) => c.slug === slug);
   if (!category) return {};
   return {
@@ -37,6 +47,7 @@ export default async function CategoryPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  if (OWN_ROUTE_SLUGS.has(slug)) notFound();
   const category = categories.find((c) => c.slug === slug);
   if (!category) {
     notFound();

@@ -3,8 +3,11 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import { getPosts } from "@/lib/posts";
 
-// Static file at /168 takes priority over the generic app/[slug]/page.tsx
-// category route for this slug — same pattern as app/updates/page.tsx.
+// The $168M challenge tracker. "168" is also a category slug, so
+// app/[slug]/page.tsx excludes it from generateStaticParams() and 404s it
+// (OWN_ROUTE_SLUGS). Folder precedence alone isn't enough once both routes
+// are ISR: a prerendered /[slug] page for "168" would replace this page in
+// the /168 cache entry. Same applies to app/updates/page.tsx.
 // At most hourly so the "Day N of the challenge" counter stays current (the
 // root layout's revalidate = 60 is lower, so 60s is what applies in practice).
 export const revalidate = 3600;

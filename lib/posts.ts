@@ -27,7 +27,7 @@ export const categories: Category[] = [
   { name: "Updates", slug: "updates" },
   { name: "Watching", slug: "watching" },
   { name: "Working", slug: "working" },
-  { name: "$168M", slug: "168" },
+  { name: "$168M", slug: "168", href: "/168" }, // the challenge tracker (app/168)
   { name: "Opinion", slug: "opinion" },
   { name: "Ideas", slug: "ideas", href: "/idea-bench" },
 ];
