@@ -41,15 +41,15 @@ interface Idea {
 
 const ideas: Idea[] = [
   {
-    code: "IB-01",
-    title: "Equity",
-    blurb: "Bigger poker sessions, riskier trades, and weird bets, chasing a billion dollars in public.",
+    code: "IB-04",
+    title: "Random Facts",
+    blurb: "A growing collection of random facts from all over the world.",
     stupid: 5,
     genius: 1,
-    boring: 1,
-    status: "In progress",
-    added: "Aug 20",
-    url: "https://equity.tw",
+    boring: 3,
+    status: "Live",
+    added: "Nov 13",
+    url: "https://randomfacts.site",
   },
   {
     code: "IB-02",
@@ -60,16 +60,18 @@ const ideas: Idea[] = [
     boring: 1,
     status: "Live",
     added: "Aug 28",
+    url: "https://www.stupidhit.com",
   },
   {
-    code: "IB-04",
-    title: "Random Facts",
-    blurb: "A growing collection of random facts from all over the world.",
-    stupid: 5,
-    genius: 1,
-    boring: 3,
+    code: "IB-05",
+    title: "Sour Toast",
+    blurb: "A graveyard for all my dead projects.",
+    stupid: 4,
+    genius: 2,
+    boring: 2,
     status: "In progress",
-    added: "Aug 15",
+    added: "Nov 13",
+    url: "https://sourtoast.xyz",
   },
 ];
 
