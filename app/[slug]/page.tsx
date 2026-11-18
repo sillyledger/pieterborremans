@@ -4,14 +4,15 @@ import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import { getPosts, categories } from "@/lib/posts";
 
-// Static, regenerated at most once a minute (or instantly via /api/revalidate).
-export const revalidate = 60;
+// Static, regenerated at most once a day (or on demand via /api/revalidate).
+export const revalidate = 86400;
 
 // Note: don't set dynamicParams = false here. In Next 15.1, on-demand
 // revalidation (/api/revalidate) of a dynamicParams=false route turns its
-// prerendered pages into 404s. Unknown slugs (e.g. bots probing
-// /wp-login.php) still 404 below before any page-level data fetch, and that
-// 404 is ISR-cached per path.
+// prerendered pages into 404s (re-verified locally on 15.1.11: /listen went
+// 200 -> 404 after revalidatePath). Unknown slugs (e.g. bots probing
+// /wp-login.php) still 404 below before any data fetch; that 404 is cached
+// once per path and, with no site-wide revalidation, stays cached for a day.
 
 // Category slugs that have their own route folder (app/168, app/updates).
 // They must never be prerendered here: a prerendered /[slug] page for one of

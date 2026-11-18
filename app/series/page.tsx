@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/series" },
 };
 
-// Static, regenerated at most once a minute (or instantly via /api/revalidate).
-export const revalidate = 60;
+// Static, regenerated at most once a day (or on demand via /api/revalidate).
+export const revalidate = 86400;
 
 // Spine heights cycle through this pattern so the bars look like book spines.
 const SPINE_HEIGHTS = [38, 46, 34, 50, 42, 30];

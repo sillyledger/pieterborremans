@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import { getPosts, countCategories, categories } from "@/lib/posts";
 
@@ -14,7 +15,10 @@ export default async function BlogIndex({ page }: { page: number }) {
   const posts = await getPosts();
   const categoryCounts = countCategories(posts);
   const totalPages = Math.max(1, Math.ceil(posts.length / POSTS_PER_PAGE));
-  const currentPage = Math.min(Math.max(1, page), totalPages);
+  // 404 instead of clamping: a clamped /blog/page/999 rendered a full 200 page
+  // and was cached as its own ISR entry for every distinct number.
+  if (!Number.isInteger(page) || page < 1 || page > totalPages) notFound();
+  const currentPage = page;
 
   const start = (currentPage - 1) * POSTS_PER_PAGE;
   const pagePosts = posts.slice(start, start + POSTS_PER_PAGE);

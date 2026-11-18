@@ -16,9 +16,13 @@ function getSpotifyEmbedUrl(url: string): string | null {
   return `https://open.spotify.com/embed/${type}/${id}`;
 }
 
-// Static, regenerated at most once a minute (or instantly via /api/revalidate).
-export const revalidate = 60;
+// Static, regenerated at most once a day (or on demand via /api/revalidate).
+export const revalidate = 86400;
 
+// dynamicParams stays true (the default) so a post published after the last
+// deploy is served without a redeploy. Unknown slugs hit notFound() below;
+// that 404 is cached once per path and, with no site-wide revalidation in
+// /api/revalidate, stays cached for the full revalidate window.
 export async function generateStaticParams() {
   const posts = await getPosts();
   return posts.map((post) => ({ slug: post.slug }));

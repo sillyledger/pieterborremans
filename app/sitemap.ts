@@ -4,8 +4,8 @@ import { activeSeries } from "@/lib/series";
 
 const BASE_URL = "https://pieterborremans.com";
 
-// Static, regenerated at most once a minute (or instantly via /api/revalidate).
-export const revalidate = 60;
+// Static, regenerated at most once a day (or on demand via /api/revalidate).
+export const revalidate = 86400;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getPosts();

@@ -8,8 +8,9 @@ import { getPosts } from "@/lib/posts";
 // (OWN_ROUTE_SLUGS). Folder precedence alone isn't enough once both routes
 // are ISR: a prerendered /[slug] page for "168" would replace this page in
 // the /168 cache entry. Same applies to app/updates/page.tsx.
-// At most hourly so the "Day N of the challenge" counter stays current (the
-// root layout's revalidate = 60 is lower, so 60s is what applies in practice).
+// At most hourly so the "Day N of the challenge" counter stays current. The
+// lowest revalidate across page + layouts wins, so this 3600 applies over the
+// root layout's 86400.
 export const revalidate = 3600;
 
 export async function generateMetadata(): Promise<Metadata> {

@@ -15,9 +15,12 @@ import {
 
 const BASE_URL = "https://pieterborremans.com";
 
-// Static, regenerated at most once a minute (or instantly via /api/revalidate).
-export const revalidate = 60;
+// Static, regenerated at most once a day (or on demand via /api/revalidate).
+export const revalidate = 86400;
 
+// No dynamicParams = false: /api/revalidate revalidates series pages, and in
+// Next 15.1 that turns prerendered pages of a dynamicParams=false route into
+// 404s (see app/[slug]/page.tsx). Unknown slugs 404 via notFound() below.
 export function generateStaticParams() {
   return activeSeries.map((s) => ({ slug: s.slug }));
 }
