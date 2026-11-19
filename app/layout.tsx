@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   title: "Pieter Borremans | Content creator, blogger, and entrepreneur",
   description:
     "Pieter Borremans is a writer, content creator, and founder based in Taichung, Taiwan and London, UK. He writes about entrepreneurship, independent business-building, and the unfiltered reality of creating things online.",
-  metadataBase: new URL("https://pieterborremans.com"),
+  metadataBase: new URL("https://www.pieterborremans.com"),
 };
 
 // Canonical entity graph — same @id as ryokagroup.com/founder, indiehacker.blog/about,
@@ -50,8 +50,8 @@ const personSchema = {
   jobTitle: "Writer, Content Creator, Founder",
   description:
     "Pieter Borremans is a writer, content creator, and founder with over two decades of experience in business, digital strategy, and content. Born in Asia and raised in Brussels, he writes about entrepreneurship, independent business-building, and the unfiltered reality of creating things online.",
-  url: "https://pieterborremans.com",
-  image: "https://pieterborremans.com/images/pieter-borremans-writer.png",
+  url: "https://www.pieterborremans.com",
+  image: "https://www.pieterborremans.com/images/pieter-borremans-writer.png",
   birthPlace: {
     "@type": "Place",
     name: "Indonesia",

@@ -19,8 +19,8 @@ export async function generateMetadata(): Promise<Metadata> {
 const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": "https://pieterborremans.com/idea-bench#webpage",
-  "url": "https://pieterborremans.com/idea-bench",
+  "@id": "https://www.pieterborremans.com/idea-bench#webpage",
+  "url": "https://www.pieterborremans.com/idea-bench",
   "name": "Idea Bench | Pieter Borremans",
   "author": { "@id": "https://ryokagroup.com/founder#pieter" },
   "description":

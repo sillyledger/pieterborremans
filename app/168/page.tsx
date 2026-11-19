@@ -27,8 +27,8 @@ export async function generateMetadata(): Promise<Metadata> {
 const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": "https://pieterborremans.com/168#webpage",
-  "url": "https://pieterborremans.com/168",
+  "@id": "https://www.pieterborremans.com/168#webpage",
+  "url": "https://www.pieterborremans.com/168",
   "name": "The $168 million challenge | Pieter Borremans",
   "author": { "@id": "https://ryokagroup.com/founder#pieter" },
   "description":

@@ -84,8 +84,8 @@ const schema = {
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": "https://pieterborremans.com/creator#webpage",
-      "url": "https://pieterborremans.com/creator",
+      "@id": "https://www.pieterborremans.com/creator#webpage",
+      "url": "https://www.pieterborremans.com/creator",
       "name": "Creator | Pieter Borremans",
       "description": DESCRIPTION,
       "about": { "@id": PERSON_ID },
@@ -93,7 +93,7 @@ const schema = {
     },
     ...SHOWS.map((show) => ({
       "@type": "PodcastSeries",
-      "@id": `https://pieterborremans.com/creator#${show.key}`,
+      "@id": `https://www.pieterborremans.com/creator#${show.key}`,
       "name": show.name,
       "description": show.description,
       "url": show.cta.href,

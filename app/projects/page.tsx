@@ -16,8 +16,8 @@ export const metadata: Metadata = {
 const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": "https://pieterborremans.com/projects#webpage",
-  "url": "https://pieterborremans.com/projects",
+  "@id": "https://www.pieterborremans.com/projects#webpage",
+  "url": "https://www.pieterborremans.com/projects",
   "name": "Projects | Pieter Borremans",
   "author": { "@id": "https://ryokagroup.com/founder#pieter" },
   "description": DESCRIPTION,

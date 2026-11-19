@@ -43,12 +43,25 @@ const postRedirects = [
 
 const nextConfig: NextConfig = {
   images: {
+    // /_next/image responses were served with max-age=0, so every view of a
+    // page made the browser revalidate each image (a 304 per image per view).
+    // To change an image, give it a new filename (cached copies live 31 days).
+    minimumCacheTTL: 2678400, // 31 days
     remotePatterns: [
       {
         protocol: "https",
         hostname: "*.supabase.co",
       },
     ],
+  },
+  async headers() {
+    return [
+      {
+        // Long browser cache; replace an image by adding it under a new filename.
+        source: "/images/:path*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=2678400, stale-while-revalidate=86400" }],
+      },
+    ];
   },
   async redirects() {
     return postRedirects;

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Unfiltered photos from Pieter Borremans — building, writing, and living between Taichung and London.",
 };
 
-const SITE_URL = "https://pieterborremans.com";
+const SITE_URL = "https://www.pieterborremans.com";
 
 function GalleryJsonLd() {
   const jsonLd = {

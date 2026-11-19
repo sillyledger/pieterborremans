@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { getPosts, categories } from "@/lib/posts";
 import { activeSeries } from "@/lib/series";
 
-const BASE_URL = "https://pieterborremans.com";
+const BASE_URL = "https://www.pieterborremans.com";
 
 // Static, regenerated at most once a day (or on demand via /api/revalidate).
 export const revalidate = 86400;

@@ -3,7 +3,7 @@ import { resend, NEWSLETTER_AUDIENCE_ID } from "@/lib/resend";
 import { createConfirmToken } from "@/lib/newsletter-token";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const SITE_URL = "https://pieterborremans.com";
+const SITE_URL = "https://www.pieterborremans.com";
 
 function confirmEmailHtml(confirmUrl: string): string {
   return `<!doctype html>

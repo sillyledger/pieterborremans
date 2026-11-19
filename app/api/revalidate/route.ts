@@ -39,7 +39,10 @@ function categoryPath(slug: string): string | null {
   return cat ? cat.href ?? `/${cat.slug}` : null;
 }
 
-function skipped(reason: string) {
+// Logged so Vercel logs show what each webhook call did (or why it didn't).
+function skipped(reason: string, body: { type?: string; record?: PostRow; old_record?: PostRow }) {
+  const slug = str(body.record?.slug) ?? str(body.old_record?.slug);
+  console.log(`[revalidate] skipped (${reason}) type=${body.type ?? "-"} slug=${slug ?? "-"}`);
   return NextResponse.json({ revalidated: false, skipped: reason });
 }
 
@@ -70,23 +73,30 @@ export async function POST(request: NextRequest) {
   const { record, old_record: oldRecord } = body;
   const isWebhook = record != null || oldRecord != null;
 
+  // Skip filters only act on fields the payload actually carries. A payload
+  // without target_site/status (custom webhook body, manual { record: { slug } })
+  // is never dropped: a skipped publish leaves / and /blog stale for a whole
+  // day, since nothing else refreshes them before the 86400s window.
   if (isWebhook) {
+    const sites = [record?.target_site, oldRecord?.target_site].map(str).filter(Boolean);
     // The posts table is shared by every Ryoka site: ignore other sites' rows.
-    if (str(record?.target_site) !== SITE && str(oldRecord?.target_site) !== SITE) {
-      return skipped("other site");
+    if (sites.length > 0 && !sites.includes(SITE)) {
+      return skipped("other site", body);
     }
     // Drafts and autosaves of unpublished posts never show on the site. A post
     // that was published before or after the change (publish, edit, unpublish,
     // delete) does.
-    if (record?.status !== "published" && oldRecord?.status !== "published") {
-      return skipped("not published");
+    const statuses = [record?.status, oldRecord?.status].map(str).filter(Boolean);
+    if (statuses.length > 0 && !statuses.includes("published")) {
+      return skipped("not published", body);
     }
     if (
       record &&
       oldRecord &&
+      RENDERED_FIELDS.every((f) => f in record && f in oldRecord) &&
       RENDERED_FIELDS.every((f) => JSON.stringify(record[f]) === JSON.stringify(oldRecord[f]))
     ) {
-      return skipped("no rendered fields changed");
+      return skipped("no rendered fields changed", body);
     }
   }
 
@@ -126,6 +136,8 @@ export async function POST(request: NextRequest) {
   // Deliberately no revalidatePath("/", "layout"): wiping the whole site on
   // every publish re-rendered every page. Footer category counts on pages not
   // listed above refresh within the daily revalidate window instead.
+
+  console.log(`[revalidate] type=${body.type ?? "manual"} paths=${[...paths].join(",")}`);
 
   return NextResponse.json({
     revalidated: true,

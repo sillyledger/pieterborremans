@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const BASE_URL = "https://pieterborremans.com";
+const BASE_URL = "https://www.pieterborremans.com";
 
 const AI_CRAWLERS = [
   "GPTBot",
