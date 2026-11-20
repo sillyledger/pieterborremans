@@ -67,6 +67,13 @@ export async function POST(request: NextRequest) {
   const providedSecret = querySecret ?? body.secret ?? null;
 
   if (!isValidSecret(providedSecret, process.env.REVALIDATE_SECRET)) {
+    // Logged so a webhook or caller with a wrong/missing secret shows up in
+    // Vercel logs instead of failing silently. Never logs the secret itself.
+    console.log(
+      `[revalidate] rejected (invalid token) secret=${providedSecret ? "wrong" : "missing"}` +
+        ` env=${process.env.REVALIDATE_SECRET ? "set" : "MISSING"}` +
+        ` ua=${request.headers.get("user-agent") ?? "-"}`
+    );
     return NextResponse.json({ revalidated: false, message: "Invalid token" }, { status: 401 });
   }
 
