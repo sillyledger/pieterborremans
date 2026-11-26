@@ -2,15 +2,54 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 
+const DESCRIPTION =
+  "Pieter Borremans' personal audio journal: short, unscripted solo check-ins on building, frustrations, and small wins.";
+
 export const metadata: Metadata = {
   title: "Podcast | Pieter Borremans",
-  description:
-    "Two solo audio shows from Pieter Borremans: a short daily-ish personal journal, and Echo Room, a deeper unfiltered monologue.",
+  description: DESCRIPTION,
+};
+
+const PERSON_ID = "https://ryokagroup.com/founder#pieter";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.pieterborremans.com/podcast#webpage",
+      "url": "https://www.pieterborremans.com/podcast",
+      "name": "Podcast | Pieter Borremans",
+      "description": DESCRIPTION,
+      "about": { "@id": "https://www.pieterborremans.com/podcast#journal" },
+      "author": { "@id": PERSON_ID },
+    },
+    {
+      "@type": "PodcastSeries",
+      "@id": "https://www.pieterborremans.com/podcast#journal",
+      "name": "Pieter Borremans",
+      "description":
+        "A solo audio journal: short, unscripted check-ins on what I'm working on, what's frustrating me, and small wins.",
+      "url": "https://www.pieterborremans.com/podcast",
+      "inLanguage": "en",
+      "author": { "@id": PERSON_ID },
+      "sameAs": [
+        "https://open.spotify.com/show/765k4LuyZrS2sYEkXHOZ47",
+        "https://podcasts.apple.com/tw/podcast/pieter-borremans/id1893263919?l=en-GB",
+        "https://music.amazon.com/podcasts/051af7fe-5f1a-4168-a97f-baa269a30408/pieter-borremans",
+        "https://www.youtube.com/@pieterborremans",
+      ],
+    },
+  ],
 };
 
 export default function Podcast() {
   return (
     <main className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <div className="max-w-[750px] mx-auto px-7 pt-9 pb-16">
         {/* Nav */}
         <Header active="Podcast" />
@@ -19,10 +58,10 @@ export default function Podcast() {
           Podcast
         </div>
         <h1 className="font-heading text-[26px] sm:text-[34px] font-normal leading-[1.4] tracking-[-0.005em] max-w-[520px] mb-3">
-          Two shows. One mic. No script.
+          One mic. No script.
         </h1>
         <div className="text-[15px] text-ink/60 leading-relaxed max-w-[480px] mb-12">
-          Both are solo monologues, no edits, no guests. One is a short daily habit. The other goes a lot deeper.
+          A solo journal, no edits, no guests. Short check-ins on what I&apos;m working on, what&apos;s frustrating me, and small wins.
         </div>
 
         <div className="flex flex-col gap-4">
@@ -88,44 +127,18 @@ export default function Podcast() {
             </div>
           </div>
 
-          {/* Echo Room */}
-          <div className="rounded-xl bg-red/[0.07] border border-red/40 p-6 sm:p-7">
-            <div className="flex items-center justify-between mb-4">
-              <div className="font-mono text-[10.5px] tracking-[0.1em] uppercase text-red">
-                Echo Room
-              </div>
-              <div className="font-mono text-[10.5px] tracking-[0.06em] uppercase text-ink/35">
-                Launching Sept 2026
-              </div>
-            </div>
-            <div className="font-heading text-xl font-semibold text-ink mb-2.5">
-              One voice. No script. No exit.
-            </div>
-            <div className="text-[13.5px] text-ink/70 leading-relaxed max-w-[460px] mb-6">
-              The deeper, unfiltered monologue, covering entrepreneurship, technology, investing, creativity, and
-              whatever I can&apos;t stop thinking about. Longer, heavier, its own home.
-            </div>
-            <a
-              href="https://www.echoroom.xyz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.04em] bg-red text-ink rounded-md px-4 py-2.5 hover:opacity-90 transition-opacity"
-            >
-              Visit echoroom.xyz
-            </a>
-          </div>
 
         </div>
 
         <p className="mt-[72px] pt-[22px] border-t border-white/10 text-[15px] text-ink/60">
-          I also voice three English-learning shows. Those are on the{" "}
+          Echo Room is now an English-learning show, so it lives on the{" "}
           <Link
             href="/creator"
             className="text-ink underline decoration-ink/30 underline-offset-[3px] hover:decoration-ink/60 transition-colors"
           >
             creator page
-          </Link>
-          .
+          </Link>{" "}
+          with the other three.
         </p>
       </div>
     </main>

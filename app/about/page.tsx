@@ -68,7 +68,7 @@ export default function About() {
               Focus
             </div>
             <div className="text-[13px] text-ink leading-relaxed">
-              Writing, Ryoka Group, Echo Room
+              Writing, Ryoka Group, Study Brew
             </div>
           </div>
           <div className="flex-1 bg-[#1D1E22] border border-white/10 rounded-[10px] p-4 -rotate-1">

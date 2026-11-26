@@ -67,13 +67,13 @@ const projects: Project[] = [
   { name: "Aegos Intel", domain: "aegosintel.com", url: "https://aegosintel.com", blurb: "B2B intelligence tool.", status: "In progress", tier: "build", stage: "progress", type: "SaaS, B2B", since: "2026", earned: 0 },
   { name: "Kiroka", domain: "kiroka.xyz", url: "https://kiroka.xyz", blurb: "A free subscription tracker, kept alive by donations.", status: "Active", tier: "live", stage: "live", type: "Free, donation", since: "2025", earned: 0 },
   { name: "Harova", domain: "harova.xyz", url: "https://harova.xyz", blurb: "A curated directory of tools, a few new ones added every day.", status: "In progress", tier: "build", stage: "progress", type: "Web directory", since: "2026", earned: 0 },
-  { name: "Echo Room", domain: "echoroom.xyz", url: "https://echoroom.xyz", blurb: "A solo monologue podcast, recorded without a script.", status: "On time", tier: "live", stage: "live", type: "Audio", since: "2026", earned: 0 },
+  { name: "Echo Room", domain: "echoroom.xyz", url: "https://echoroom.xyz", blurb: "A B2 English podcast about ordinary life, part of Study Brew.", status: "On time", tier: "live", stage: "live", type: "Audio", since: "2026", earned: 0 },
   { name: "Liyo", domain: "liyo.dev", url: "https://liyo.dev", blurb: "A shelf for developers: one shareable page for your stack, tools, books, and desk.", status: "In progress", tier: "build", stage: "progress", type: "SaaS, social", since: "2026", earned: 0 },
 ];
 
 const crashed: CrashedProject[] = []; // empty for now, populated later
 
-const LAST_UPDATED = "Sep 23, 2026";
+const LAST_UPDATED = "Nov 26, 2026";
 
 // --- Helpers ---
 

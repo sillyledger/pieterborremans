@@ -4,7 +4,7 @@ import { Noto_Serif_TC } from "next/font/google";
 import Header from "@/components/Header";
 
 const DESCRIPTION =
-  "Pieter Borremans voices three English-learning audio shows, Study Brew, Story Brew, and Story Valley. Every episode is read by him, never by an AI voice.";
+  "Pieter Borremans voices four English-learning audio shows, Study Brew, Story Brew, Story Valley, and Echo Room. Every episode is read by him, never by an AI voice.";
 
 export const metadata: Metadata = {
   title: "Creator | Pieter Borremans",
@@ -57,6 +57,21 @@ const SHOWS = [
     youtube: "",
     cta: { label: "Listen", href: "https://www.studybrew.co/stories/bedtime" },
   },
+  {
+    key: "echo-room",
+    name: "Echo Room",
+    level: "B2",
+    meta: "Natural pace",
+    color: "#C23B3B",
+    description:
+      "Ordinary life in clear B2 English, spoken at a natural pace. The step up once the slower stories feel easy.",
+    spotify: "https://open.spotify.com/show/1aWWAKlxNDWMHXFPhwLjNO",
+    youtube: "https://www.youtube.com/@echoroomshow",
+    cta: { label: "Visit", href: "https://www.echoroom.xyz" },
+    // Echo Room has its own site; reference its canonical PodcastSeries entity.
+    schemaId: "https://www.echoroom.xyz/#podcast",
+    schemaUrl: "https://www.echoroom.xyz",
+  },
 ];
 
 const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
@@ -69,9 +84,9 @@ const NAME = [
 
 const WAVEFORM = [18, 30, 22, 44, 58, 36, 26, 48, 62, 40, 24, 34, 52, 28, 16];
 
-// "B1 to B2" -> grid columns 3 / 5 on the six-level scale.
+// "B1 to B2" -> grid columns 3 / 5 on the six-level scale; "B2" -> 4 / 5.
 function levelColumns(level: string) {
-  const [from, to] = level.split(" to ");
+  const [from, to = from] = level.split(" to ");
   return `${LEVELS.indexOf(from) + 1} / ${LEVELS.indexOf(to) + 2}`;
 }
 
@@ -93,10 +108,10 @@ const schema = {
     },
     ...SHOWS.map((show) => ({
       "@type": "PodcastSeries",
-      "@id": `https://www.pieterborremans.com/creator#${show.key}`,
+      "@id": show.schemaId ?? `https://www.pieterborremans.com/creator#${show.key}`,
       "name": show.name,
       "description": show.description,
-      "url": show.cta.href,
+      "url": show.schemaUrl ?? show.cta.href,
       "inLanguage": "en",
       "author": { "@id": PERSON_ID },
     })),
@@ -134,8 +149,8 @@ export default function Creator() {
 
         <div className={`${body} mt-7 space-y-[18px]`}>
           <p>
-            I&apos;m Pieter Borremans, and every story on Study Brew, Story Brew, and Story Valley
-            is read in my voice. I grew up in Brussels and have lived abroad for 25 years. English
+            I&apos;m Pieter Borremans, and every story on Study Brew, Story Brew, Story Valley, and
+            Echo Room is read in my voice. I grew up in Brussels and have lived abroad for 25 years. English
             became the language I work and write in, but nobody handed it to me. I learned it.
           </p>
           <p>
@@ -149,7 +164,7 @@ export default function Creator() {
 
         {/* Shows */}
         <section className="mt-16">
-          <h2 className={h2}>Three shows, one voice</h2>
+          <h2 className={h2}>Four shows, one voice</h2>
           <p className={body}>
             Each show is pitched at a level, so you can start where you are and move up.
           </p>
@@ -234,7 +249,7 @@ export default function Creator() {
           <div>
             <h2 className={h2}>Only my voice</h2>
             <p className={body}>
-              Every episode on all three channels is read by me. No AI voice, no hired narrator.
+              Every episode on all four channels is read by me. No AI voice, no hired narrator.
               You&apos;ll hear a non-native accent, and that&apos;s deliberate: it&apos;s closer to
               the English you&apos;ll meet in real life than a studio voice will ever be.
             </p>
@@ -299,7 +314,7 @@ export default function Creator() {
 
         {/* Cross-link */}
         <p className="mt-[72px] pt-[22px] border-t border-white/10 text-[15px] text-ink/60">
-          Looking for Echo Room or my personal journal? Those are on the{" "}
+          Looking for my personal journal? It&apos;s on the{" "}
           <Link
             href="/podcast"
             className="text-ink underline decoration-ink/30 underline-offset-[3px] hover:decoration-ink/60 transition-colors"
