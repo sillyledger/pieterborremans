@@ -21,7 +21,23 @@ const notoSerifTC = Noto_Serif_TC({
 // --- Data: edit content here, not in the JSX. ---
 
 // Order matches the level scale and the show list.
-const SHOWS = [
+type Show = {
+  key: string;
+  name: string;
+  level: string;
+  meta: string;
+  color: string;
+  description: string;
+  spotify: string;
+  apple?: string;
+  youtube: string;
+  cta?: { label: string; href: string };
+  // Set when the show has its own site with a canonical PodcastSeries entity.
+  schemaId?: string;
+  schemaUrl?: string;
+};
+
+const SHOWS: Show[] = [
   {
     key: "story-valley",
     name: "Story Valley",
@@ -66,8 +82,8 @@ const SHOWS = [
     description:
       "Ordinary life in clear B2 English, spoken at a natural pace. The step up once the slower stories feel easy.",
     spotify: "https://open.spotify.com/show/1aWWAKlxNDWMHXFPhwLjNO",
-    youtube: "https://www.youtube.com/@echoroomshow",
-    cta: { label: "Visit", href: "https://www.echoroom.xyz" },
+    apple: "https://podcasts.apple.com/podcast/echo-room-b2-english-at-a-natural-pace/id6818167921",
+    youtube: "",
     // Echo Room has its own site; reference its canonical PodcastSeries entity.
     schemaId: "https://www.echoroom.xyz/#podcast",
     schemaUrl: "https://www.echoroom.xyz",
@@ -111,9 +127,12 @@ const schema = {
       "@id": show.schemaId ?? `https://www.pieterborremans.com/creator#${show.key}`,
       "name": show.name,
       "description": show.description,
-      "url": show.schemaUrl ?? show.cta.href,
+      "url": show.schemaUrl ?? show.cta?.href,
       "inLanguage": "en",
       "author": { "@id": PERSON_ID },
+      ...(show.spotify || show.apple
+        ? { "sameAs": [show.spotify, show.apple].filter(Boolean) }
+        : {}),
     })),
   ],
 };
@@ -220,14 +239,21 @@ export default function Creator() {
                         Spotify
                       </a>
                     )}
+                    {show.apple && (
+                      <a href={show.apple} target="_blank" rel="noopener noreferrer" className={pill}>
+                        Apple
+                      </a>
+                    )}
                     {show.youtube && (
                       <a href={show.youtube} target="_blank" rel="noopener noreferrer" className={pill}>
                         YouTube
                       </a>
                     )}
-                    <a href={show.cta.href} target="_blank" rel="noopener noreferrer" className={pill}>
-                      {show.cta.label}
-                    </a>
+                    {show.cta && (
+                      <a href={show.cta.href} target="_blank" rel="noopener noreferrer" className={pill}>
+                        {show.cta.label}
+                      </a>
+                    )}
                   </div>
                 </div>
               </article>
