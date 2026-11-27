@@ -57,6 +57,7 @@ export const series: Series[] = [
     postSlugs: [
       "building-study-brew-app-1-going-real",
       "building-study-brew-app-2-chinese-market",
+      "building-study-brew-3-beta-quietly-live",
     ],
   },
 ];
